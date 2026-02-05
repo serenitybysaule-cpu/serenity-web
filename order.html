@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Commander | Serenity by Saule</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <style>
+        .order-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: var(--color-white);
+            padding: 3rem;
+            border: 1px solid var(--color-nude-light);
+            margin-top: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .step-title {
+            border-bottom: 1px solid var(--color-nude);
+            padding-bottom: 1rem;
+            margin-bottom: 2rem;
+            color: var(--color-black);
+        }
+
+        .configurator-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        .option-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .option-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        .color-swatch {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: inline-block;
+            margin-right: 10px;
+            cursor: pointer;
+            border: 2px solid transparent;
+        }
+
+        .color-swatch.selected {
+            border-color: var(--color-black);
+            transform: scale(1.1);
+        }
+
+        .summary-box {
+            background-color: var(--color-nude-light);
+            padding: 1.5rem;
+            margin-top: 2rem;
+            border-radius: 4px;
+        }
+
+        @media (max-width: 768px) {
+            .configurator-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .order-container {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar">
+        <a href="index.html" class="logo">Serenity</a>
+        <ul class="nav-links">
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="brand.html">La Marque</a></li>
+            <li><a href="product.html">Le Produit</a></li>
+            <li><a href="gallery.html">Galerie</a></li>
+            <li><a href="measurement.html" class="cta-link">Sur Mesure</a></li>
+        </ul>
+        <div class="mobile-menu-toggle">☰</div>
+    </nav>
+
+    <div class="container" style="padding-top: 10vh;">
+        <div class="order-container">
+            <h1 class="step-title">Votre Commande</h1>
+
+            <div class="order-container" style="text-align: center;">
+                <p style="margin-bottom: 2rem; max-width: 600px; margin-left: auto; margin-right: auto;">
+                    Pour vous offrir l'expérience la plus personnalisée possible, les commandes s'effectuent via notre
+                    formulaire sécurisé exclusif.
+                </p>
+
+                <div
+                    style="background-color: var(--color-nude-light); padding: 2rem; border-radius: 4px; display: inline-block; margin-bottom: 2rem;">
+                    <h3 style="margin-bottom: 1rem;">Étapes :</h3>
+                    <ol style="text-align: left; padding-left: 20px; margin-bottom: 0;">
+                        <li>Cliquez sur le lien de commande ci-dessous.</li>
+                        <li>Choisissez vos modèles et options préférées.</li>
+                        <li>Validez votre demande.</li>
+                        <li>Nous vous recontacterons pour finaliser les détails.</li>
+                    </ol>
+                </div>
+
+                <br>
+
+                <a href="https://bit.ly/Serenity-commande" target="_blank" class="btn btn-primary"
+                    style="padding: 1rem 3rem; font-size: 1.2rem;">
+                    Accéder au Bon de Commande
+                </a>
+
+                <p style="margin-top: 1.5rem; color: var(--color-grey); font-size: 0.9rem;">
+                    Ouverture dans un nouvel onglet sécurisé.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script src="assets/js/main.js"></script>
+</body>
+
+</html>
