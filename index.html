@@ -24,25 +24,26 @@
 <body>
 
     <!-- Navigation -->
-    <nav class="navbar dark-mode">
+    <nav class="navbar hell-mode">
         <div class="logo">Serenity</div>
         <ul class="nav-links">
-            <li><a href="index.html" class="active">Accueil</a></li>
-            <li><a href="brand.html">La Marque</a></li>
-            <li><a href="product.html">Le Produit</a></li>
-            <li><a href="gallery.html">Galerie</a></li>
+            <li><a href="#home" class="active">Accueil</a></li>
+            <li><a href="#brand">La Marque</a></li>
+            <li><a href="#product">Le Produit</a></li>
+            <li><a href="#gallery">Galerie</a></li>
+            <li><a href="#contact">Contact</a></li>
             <li><a href="measurement.html" class="cta-link">Sur Mesure</a></li>
         </ul>
         <div class="mobile-menu-toggle">☰</div>
     </nav>
 
     <!-- Hero Section -->
-    <header class="hero">
-        <video autoplay muted loop playsinline class="hero-video">
-            <source src="assets/videos/serenity ballade.mp4" type="video/mp4">
-            <!-- Fallback image si la vidéo ne charge pas (optionnel mais recommandé) -->
-            <!-- <img src="assets/images/hero-bg.jpg" alt="Serenity Background"> -->
-        </video>
+    <header id="home" class="hero">
+        <div class="parallax-bg video-container">
+            <video autoplay muted loop playsinline class="hero-video">
+                <source src="assets/videos/serenity ballade.mp4" type="video/mp4">
+            </video>
+        </div>
         <div class="hero-overlay"></div>
 
         <div class="hero-content">
@@ -53,11 +54,11 @@
                 <a href="order.html" class="btn btn-secondary">Commander</a>
             </div>
         </div>
-        <div class="scroll-indicator">↓</div>
+        <a href="#values" class="scroll-indicator">↓</a>
     </header>
 
     <!-- Values Section -->
-    <section class="section values">
+    <section id="values" class="section values">
         <div class="container">
             <h2 class="section-title">L'Essence de Serenity</h2>
             <div class="grid-3">
@@ -77,6 +78,91 @@
         </div>
     </section>
 
+    <!-- Brand Section (Parallax) -->
+    <section id="brand" class="section parallax-section" style="background-image: url('assets/images/brand-1.jpg');">
+        <div class="parallax-overlay"></div>
+        <div class="container content-over-parallax">
+            <h2 class="fade-in">Notre Vision</h2>
+            <p class="lead-text">Serenity by Saule est née d'un constat simple : la lingerie ne devrait jamais être un
+                compromis entre beauté et confort.</p>
+            <p>Nous croyons que chaque femme mérite de se sentir belle, soutenue et libre dans ses mouvements. Nos
+                créations sont invisibles sous les vêtements mais inoubliables sur la peau.</p>
+        </div>
+    </section>
+
+    <!-- Product Section -->
+    <section id="product" class="section">
+        <div class="container">
+            <h2 class="section-title">Sélection signature bientôt disponible </h2>
+            <div class="grid-3">
+                <div class="product-card">
+                    <div class="product-img" style="background: var(--color-champagne);"></div>
+                    <h3>Le Slip Intemporel</h3>
+                    <p>Coupe classique, confort moderne. Idéal pour le quotidien.</p>
+                </div>
+                <div class="product-card">
+                    <div class="product-img" style="background: var(--color-nude);"></div>
+                    <h3>La Culotte Taille Haute</h3>
+                    <p>Maintien doux et silhouette sublimée.</p>
+                </div>
+                <div class="product-card">
+                    <div class="product-img" style="background: var(--color-black);"></div>
+                    <h3>L'Ensemble Nuit</h3>
+                    <p>Pour des nuits paisibles dans une douceur infinie.</p>
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: 3rem;">
+                <a href="order.html" class="btn btn-primary">Commander maintenant</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section (Masonry/Grid) -->
+    <section id="gallery" class="section" style="background-color: var(--color-nude-light);">
+        <div class="container">
+            <h2 class="section-title">Moments de Vie</h2>
+
+            <h3>Stories</h3>
+            <div class="video-stories">
+                <!-- Placeholders -->
+                <div class="story-card">
+                    <div class="play-icon">▶</div>
+                </div>
+                <div class="story-card">
+                    <div class="play-icon">▶</div>
+                </div>
+                <div class="story-card">
+                    <div class="play-icon">▶</div>
+                </div>
+            </div>
+
+            <h3 style="margin-top: 3rem;">Portfolio</h3>
+            <div class="gallery-grid">
+                <img src="assets/images/gallery-1.jpg" alt="Gallery 1" class="gallery-item"
+                    style="object-fit: cover; width: 100%;">
+                <img src="assets/images/gallery-2.jpg" alt="Gallery 2" class="gallery-item"
+                    style="object-fit: cover; width: 100%;">
+                <img src="assets/images/gallery-3.jpg" alt="Gallery 3" class="gallery-item"
+                    style="object-fit: cover; width: 100%;">
+                <img src="assets/images/gallery-4.jpg" alt="Gallery 4" class="gallery-item"
+                    style="object-fit: cover; width: 100%;">
+                <img src="assets/images/gallery-5.jpg" alt="Gallery 5" class="gallery-item"
+                    style="object-fit: cover; width: 100%;">
+                <img src="assets/images/gallery-6.jpg" alt="Gallery 6" class="gallery-item"
+                    style="object-fit: cover; width: 100%;">
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section">
+        <div class="container" style="text-align: center;">
+            <h2 class="section-title">Contactez-nous</h2>
+            <p>Une question ? Un besoin spécifique ? Nous sommes à votre écoute.</p>
+            <a href="mailto:info@serenity-lingerie.com" class="contact-email">info@serenity-lingerie.com</a>
+        </div>
+    </section>
+
     <!-- Footer -->
     <footer class="footer">
         <div class="container footer-content">
@@ -85,15 +171,20 @@
                 <p>Lingerie sur-mesure haut de gamme.</p>
             </div>
             <div class="footer-col">
-                <h4>Liens</h4>
-                <a href="brand.html">La Marque</a>
-                <a href="contact.html">Contact</a>
-                <a href="legal.html">Mentions Légales</a>
+                <h4>Liens Rapides</h4>
+                <a href="#brand">La Marque</a>
+                <a href="#product">Le Produit</a>
+                <a href="#gallery">Galerie</a>
+                <a href="#legal">Mentions Légales</a>
             </div>
-            <div class="footer-col">
-                <h4>Newsletter</h4>
-                <p>Restez informée de nos collections exclusives.</p>
-                <!-- Formulaire newsletter placeholder -->
+            <div class="footer-col" id="legal">
+                <h4>Mentions Légales</h4>
+                <p style="font-size: 0.8rem; opacity: 0.7;">
+                    <strong>Éditeur :</strong> Serenity by Saule<br>
+
+                    <strong>Contact :</strong> info@serenity-lingerie.com<br>
+                    Condition Générales de Vente (CGV) - Disponible sur demande.
+                </p>
             </div>
         </div>
         <div class="footer-bottom">
