@@ -3,27 +3,36 @@
 document.addEventListener('DOMContentLoaded', () => {
 
     // Mobile Menu Toggle
+    // Mobile Menu Toggle
     const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
     const navLinks = document.querySelector('.nav-links');
+    const links = document.querySelectorAll('.nav-links a');
 
     if (mobileMenuToggle) {
         mobileMenuToggle.addEventListener('click', () => {
-            // Simple toggle for now, can be improved with animation
-            if (navLinks.style.display === 'flex') {
-                navLinks.style.display = 'none';
+            navLinks.classList.toggle('nav-active');
+
+            // Toggle Hamburger Icon (Optional: animate to X)
+            if (navLinks.classList.contains('nav-active')) {
+                mobileMenuToggle.textContent = '✕';
+                document.body.style.overflow = 'hidden'; // Prevent scrolling
             } else {
-                navLinks.style.display = 'flex';
-                navLinks.style.flexDirection = 'column';
-                navLinks.style.position = 'absolute';
-                navLinks.style.top = '100%';
-                navLinks.style.left = '0';
-                navLinks.style.width = '100%';
-                navLinks.style.backgroundColor = 'var(--color-ivory)';
-                navLinks.style.padding = '2rem';
-                navLinks.style.boxShadow = '0 10px 20px rgba(0,0,0,0.05)';
+                mobileMenuToggle.textContent = '☰';
+                document.body.style.overflow = 'auto';
             }
         });
     }
+
+    // Close menu when a link is clicked
+    links.forEach(link => {
+        link.addEventListener('click', () => {
+            if (navLinks.classList.contains('nav-active')) {
+                navLinks.classList.remove('nav-active');
+                mobileMenuToggle.textContent = '☰';
+                document.body.style.overflow = 'auto';
+            }
+        });
+    });
 
     // Smooth Scroll for specific internal links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
