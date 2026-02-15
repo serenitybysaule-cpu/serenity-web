@@ -27,49 +27,7 @@
             color: var(--color-black);
         }
 
-        .configurator-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2rem;
-        }
-
-        .option-group {
-            margin-bottom: 1.5rem;
-        }
-
-        .option-label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: 700;
-        }
-
-        .color-swatch {
-            width: 30px;
-            height: 30px;
-            border-radius: 50%;
-            display: inline-block;
-            margin-right: 10px;
-            cursor: pointer;
-            border: 2px solid transparent;
-        }
-
-        .color-swatch.selected {
-            border-color: var(--color-black);
-            transform: scale(1.1);
-        }
-
-        .summary-box {
-            background-color: var(--color-nude-light);
-            padding: 1.5rem;
-            margin-top: 2rem;
-            border-radius: 4px;
-        }
-
         @media (max-width: 768px) {
-            .configurator-grid {
-                grid-template-columns: 1fr;
-            }
-
             .order-container {
                 padding: 1.5rem;
             }
@@ -94,33 +52,24 @@
         <div class="order-container">
             <h1 class="step-title">Votre Commande</h1>
 
-            <div class="order-container" style="text-align: center;">
-                <p style="margin-bottom: 2rem; max-width: 600px; margin-left: auto; margin-right: auto;">
-                    Pour vous offrir l'expérience la plus personnalisée possible, les commandes s'effectuent via notre
-                    formulaire sécurisé exclusif.
+            <div style="text-align: center; padding: 2rem 0;">
+                <p
+                    style="margin-bottom: 3rem; font-size: 1.2rem; max-width: 600px; margin-left: auto; margin-right: auto;">
+                    Vous avez pris vos mesures ? Parfait. <br>
+                    Utilisez le bouton ci-dessous pour configurer votre commande personnalisée via notre bon de commande
+                    officiel.
                 </p>
 
-                <div
-                    style="background-color: var(--color-nude-light); padding: 2rem; border-radius: 4px; display: inline-block; margin-bottom: 2rem;">
-                    <h3 style="margin-bottom: 1rem;">Étapes :</h3>
-                    <ol style="text-align: left; padding-left: 20px; margin-bottom: 0;">
-                        <li>Cliquez sur le lien de commande ci-dessous.</li>
-                        <li>Choisissez vos modèles et options préférées.</li>
-                        <li>Validez votre demande.</li>
-                        <li>Nous vous recontacterons pour finaliser les détails.</li>
-                    </ol>
-                </div>
-
-                <br>
-
-                <a href="https://bit.ly/Serenity-commande" target="_blank" class="btn btn-primary"
-                    style="padding: 1rem 3rem; font-size: 1.2rem;">
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSeKMWE64serI4x2q6_8S7qHvRfi_i2MOINUyyfDgZuxhUwGRQ/viewform?usp=header"
+                    target="_blank" class="btn btn-primary" style="padding: 1.5rem 3rem; font-size: 1.2rem;">
                     Accéder au Bon de Commande
                 </a>
 
-                <p style="margin-top: 1.5rem; color: var(--color-grey); font-size: 0.9rem;">
-                    Ouverture dans un nouvel onglet sécurisé.
-                </p>
+                <div style="margin-top: 4rem; padding-top: 2rem; border-top: 1px solid var(--color-nude-light);">
+                    <h3>Besoin d'aide ?</h3>
+                    <p style="color: var(--color-grey);">Contactez-nous via Messenger pour toute question sur votre
+                        commande.</p>
+                </div>
             </div>
         </div>
     </div>
