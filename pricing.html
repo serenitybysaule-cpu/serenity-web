@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nos Tarifs | Serenity by Saule</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <style>
+        .pricing-section {
+            padding: 5rem 0;
+            background-color: var(--color-ivory);
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+            align-items: center;
+        }
+
+        .pricing-card {
+            background-color: var(--color-white);
+            padding: 3rem 2rem;
+            text-align: center;
+            border: 1px solid var(--color-nude-light);
+            transition: var(--transition-smooth);
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 100%;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.05);
+            border-color: var(--color-nude);
+        }
+
+        .pricing-card.featured {
+            border: 2px solid var(--color-champagne);
+            background-color: #FFFCF7;
+            /* Very light champagne */
+            transform: scale(1.05);
+            z-index: 2;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+        }
+
+        .pricing-card.featured:hover {
+            transform: scale(1.05) translateY(-10px);
+        }
+
+        .badge-recommended {
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: var(--color-black);
+            color: var(--color-champagne);
+            padding: 0.5rem 1.5rem;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            letter-spacing: 0.1em;
+            font-weight: 700;
+        }
+
+        .price-title {
+            font-family: var(--font-serif);
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: var(--color-black);
+        }
+
+        .price-amount {
+            font-size: 2.5rem;
+            font-family: var(--font-sans);
+            font-weight: 300;
+            margin-bottom: 0.5rem;
+            color: var(--color-black);
+        }
+
+        .price-currency {
+            font-size: 1rem;
+            vertical-align: super;
+        }
+
+        .price-details {
+            margin: 2rem 0;
+            color: var(--color-grey);
+            font-size: 1rem;
+            line-height: 1.8;
+            flex-grow: 1;
+        }
+
+        .price-details li {
+            margin-bottom: 0.5rem;
+        }
+
+        .price-details strong {
+            color: var(--color-black);
+        }
+
+        @media (max-width: 900px) {
+            .pricing-card.featured {
+                transform: none;
+            }
+
+            .pricing-card.featured:hover {
+                transform: translateY(-10px);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar">
+        <a href="index.html" class="logo">Serenity</a>
+        <ul class="nav-links">
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="brand.html">La Marque</a></li>
+            <li><a href="product.html">Le Produit</a></li>
+            <li><a href="pricing.html" class="active">Tarifs</a></li>
+            <li><a href="gallery.html">Galerie</a></li>
+            <li><a href="measurement.html" class="cta-link">Sur Mesure</a></li>
+        </ul>
+        <div class="mobile-menu-toggle">☰</div>
+    </nav>
+
+    <header class="hero" style="height: 50vh;">
+        <div class="hero-content">
+            <h1 class="fade-in">Nos Collections</h1>
+            <p class="fade-in-delay">L'élégance accessible, le luxe incarné.</p>
+        </div>
+    </header>
+
+    <section class="section pricing-section">
+        <div class="container">
+            <div class="pricing-grid">
+                <!-- Option 1: L'Unité -->
+                <div class="pricing-card">
+                    <h3 class="price-title">L'Unité</h3>
+                    <div class="price-amount">40 000<span class="price-currency">Ar</span></div>
+                    <ul class="price-details">
+                        <li>1 Slip sur-mesure</li>
+                        <li>Choix du modèle</li>
+                        <li>Couleur au choix</li>
+                        <li>Confection artisanale</li>
+                    </ul>
+                    <a href="order.html" class="btn btn-secondary">Commander</a>
+                </div>
+
+                <!-- Option 3: Collection Royale (Featured) -->
+                <div class="pricing-card featured">
+                    <div class="badge-recommended">Recommandé</div>
+                    <h3 class="price-title">La Collection Royale</h3>
+                    <div class="price-amount">179 000<span class="price-currency">Ar</span></div>
+                    <ul class="price-details">
+                        <li><strong>5 Slips sur-mesure</strong></li>
+                        <li>Modèles variés</li>
+                        <li>Palette complète de couleurs</li>
+                        <li><strong>Livraison Prioritaire</strong></li>
+                        <li>Packaging Exclusif</li>
+                    </ul>
+                    <a href="order.html" class="btn btn-primary">Commander la Collection</a>
+                </div>
+
+                <!-- Option 2: Pack Prestige -->
+                <div class="pricing-card">
+                    <h3 class="price-title">Pack Prestige</h3>
+                    <div class="price-amount">114 000<span class="price-currency">Ar</span></div>
+                    <ul class="price-details">
+                        <li>🎁 <strong>3 Slips sur-mesure</strong></li>
+                        <li>Mix & Match modèles</li>
+                        <li>Couleurs au choix</li>
+                    </ul>
+                    <a href="order.html" class="btn btn-secondary">Commander</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container footer-content">
+            <div class="footer-col">
+                <h4>Serenity by Saule</h4>
+                <p>Lingerie sur-mesure haut de gamme.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Liens</h4>
+                <a href="brand.html">La Marque</a>
+                <a href="pricing.html">Tarifs</a>
+            </div>
+            <div class="footer-col">
+                <h4>Newsletter</h4>
+                <p>Restez informée.</p>
+            </div>
+        </div>
+        <div class="footer-bottom">&copy; 2026 Serenity by Saule.</div>
+    </footer>
+
+    <script src="assets/js/main.js"></script>
+</body>
+
+</html>
