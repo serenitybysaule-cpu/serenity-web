@@ -5,93 +5,964 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Commander | Serenity by Saule</title>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap"
-        rel="stylesheet">
+    <meta name="description" content="Commandez votre lingerie sur mesure Serenity by Saule. Saisissez vos mesures ou acc&eacute;dez &agrave; notre guide de prise de mesure.">
+
+    <!-- Meta Pixel -->
+    <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '953611460562954');
+    fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=953611460562954&ev=PageView&noscript=1"/></noscript>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="assets/css/style.css">
+
     <style>
+        /* ================================================
+           ORDER PAGE — Serenity by Saule
+        ================================================ */
+
+        :root {
+            --cream:      #FAF7F4;
+            --cream-alt:  #F2ECE7;
+            --rose:       #C9A99A;
+            --rose-light: #EEE0DA;
+            --gold:       #B8935A;
+            --charcoal:   #2C2C2A;
+            --green-soft: #6B9E6B;
+        }
+
+        body {
+            font-family: 'Jost', sans-serif;
+            background-color: var(--cream);
+            color: var(--charcoal);
+            min-height: 100vh;
+        }
+
+        /* ---- NAVBAR ---- */
+        .navbar {
+            position: fixed;
+            background-color: rgba(250, 247, 244, 0.96);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(201, 169, 154, 0.2);
+            padding: 1.1rem 3rem;
+        }
+
+        .logo {
+            color: var(--charcoal);
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.55rem;
+            font-weight: 500;
+            letter-spacing: 0.04em;
+        }
+
+        .nav-links a {
+            background-color: transparent;
+            color: var(--charcoal);
+            border: 1px solid transparent;
+            font-family: 'Jost', sans-serif;
+            font-size: 0.75rem;
+            letter-spacing: 0.13em;
+            padding: 0.4rem 0.75rem;
+            border-radius: 0;
+        }
+
+        .nav-links a:hover { color: var(--gold); }
+
+        .nav-links a.nav-cta-primary {
+            background: var(--charcoal);
+            color: var(--cream);
+            border-color: var(--charcoal);
+            padding: 0.45rem 1.1rem;
+        }
+
+        .nav-links a.nav-cta-primary:hover {
+            background: var(--gold);
+            border-color: var(--gold);
+            color: var(--cream);
+        }
+
+        .nav-links a.nav-cta-secondary {
+            border: 1px solid rgba(44, 44, 42, 0.3);
+            padding: 0.45rem 1.1rem;
+        }
+
+        .nav-links a.nav-cta-secondary:hover {
+            color: var(--gold);
+            border-color: var(--gold);
+        }
+
+        /* ---- BANNIERE ---- */
+        .delivery-banner {
+            background-color: var(--cream-alt);
+            border-bottom: 1px solid rgba(201, 169, 154, 0.25);
+            text-align: center;
+            padding: 0.55rem 1rem;
+            position: fixed;
+            top: 61px;
+            width: 100%;
+            z-index: 99;
+            font-family: 'Jost', sans-serif;
+            font-size: 0.68rem;
+            font-weight: 300;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--charcoal);
+            opacity: 0.75;
+        }
+
+        /* ---- PAGE WRAPPER ---- */
+        .order-wrapper {
+            padding-top: calc(61px + 34px + 4rem);
+            padding-bottom: 6rem;
+            min-height: 100vh;
+        }
+
         .order-container {
-            max-width: 800px;
+            max-width: 760px;
             margin: 0 auto;
-            background: var(--color-white);
-            padding: 3rem;
-            border: 1px solid var(--color-nude-light);
-            margin-top: 2rem;
+            padding: 0 2rem;
+        }
+
+        /* ---- PAGE HEADER ---- */
+        .order-header {
+            text-align: center;
+            margin-bottom: 3.5rem;
+        }
+
+        .order-eyebrow {
+            font-family: 'Jost', sans-serif;
+            font-size: 0.68rem;
+            letter-spacing: 0.28em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 0.7rem;
+        }
+
+        .order-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.6rem;
+            font-weight: 400;
+            color: var(--charcoal);
+            line-height: 1.1;
+            margin-bottom: 0.5rem;
+        }
+
+        .order-sub {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1rem;
+            font-style: italic;
+            color: rgba(44, 44, 42, 0.5);
+        }
+
+        /* ---- BIFURCATION : 2 CARTES ---- */
+        .bifurcation-label {
+            font-family: 'Jost', sans-serif;
+            font-size: 0.72rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: rgba(44, 44, 42, 0.5);
+            text-align: center;
+            margin-bottom: 1.2rem;
+        }
+
+        .choice-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-bottom: 3rem;
+        }
+
+        .choice-card {
+            padding: 1.6rem 1.4rem;
+            border: 1px solid rgba(201, 169, 154, 0.35);
+            background: #fff;
+            cursor: pointer;
+            transition: border-color 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+            user-select: none;
+        }
+
+        .choice-card:hover {
+            border-color: rgba(184, 147, 90, 0.5);
+            box-shadow: 0 4px 20px rgba(44, 44, 42, 0.05);
+        }
+
+        .choice-card.is-selected-a {
+            border-color: var(--gold);
+            border-width: 2px;
+            background: #FFFDF8;
+        }
+
+        .choice-card.is-selected-b {
+            border-color: var(--rose);
+            border-width: 2px;
+            background: #FDF8F6;
+        }
+
+        .choice-icon {
+            font-size: 1.3rem;
+            line-height: 1;
+            margin-bottom: 0.2rem;
+        }
+
+        .choice-icon--check { color: var(--green-soft); }
+        .choice-icon--arrow { color: var(--rose); }
+
+        .choice-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.25rem;
+            font-weight: 500;
+            color: var(--charcoal);
+            line-height: 1.2;
+        }
+
+        .choice-sub {
+            font-family: 'Jost', sans-serif;
+            font-size: 0.78rem;
+            color: rgba(44, 44, 42, 0.55);
+            font-weight: 300;
+        }
+
+        /* ---- PANNEAU A : champs de mesure ---- */
+        #panel-a {
+            display: none;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        #panel-a.is-visible {
+            display: block;
+            animation: fadeInPanel 0.3s ease forwards;
+        }
+
+        /* ---- PANNEAU B : redirection guide ---- */
+        #panel-b {
+            display: none;
+            opacity: 0;
+        }
+
+        #panel-b.is-visible {
+            display: block;
+            animation: fadeInPanel 0.3s ease forwards;
+        }
+
+        @keyframes fadeInPanel {
+            from { opacity: 0; transform: translateY(8px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ---- SELECTEUR PRODUIT ---- */
+        .product-selector {
             margin-bottom: 2rem;
         }
 
-        .step-title {
-            border-bottom: 1px solid var(--color-nude);
-            padding-bottom: 1rem;
-            margin-bottom: 2rem;
-            color: var(--color-black);
+        .product-selector-label {
+            font-family: 'Jost', sans-serif;
+            font-size: 0.68rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: rgba(44, 44, 42, 0.5);
+            margin-bottom: 0.7rem;
         }
 
+        .product-tabs {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .product-tab {
+            font-family: 'Jost', sans-serif;
+            font-size: 0.72rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            padding: 0.5rem 1.2rem;
+            border: 1px solid rgba(44, 44, 42, 0.22);
+            background: transparent;
+            color: var(--charcoal);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .product-tab:hover {
+            border-color: var(--rose);
+            color: var(--rose);
+        }
+
+        .product-tab.is-active {
+            background: var(--charcoal);
+            color: var(--cream);
+            border-color: var(--charcoal);
+        }
+
+        /* ---- CHAMPS DE MESURE ---- */
+        .fields-panel {
+            display: none;
+        }
+
+        .fields-panel.is-active {
+            display: block;
+            animation: fadeInPanel 0.25s ease forwards;
+        }
+
+        .fields-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.3rem;
+            font-weight: 400;
+            color: var(--charcoal);
+            margin-bottom: 0.3rem;
+        }
+
+        .fields-subtitle {
+            font-family: 'Jost', sans-serif;
+            font-size: 0.78rem;
+            color: rgba(44, 44, 42, 0.5);
+            margin-bottom: 1.8rem;
+        }
+
+        .measure-field {
+            margin-bottom: 1.4rem;
+        }
+
+        .measure-label-row {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 0.45rem;
+        }
+
+        .measure-label {
+            font-family: 'Jost', sans-serif;
+            font-size: 0.82rem;
+            font-weight: 500;
+            color: var(--charcoal);
+            letter-spacing: 0.05em;
+        }
+
+        /* Info-bulle ⓘ */
+        .tooltip-wrap {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+        }
+
+        .tooltip-icon {
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            border: 1px solid rgba(184, 147, 90, 0.5);
+            color: var(--gold);
+            font-size: 0.6rem;
+            font-family: 'Jost', sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: help;
+            flex-shrink: 0;
+        }
+
+        .tooltip-text {
+            position: absolute;
+            left: calc(100% + 8px);
+            top: 50%;
+            transform: translateY(-50%);
+            background: var(--charcoal);
+            color: var(--cream);
+            font-family: 'Jost', sans-serif;
+            font-size: 0.7rem;
+            font-weight: 300;
+            line-height: 1.5;
+            padding: 0.5rem 0.8rem;
+            white-space: nowrap;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.2s ease;
+            z-index: 10;
+        }
+
+        .tooltip-wrap:hover .tooltip-text {
+            opacity: 1;
+        }
+
+        /* Champ input */
+        .measure-input-row {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .measure-input {
+            width: 120px;
+            padding: 0.7rem 1rem;
+            border: 1px solid rgba(201, 169, 154, 0.5);
+            background: #fff;
+            font-family: 'Jost', sans-serif;
+            font-size: 0.9rem;
+            color: var(--charcoal);
+            transition: border-color 0.2s ease;
+            outline: none;
+            -moz-appearance: textfield;
+        }
+
+        .measure-input::-webkit-outer-spin-button,
+        .measure-input::-webkit-inner-spin-button { -webkit-appearance: none; }
+
+        .measure-input:focus {
+            border-color: var(--gold);
+        }
+
+        .measure-input.is-error {
+            border-color: #C0392B;
+        }
+
+        .measure-unit {
+            font-family: 'Jost', sans-serif;
+            font-size: 0.78rem;
+            color: rgba(44, 44, 42, 0.4);
+        }
+
+        .measure-error {
+            display: none;
+            font-family: 'Jost', sans-serif;
+            font-size: 0.72rem;
+            color: #C0392B;
+            margin-top: 0.3rem;
+            font-style: italic;
+        }
+
+        .measure-error.is-visible {
+            display: block;
+        }
+
+        /* Lien guide sous les champs */
+        .fields-guide-link {
+            display: inline-block;
+            font-family: 'Jost', sans-serif;
+            font-size: 0.75rem;
+            color: rgba(44, 44, 42, 0.4);
+            font-style: italic;
+            text-decoration: none;
+            margin-top: 0.5rem;
+            margin-bottom: 2.5rem;
+            transition: color 0.2s ease;
+        }
+
+        .fields-guide-link:hover {
+            color: var(--rose);
+            text-decoration: underline;
+        }
+
+        /* ---- BOUTON GOOGLE FORM ---- */
+        .order-submit-btn {
+            display: block;
+            width: 100%;
+            text-align: center;
+            padding: 1.1rem 2rem;
+            background: var(--charcoal);
+            color: var(--cream);
+            font-family: 'Jost', sans-serif;
+            font-size: 0.78rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            transition: background 0.3s ease;
+            margin-top: 1rem;
+        }
+
+        .order-submit-btn:hover {
+            background: var(--gold);
+            color: var(--cream);
+        }
+
+        .order-submit-btn:disabled {
+            opacity: 0.45;
+            cursor: not-allowed;
+            background: var(--charcoal);
+        }
+
+        /* ---- PANNEAU B : encadré guide ---- */
+        .guide-block {
+            border: 1px solid rgba(201, 169, 154, 0.35);
+            background: #fff;
+            padding: 2.5rem 2rem;
+            text-align: center;
+        }
+
+        .guide-block-ornament {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            color: var(--rose);
+            opacity: 0.5;
+            margin-bottom: 1rem;
+            line-height: 1;
+        }
+
+        .guide-block-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            font-weight: 400;
+            color: var(--charcoal);
+            margin-bottom: 1rem;
+            line-height: 1.35;
+        }
+
+        .guide-block-text {
+            font-family: 'Jost', sans-serif;
+            font-size: 0.85rem;
+            line-height: 1.85;
+            color: rgba(44, 44, 42, 0.65);
+            max-width: 460px;
+            margin: 0 auto 2rem;
+        }
+
+        .guide-btn {
+            display: inline-block;
+            padding: 1rem 2.2rem;
+            background: var(--charcoal);
+            color: var(--cream);
+            font-family: 'Jost', sans-serif;
+            font-size: 0.75rem;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            text-decoration: none;
+            transition: background 0.3s ease;
+        }
+
+        .guide-btn:hover {
+            background: var(--gold);
+            color: var(--cream);
+        }
+
+        /* ---- BANNIERE SUR MESURE ---- */
+        .bespoke-notice {
+            background: rgba(240, 230, 211, 0.4);
+            border: 1px solid rgba(184, 147, 90, 0.2);
+            padding: 1rem 1.5rem;
+            margin-bottom: 2.5rem;
+            text-align: center;
+        }
+
+        .bespoke-notice p {
+            font-family: 'Jost', sans-serif;
+            font-size: 0.82rem;
+            color: rgba(44, 44, 42, 0.68);
+            line-height: 1.65;
+            margin: 0 0 0.4rem;
+        }
+
+        .bespoke-notice-link {
+            font-family: 'Jost', sans-serif;
+            font-size: 0.72rem;
+            color: rgba(184, 147, 90, 0.8);
+            text-decoration: none;
+            font-style: italic;
+        }
+
+        .bespoke-notice-link:hover {
+            color: var(--gold);
+            text-decoration: underline;
+        }
+
+        /* ---- FOOTER ---- */
+        .footer { background-color: var(--charcoal); }
+
+        /* ---- RESPONSIVE ---- */
         @media (max-width: 768px) {
-            .order-container {
-                padding: 1.5rem;
+            .navbar { padding: 1rem 1.2rem; }
+
+            .delivery-banner {
+                top: 58px;
+                font-size: 0.6rem;
+                letter-spacing: 0.12em;
+            }
+
+            .order-wrapper {
+                padding-top: calc(58px + 30px + 3rem);
+            }
+
+            .order-container { padding: 0 1.3rem; }
+
+            .choice-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .order-title { font-size: 2rem; }
+
+            .product-tabs { flex-wrap: wrap; }
+
+            .product-tab { flex: 1; text-align: center; }
+
+            .tooltip-text {
+                left: auto;
+                right: 0;
+                top: calc(100% + 6px);
+                transform: none;
             }
         }
     </style>
-<!-- Meta Pixel Code -->
-<script>
-!function(f,b,e,v,n,t,s)
-{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-n.queue=[];t=b.createElement(e);t.async=!0;
-t.src=v;s=b.getElementsByTagName(e)[0];
-s.parentNode.insertBefore(t,s)}(window, document,'script',
-'https://connect.facebook.net/en_US/fbevents.js');
-fbq('init', '953611460562954');
-fbq('track', 'PageView');
-</script>
-<noscript><img height="1" width="1" style="display:none"
-src="https://www.facebook.com/tr?id=953611460562954&ev=PageView&noscript=1"
-/></noscript>
-<!-- End Meta Pixel Code -->
 </head>
 
 <body>
+
+    <!-- Navigation -->
     <nav class="navbar">
         <a href="index.html" class="logo">Serenity</a>
         <ul class="nav-links">
-            <li><a href="index.html">Accueil</a></li>
-            <li><a href="brand.html">La Marque</a></li>
-            <li><a href="product.html">Le Produit</a></li>
-            <li><a href="gallery.html">Galerie</a></li>
-            <li><a href="measurement.html" class="cta-link">Sur Mesure</a></li>
+            <li><a href="index.html#produits">Nos cr&eacute;ations</a></li>
+            <li><a href="order.html" class="nav-cta-secondary active">Sur mesure</a></li>
+            <li><a href="shop.html">Taille standard</a></li>
+            <li><a href="measurement.html">Mes mesures</a></li>
+            <li><a href="pricing.html">Nos tarifs</a></li>
         </ul>
-        <div class="mobile-menu-toggle">☰</div>
+        <div class="mobile-menu-toggle">&#9776;</div>
     </nav>
 
-    <div class="container" style="padding-top: 10vh;">
-        <div class="order-container">
-            <h1 class="step-title">Votre Commande</h1>
-
-            <div style="text-align: center; padding: 2rem 0;">
-                <p
-                    style="margin-bottom: 3rem; font-size: 1.2rem; max-width: 600px; margin-left: auto; margin-right: auto;">
-                    Vous avez pris vos mesures ? Parfait. <br>
-                    Utilisez le bouton ci-dessous pour configurer votre commande personnalisée via notre bon de commande
-                    officiel.
-                </p>
-
-                <a href="https://docs.google.com/forms/d/e/1FAIpQLSeKMWE64serI4x2q6_8S7qHvRfi_i2MOINUyyfDgZuxhUwGRQ/viewform?usp=header"
-                    target="_blank" class="btn btn-primary" style="padding: 1.5rem 3rem; font-size: 1.2rem;">
-                    Accéder au Bon de Commande
-                </a>
-
-                <div style="margin-top: 4rem; padding-top: 2rem; border-top: 1px solid var(--color-nude-light);">
-                    <h3>Besoin d'aide ?</h3>
-                    <p style="color: var(--color-grey);">Contactez-nous via Messenger pour toute question sur votre
-                        commande.</p>
-                </div>
-            </div>
-        </div>
+    <!-- Banniere -->
+    <div class="delivery-banner">
+        &#10022;&nbsp; Livraison offerte &agrave; Madagascar &amp; en Europe &nbsp;&#10022;
     </div>
 
-    <script src="assets/js/main.js"></script>
-</body>
+    <div class="order-wrapper">
+        <div class="order-container">
 
+            <!-- Bannière sur mesure -->
+            <div class="bespoke-notice">
+                <p>Vous commandez une pi&egrave;ce <strong>sur mesure</strong> &mdash; fabriqu&eacute;e uniquement pour vous apr&egrave;s r&eacute;ception de vos mesures. D&eacute;lai&nbsp;: 5&ndash;7 jours ouvr&eacute;s.</p>
+                <a href="shop.html" class="bespoke-notice-link">Vous pr&eacute;f&eacute;rez une taille standard&nbsp;? &rarr;</a>
+            </div>
+
+            <!-- Header -->
+            <div class="order-header">
+                <div class="order-eyebrow">Collection Signature</div>
+                <h1 class="order-title">Votre commande</h1>
+                <p class="order-sub">Serenity by Saule &mdash; Lingerie sur mesure</p>
+            </div>
+
+            <!-- ---- BIFURCATION ---- -->
+            <div class="bifurcation-label">Comment souhaitez-vous proc&eacute;der&nbsp;?</div>
+
+            <div class="choice-grid">
+
+                <div class="choice-card" id="card-a" onclick="selectPath('a')">
+                    <div class="choice-icon choice-icon--check">&#10003;</div>
+                    <div class="choice-title">J&rsquo;ai mes mesures</div>
+                    <div class="choice-sub">Je saisis mes mesures directement</div>
+                </div>
+
+                <div class="choice-card" id="card-b" onclick="selectPath('b')">
+                    <div class="choice-icon choice-icon--arrow">&#8594;</div>
+                    <div class="choice-title">Je n&rsquo;ai pas encore mes mesures</div>
+                    <div class="choice-sub">Je veux &ecirc;tre guid&eacute;e &eacute;tape par &eacute;tape</div>
+                </div>
+
+            </div>
+
+            <!-- ================================================
+                 PANNEAU A — Champs de mesure
+            ================================================ -->
+            <div id="panel-a">
+
+                <!-- Selecteur produit -->
+                <div class="product-selector">
+                    <div class="product-selector-label">Pour quel produit&nbsp;?</div>
+                    <div class="product-tabs">
+                        <button class="product-tab is-active" onclick="switchProduct('bra', this)">Sport Bra &amp; Slip</button>
+                        <button class="product-tab" onclick="switchProduct('slip', this)">Slip seul</button>
+                    </div>
+                </div>
+
+                <!-- Champs Sport Bra -->
+                <div class="fields-panel is-active" id="fields-bra">
+                    <div class="fields-title">Mesures pour le Sport Bra &amp; Slip</div>
+                    <div class="fields-subtitle">3 mesures suffisent pour cr&eacute;er votre ensemble sur mesure</div>
+
+                    <div class="measure-field">
+                        <div class="measure-label-row">
+                            <span class="measure-label">Overbust</span>
+                            <div class="tooltip-wrap">
+                                <div class="tooltip-icon">i</div>
+                                <div class="tooltip-text">Tour de poitrine au-dessus des seins</div>
+                            </div>
+                        </div>
+                        <div class="measure-input-row">
+                            <input type="number" class="measure-input" id="bra-overbust" placeholder="ex. 82" min="40" max="200">
+                            <span class="measure-unit">cm</span>
+                        </div>
+                        <div class="measure-error" id="err-bra-overbust">Valeur invalide — saisir entre 40 et 200 cm</div>
+                    </div>
+
+                    <div class="measure-field">
+                        <div class="measure-label-row">
+                            <span class="measure-label">Bust</span>
+                            <div class="tooltip-wrap">
+                                <div class="tooltip-icon">i</div>
+                                <div class="tooltip-text">Tour de poitrine au niveau des seins</div>
+                            </div>
+                        </div>
+                        <div class="measure-input-row">
+                            <input type="number" class="measure-input" id="bra-bust" placeholder="ex. 88" min="40" max="200">
+                            <span class="measure-unit">cm</span>
+                        </div>
+                        <div class="measure-error" id="err-bra-bust">Valeur invalide — saisir entre 40 et 200 cm</div>
+                    </div>
+
+                    <div class="measure-field">
+                        <div class="measure-label-row">
+                            <span class="measure-label">Underbust</span>
+                            <div class="tooltip-wrap">
+                                <div class="tooltip-icon">i</div>
+                                <div class="tooltip-text">Tour de poitrine sous les seins</div>
+                            </div>
+                        </div>
+                        <div class="measure-input-row">
+                            <input type="number" class="measure-input" id="bra-underbust" placeholder="ex. 74" min="40" max="200">
+                            <span class="measure-unit">cm</span>
+                        </div>
+                        <div class="measure-error" id="err-bra-underbust">Valeur invalide — saisir entre 40 et 200 cm</div>
+                    </div>
+
+                    <a href="measurement.html" target="_blank" class="fields-guide-link">
+                        Besoin d&rsquo;aide pour vous mesurer&nbsp;? Consultez notre guide &rarr;
+                    </a>
+
+                    <button class="order-submit-btn" onclick="submitOrder('bra')">
+                        Acc&eacute;der au bon de commande &rarr;
+                    </button>
+                </div>
+
+                <!-- Champs Slip seul -->
+                <div class="fields-panel" id="fields-slip">
+                    <div class="fields-title">Mesures pour le Slip</div>
+                    <div class="fields-subtitle">3 mesures suffisent pour cr&eacute;er votre slip sur mesure</div>
+
+                    <div class="measure-field">
+                        <div class="measure-label-row">
+                            <span class="measure-label">Hanches</span>
+                            <div class="tooltip-wrap">
+                                <div class="tooltip-icon">i</div>
+                                <div class="tooltip-text">Contour le plus large</div>
+                            </div>
+                        </div>
+                        <div class="measure-input-row">
+                            <input type="number" class="measure-input" id="slip-hanches" placeholder="ex. 96" min="40" max="200">
+                            <span class="measure-unit">cm</span>
+                        </div>
+                        <div class="measure-error" id="err-slip-hanches">Valeur invalide — saisir entre 40 et 200 cm</div>
+                    </div>
+
+                    <div class="measure-field">
+                        <div class="measure-label-row">
+                            <span class="measure-label">Taille</span>
+                            <div class="tooltip-wrap">
+                                <div class="tooltip-icon">i</div>
+                                <div class="tooltip-text">Contour le plus &eacute;troit</div>
+                            </div>
+                        </div>
+                        <div class="measure-input-row">
+                            <input type="number" class="measure-input" id="slip-taille" placeholder="ex. 72" min="40" max="200">
+                            <span class="measure-unit">cm</span>
+                        </div>
+                        <div class="measure-error" id="err-slip-taille">Valeur invalide — saisir entre 40 et 200 cm</div>
+                    </div>
+
+                    <div class="measure-field">
+                        <div class="measure-label-row">
+                            <span class="measure-label">Cuisse</span>
+                            <div class="tooltip-wrap">
+                                <div class="tooltip-icon">i</div>
+                                <div class="tooltip-text">Contour &agrave; mi-cuisse</div>
+                            </div>
+                        </div>
+                        <div class="measure-input-row">
+                            <input type="number" class="measure-input" id="slip-cuisse" placeholder="ex. 58" min="40" max="200">
+                            <span class="measure-unit">cm</span>
+                        </div>
+                        <div class="measure-error" id="err-slip-cuisse">Valeur invalide — saisir entre 40 et 200 cm</div>
+                    </div>
+
+                    <a href="measurement.html" target="_blank" class="fields-guide-link">
+                        Besoin d&rsquo;aide pour vous mesurer&nbsp;? Consultez notre guide &rarr;
+                    </a>
+
+                    <button class="order-submit-btn" onclick="submitOrder('slip')">
+                        Acc&eacute;der au bon de commande &rarr;
+                    </button>
+                </div>
+
+            </div><!-- /panel-a -->
+
+
+            <!-- ================================================
+                 PANNEAU B — Redirection guide
+            ================================================ -->
+            <div id="panel-b">
+                <div class="guide-block">
+                    <div class="guide-block-ornament">&#10022;</div>
+                    <div class="guide-block-title">
+                        Avant de commander,<br>prenons vos mesures.
+                    </div>
+                    <p class="guide-block-text">
+                        C&rsquo;est simple, &ccedil;a prend 2 minutes,<br>
+                        et vous n&rsquo;aurez &agrave; le faire qu&rsquo;une seule fois.<br><br>
+                        Une fois vos mesures not&eacute;es, revenez ici<br>
+                        pour passer votre commande en quelques secondes.
+                    </p>
+                    <a href="measurement.html?return=order" class="guide-btn">
+                        Acc&eacute;der au guide de mesure &rarr;
+                    </a>
+                </div>
+            </div><!-- /panel-b -->
+
+        </div><!-- /order-container -->
+    </div><!-- /order-wrapper -->
+
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-content">
+            <div class="footer-col">
+                <h4>Serenity by Saule</h4>
+                <p>Lingerie sur-mesure haut de gamme.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Navigation</h4>
+                <a href="index.html#produits">Nos cr&eacute;ations</a>
+                <a href="order.html">Sur mesure</a>
+                <a href="shop.html">Taille standard</a>
+                <a href="measurement.html">Mes mesures</a>
+                <a href="pricing.html">Nos tarifs</a>
+            </div>
+            <div class="footer-col">
+                <h4>Contact</h4>
+                <a href="mailto:info@serenity-lingerie.com">info@serenity-lingerie.com</a>
+                <a href="privacy.html">Politique de confidentialit&eacute;</a>
+            </div>
+        </div>
+        <div class="footer-bottom">&copy; 2026 Serenity by Saule. Tous droits r&eacute;serv&eacute;s.</div>
+    </footer>
+
+    <script src="assets/js/main.js"></script>
+
+    <script>
+        /* ================================================
+           ORDER PAGE — Logique de bifurcation et validation
+        ================================================ */
+
+        var GOOGLE_FORM_URL = 'https://docs.google.com/forms/d/e/1FAIpQLSeKMWE64serI4x2q6_8S7qHvRfi_i2MOINUyyfDgZuxhUwGRQ/viewform?usp=header';
+
+        /* -- Sélection du parcours A ou B -- */
+        function selectPath(path) {
+            var cardA  = document.getElementById('card-a');
+            var cardB  = document.getElementById('card-b');
+            var panelA = document.getElementById('panel-a');
+            var panelB = document.getElementById('panel-b');
+
+            // Réinitialiser
+            cardA.classList.remove('is-selected-a');
+            cardB.classList.remove('is-selected-b');
+            panelA.classList.remove('is-visible');
+            panelB.classList.remove('is-visible');
+
+            if (path === 'a') {
+                cardA.classList.add('is-selected-a');
+                panelA.classList.add('is-visible');
+                setTimeout(function() {
+                    panelA.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }, 80);
+            } else {
+                cardB.classList.add('is-selected-b');
+                panelB.classList.add('is-visible');
+                setTimeout(function() {
+                    panelB.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }, 80);
+            }
+        }
+
+        /* -- Sélection du produit (Sport Bra / Slip) -- */
+        function switchProduct(product, btn) {
+            document.querySelectorAll('.product-tab').forEach(function(b) {
+                b.classList.remove('is-active');
+            });
+            btn.classList.add('is-active');
+
+            document.querySelectorAll('.fields-panel').forEach(function(p) {
+                p.classList.remove('is-active');
+            });
+            document.getElementById('fields-' + product).classList.add('is-active');
+        }
+
+        /* -- Validation et ouverture du bon de commande -- */
+        function submitOrder(product) {
+            var fields = product === 'bra'
+                ? ['bra-overbust', 'bra-bust', 'bra-underbust']
+                : ['slip-hanches', 'slip-taille', 'slip-cuisse'];
+
+            var valid = true;
+
+            fields.forEach(function(id) {
+                var input = document.getElementById(id);
+                var error = document.getElementById('err-' + id);
+                var val   = parseFloat(input.value);
+
+                input.classList.remove('is-error');
+                error.classList.remove('is-visible');
+
+                if (isNaN(val) || val < 40 || val > 200) {
+                    input.classList.add('is-error');
+                    error.classList.add('is-visible');
+                    valid = false;
+                }
+            });
+
+            if (valid) {
+                window.open(GOOGLE_FORM_URL, '_blank');
+            } else {
+                // Scroller vers le premier champ en erreur
+                var firstErr = document.querySelector('.measure-input.is-error');
+                if (firstErr) {
+                    firstErr.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    firstErr.focus();
+                }
+            }
+        }
+
+        /* -- Effacer l'erreur à la saisie -- */
+        document.querySelectorAll('.measure-input').forEach(function(input) {
+            input.addEventListener('input', function() {
+                this.classList.remove('is-error');
+                var errEl = document.getElementById('err-' + this.id);
+                if (errEl) errEl.classList.remove('is-visible');
+            });
+        });
+
+        /* -- Pré-sélection automatique si ?mode=direct dans l'URL -- */
+        (function() {
+            var params = new URLSearchParams(window.location.search);
+            if (params.get('mode') === 'direct') {
+                // Délai court pour laisser le DOM s'établir
+                setTimeout(function() {
+                    selectPath('a');
+                }, 150);
+            }
+        })();
+    </script>
+
+</body>
 </html>
