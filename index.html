@@ -895,6 +895,204 @@
             line-height: 1.6;
         }
 
+        /* ---- BOUTON COMMANDER ---- */
+        .prod-order-btn {
+            display: block;
+            text-align: center;
+            padding: 1rem 2rem;
+            background: var(--charcoal);
+            color: var(--cream);
+            font-family: 'Jost', sans-serif;
+            font-size: 0.72rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            border: none;
+            cursor: pointer;
+            margin-top: 2rem;
+            width: 100%;
+            transition: background 0.3s ease;
+        }
+        .prod-order-btn:hover { background: var(--gold); }
+        .prod-order-btn.is-open { background: var(--gold); }
+
+        /* ---- SECTION COMMANDE INLINE ---- */
+        .order-inline-section {
+            background: var(--cream-alt);
+            border-top: 2px solid rgba(184,147,90,0.25);
+            padding: 4rem 2.5rem;
+            display: none;
+        }
+        .order-inline-section.is-open { display: block; animation: fadeInPanel 0.3s ease; }
+        @keyframes fadeInPanel {
+            from { opacity: 0; transform: translateY(-8px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+        .order-inline-inner {
+            max-width: 820px;
+            margin: 0 auto;
+        }
+        .order-inline-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        .order-inline-eyebrow {
+            font-family: 'Jost', sans-serif;
+            font-size: 0.65rem;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 0.5rem;
+        }
+        .order-inline-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem;
+            font-weight: 400;
+            color: var(--charcoal);
+        }
+        /* Step 0 : choix parcours */
+        .step0-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-bottom: 2.5rem;
+        }
+        .step0-card {
+            padding: 1.5rem 1.3rem;
+            border: 1px solid rgba(201,169,154,0.35);
+            background: #fff;
+            cursor: pointer;
+            transition: border-color 0.2s, box-shadow 0.2s;
+            user-select: none;
+        }
+        .step0-card:hover { border-color: rgba(184,147,90,0.5); box-shadow: 0 4px 20px rgba(44,44,42,0.05); }
+        .step0-card.is-active-bespoke { border-color: var(--gold); border-width: 2px; background: #FFFDF8; }
+        .step0-card.is-active-std     { border-color: #2D6A3F; border-width: 2px; background: #F0FAF2; }
+        .step0-card-icon { font-size: 1.2rem; margin-bottom: 0.3rem; }
+        .step0-card-title { font-family: 'Cormorant Garamond', serif; font-size: 1.25rem; font-weight: 500; color: var(--charcoal); }
+        .step0-card-sub { font-family: 'Jost', sans-serif; font-size: 0.78rem; color: rgba(44,44,42,0.5); font-weight: 300; margin-top: 0.2rem; }
+
+        /* Panneaux de formulaire inline */
+        .order-form-panel { display: none; }
+        .order-form-panel.is-visible { display: block; animation: fadeInPanel 0.25s ease; }
+
+        /* Champs inline */
+        .oi-section { margin-bottom: 2rem; }
+        .oi-section-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.1rem;
+            font-weight: 400;
+            color: var(--charcoal);
+            margin-bottom: 0.9rem;
+            padding-bottom: 0.4rem;
+            border-bottom: 1px solid rgba(201,169,154,0.15);
+        }
+        .oi-meas-label {
+            font-family: 'Jost', sans-serif;
+            font-size: 0.63rem;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: rgba(44,44,42,0.38);
+            margin-bottom: 0.8rem;
+        }
+        .oi-measure-field { margin-bottom: 1rem; display: flex; gap: 0.85rem; align-items: flex-start; }
+        .oi-measure-img { width: 68px; height: 68px; object-fit: cover; border-radius: 6px; flex-shrink: 0; border: 1px solid rgba(184,147,90,0.22); }
+        .oi-measure-content { flex: 1; min-width: 0; }
+        .tape-dl { display: flex; align-items: center; gap: 0.85rem; background: rgba(184,147,90,0.07); border: 1px solid rgba(184,147,90,0.3); border-radius: 7px; padding: 0.85rem 1rem; margin-bottom: 1.2rem; text-decoration: none; }
+        .tape-dl-icon { flex-shrink: 0; color: var(--gold); }
+        .tape-dl-label { font-family: 'Jost', sans-serif; font-size: 0.8rem; font-weight: 500; color: var(--charcoal); display: block; }
+        .tape-dl-sub { font-family: 'Jost', sans-serif; font-size: 0.7rem; color: var(--gold); display: block; margin-top: 0.1rem; }
+        .oi-measure-label-row { display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.35rem; }
+        .oi-measure-label { font-family: 'Jost', sans-serif; font-size: 0.82rem; font-weight: 500; color: var(--charcoal); }
+        .oi-measure-input-row { display: flex; align-items: center; gap: 0.5rem; }
+        .oi-measure-input {
+            width: 100px; padding: 0.6rem 0.85rem;
+            border: 1px solid rgba(201,169,154,0.5);
+            background: #fff; font-family: 'Jost', sans-serif; font-size: 0.88rem; color: var(--charcoal);
+            outline: none; transition: border-color 0.2s; -moz-appearance: textfield;
+        }
+        .oi-measure-input::-webkit-outer-spin-button,
+        .oi-measure-input::-webkit-inner-spin-button { -webkit-appearance: none; }
+        .oi-measure-input:focus { border-color: var(--gold); }
+        .oi-measure-input.is-error { border-color: #C0392B; }
+        .oi-measure-unit { font-family: 'Jost', sans-serif; font-size: 0.72rem; color: rgba(44,44,42,0.38); }
+        .oi-measure-error { display: none; font-family: 'Jost', sans-serif; font-size: 0.68rem; color: #C0392B; font-style: italic; margin-top: 0.2rem; }
+        .oi-measure-error.is-visible { display: block; }
+
+        .oi-size-pills { display: flex; gap: 0.4rem; flex-wrap: wrap; margin-top: 0.5rem; }
+        .oi-size-pill {
+            font-family: 'Jost', sans-serif; font-size: 0.8rem; font-weight: 500;
+            padding: 0.5rem 1.1rem; border: 1px solid var(--rose);
+            background: transparent; color: var(--charcoal); cursor: pointer; transition: all 0.2s;
+        }
+        .oi-size-pill:hover { border-color: #2D6A3F; color: #2D6A3F; }
+        .oi-size-pill.is-active { background: var(--charcoal); color: var(--cream); border-color: var(--charcoal); }
+
+        .oi-model-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.45rem; margin: 0.5rem 0 0.3rem; }
+        .oi-model-check { display: flex; align-items: center; gap: 0.45rem; cursor: pointer; }
+        .oi-model-check input { width: 14px; height: 14px; accent-color: var(--charcoal); flex-shrink: 0; }
+        .oi-model-check span { font-family: 'Jost', sans-serif; font-size: 0.82rem; color: rgba(44,44,42,0.75); }
+
+        .oi-couleur-row { display: flex; gap: 0.55rem; flex-wrap: wrap; margin-top: 0.5rem; }
+        .oi-couleur-btn {
+            display: flex; align-items: center; gap: 0.45rem;
+            padding: 0.5rem 0.9rem; border: 1px solid rgba(201,169,154,0.4);
+            background: transparent; cursor: pointer; transition: border-color 0.2s;
+            font-family: 'Jost', sans-serif; font-size: 0.78rem; color: var(--charcoal);
+        }
+        .oi-couleur-btn.is-active { border-color: var(--charcoal); box-shadow: inset 0 0 0 1px var(--charcoal); }
+        .oi-couleur-swatch { width: 17px; height: 17px; border-radius: 50%; flex-shrink: 0; }
+
+        .oi-field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin-bottom: 0.75rem; }
+        .oi-field-row.full { grid-template-columns: 1fr; }
+        .oi-field-group { display: flex; flex-direction: column; gap: 0.25rem; }
+        .oi-field-label { font-family: 'Jost', sans-serif; font-size: 0.72rem; font-weight: 500; color: var(--charcoal); letter-spacing: 0.04em; }
+        .oi-field-label .opt { font-weight: 300; color: rgba(44,44,42,0.38); font-size: 0.66rem; }
+        .oi-field-input, .oi-field-select, .oi-field-textarea {
+            font-family: 'Jost', sans-serif; font-size: 0.88rem; color: var(--charcoal);
+            padding: 0.65rem 0.85rem; border: 1px solid rgba(201,169,154,0.5);
+            background: #fff; outline: none; transition: border-color 0.2s; width: 100%; box-sizing: border-box;
+        }
+        .oi-field-input:focus, .oi-field-select:focus, .oi-field-textarea:focus { border-color: var(--gold); }
+        .oi-field-input.is-error, .oi-field-select.is-error { border-color: #C0392B; }
+        .oi-field-textarea { resize: vertical; min-height: 60px; }
+        .oi-field-select {
+            -webkit-appearance: none; appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%232C2C2A' opacity='.35'/%3E%3C/svg%3E");
+            background-repeat: no-repeat; background-position: right 0.85rem center;
+            padding-right: 2rem; cursor: pointer;
+        }
+        .oi-field-error { display: none; font-family: 'Jost', sans-serif; font-size: 0.68rem; color: #C0392B; font-style: italic; }
+        .oi-field-error.is-visible { display: block; }
+
+        .oi-submit-btn {
+            display: block; width: 100%; text-align: center;
+            padding: 1.05rem 2rem;
+            background: var(--charcoal); color: var(--cream);
+            font-family: 'Jost', sans-serif; font-size: 0.75rem;
+            letter-spacing: 0.2em; text-transform: uppercase;
+            border: none; cursor: pointer; transition: background 0.3s; margin-top: 0.5rem;
+        }
+        .oi-submit-btn:hover { background: var(--gold); }
+        .oi-submit-btn:disabled { opacity: 0.45; cursor: not-allowed; background: var(--charcoal); }
+
+        .oi-confirm-block {
+            text-align: center; padding: 3rem 2rem;
+            border: 1px solid rgba(184,147,90,0.22);
+            background: rgba(184,147,90,0.04);
+        }
+
+        /* ---- PAIEMENT MOBILE MONEY ---- */
+        .pmt-block { background: white; border: 1px solid rgba(184,147,90,0.28); border-radius: 8px; padding: 1.2rem 1.4rem; margin: 1.4rem auto 0; text-align: left; max-width: 380px; }
+        .pmt-title { font-family: 'Cormorant Garamond', serif; font-size: 1.05rem; font-weight: 600; color: var(--charcoal); margin-bottom: 0.5rem; }
+        .pmt-desc { font-family: 'Jost', sans-serif; font-size: 0.76rem; color: rgba(44,44,42,0.55); margin-bottom: 0.75rem; line-height: 1.6; }
+        .pmt-operator { display: flex; align-items: center; gap: 0.7rem; margin-bottom: 0.45rem; padding: 0.45rem 0.65rem; background: var(--cream-alt); border-radius: 5px; }
+        .pmt-op-tag { font-family: 'Jost', sans-serif; font-size: 0.62rem; font-weight: 600; color: white; padding: 0.15rem 0.45rem; border-radius: 3px; letter-spacing: 0.02em; white-space: nowrap; }
+        .pmt-op-num { font-family: 'Jost', sans-serif; font-size: 0.79rem; color: var(--charcoal); font-weight: 500; }
+        .pmt-note { font-family: 'Jost', sans-serif; font-size: 0.69rem; color: rgba(44,44,42,0.42); font-style: italic; margin-top: 0.5rem; }
+        .pmt-eu-btns { display: flex; gap: 0.75rem; margin-top: 0.4rem; flex-wrap: wrap; }
+        .pmt-eu-btn { font-family: 'Jost', sans-serif; font-size: 0.78rem; font-weight: 500; color: var(--cream); background: var(--charcoal); padding: 0.6rem 1.1rem; border-radius: 4px; text-decoration: none; flex: 1; text-align: center; }
+        .pmt-track-btn { display: inline-block; margin-top: 1.1rem; font-family: 'Jost', sans-serif; font-size: 0.71rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); text-decoration: none; border-bottom: 1px solid rgba(184,147,90,0.45); padding-bottom: 0.15rem; }
+
         /* ---- FOOTER ---- */
         .footer {
             background-color: var(--charcoal);
@@ -945,40 +1143,19 @@
         }
 
         @media (max-width: 768px) {
-            .navbar {
-                padding: 1rem 1.2rem;
-            }
-
+            .navbar { padding: 1rem 1.2rem; }
             .delivery-banner {
-                top: 58px;
-                font-size: 0.6rem;
-                letter-spacing: 0.12em;
-                padding: 0.5rem 0.8rem;
+                top: 58px; font-size: 0.6rem;
+                letter-spacing: 0.12em; padding: 0.5rem 0.8rem;
             }
-
-            .prod-btn-primary,
-            .prod-btn-secondary {
-                width: 100%;
-            }
-
-            .var-btn {
-                flex: 1;
-                min-width: 70px;
-                text-align: center;
-            }
-
-            .tarifs-cta {
-                padding: 3.5rem 1.3rem;
-            }
-
-            .tarifs-btn {
-                width: 100%;
-                text-align: center;
-            }
-
-            .order-std-btn {
-                width: 100%;
-            }
+            .prod-btn-primary, .prod-btn-secondary { width: 100%; }
+            .var-btn { flex: 1; min-width: 70px; text-align: center; }
+            .tarifs-cta { padding: 3.5rem 1.3rem; }
+            .tarifs-btn { width: 100%; text-align: center; }
+            .step0-grid { grid-template-columns: 1fr; }
+            .oi-field-row { grid-template-columns: 1fr; }
+            .oi-model-grid { grid-template-columns: 1fr; }
+            .order-inline-section { padding: 2.5rem 1.3rem; }
         }
     </style>
 </head>
@@ -1042,33 +1219,9 @@
             <h2 class="exp-col-title">Sport Bra &amp; Slip</h2>
             <p class="exp-col-sub">L&rsquo;ensemble deux pi&egrave;ces, con&ccedil;u pour vous</p>
 
-            <div class="prod-choice-section">
-
-                <!-- Sur mesure -->
-                <div class="prod-choice-option">
-                    <div class="prod-choice-type prod-choice-type--bespoke">&#10022; Sur mesure</div>
-                    <p class="prod-choice-desc">Vos mesures exactes en cm &middot; 5&ndash;7 jours ouvr&eacute;s</p>
-                    <a href="measurement.html" class="prod-choice-btn-bespoke">Prendre mes mesures</a>
-                </div>
-
-                <div class="prod-choice-divider"></div>
-
-                <!-- Taille standard -->
-                <div class="prod-choice-option">
-                    <div class="prod-choice-type prod-choice-type--standard">&#10022; Taille standard</div>
-                    <p class="prod-choice-desc">En stock &middot; Exp&eacute;di&eacute; sous 2&ndash;3 jours</p>
-                    <div class="size-pills-sm">
-                        <button class="size-pill-sm" data-product="bra" data-size="S"  onclick="selectProductSize('bra','S',this)">S</button>
-                        <button class="size-pill-sm" data-product="bra" data-size="M"  onclick="selectProductSize('bra','M',this)">M</button>
-                        <button class="size-pill-sm" data-product="bra" data-size="L"  onclick="selectProductSize('bra','L',this)">L</button>
-                        <button class="size-pill-sm" data-product="bra" data-size="XL" onclick="selectProductSize('bra','XL',this)">XL</button>
-                    </div>
-                    <button class="prod-choice-btn-standard" id="std-order-btn-bra" disabled>
-                        Commander &mdash; choisissez une taille
-                    </button>
-                </div>
-
-            </div>
+            <button class="prod-order-btn" id="btn-bra" onclick="toggleOrderSection('bra')">
+                Commander l&rsquo;ensemble &rarr;
+            </button>
 
         </div>
 
@@ -1146,37 +1299,368 @@
                 <div class="slip-variant-text-sm" id="slip-variant-text">Coupe haute et enveloppante. Confort maximal, maintien parfait toute la journ&eacute;e.</div>
             </div>
 
-            <div class="prod-choice-section">
-
-                <!-- Sur mesure -->
-                <div class="prod-choice-option">
-                    <div class="prod-choice-type prod-choice-type--bespoke">&#10022; Sur mesure</div>
-                    <p class="prod-choice-desc">Vos mesures exactes en cm &middot; 5&ndash;7 jours ouvr&eacute;s</p>
-                    <a href="measurement.html" class="prod-choice-btn-bespoke">Prendre mes mesures</a>
-                </div>
-
-                <div class="prod-choice-divider"></div>
-
-                <!-- Taille standard -->
-                <div class="prod-choice-option">
-                    <div class="prod-choice-type prod-choice-type--standard">&#10022; Taille standard</div>
-                    <p class="prod-choice-desc">En stock &middot; Exp&eacute;di&eacute; sous 2&ndash;3 jours</p>
-                    <div class="size-pills-sm">
-                        <button class="size-pill-sm" data-product="slip" data-size="S"  onclick="selectProductSize('slip','S',this)">S</button>
-                        <button class="size-pill-sm" data-product="slip" data-size="M"  onclick="selectProductSize('slip','M',this)">M</button>
-                        <button class="size-pill-sm" data-product="slip" data-size="L"  onclick="selectProductSize('slip','L',this)">L</button>
-                        <button class="size-pill-sm" data-product="slip" data-size="XL" onclick="selectProductSize('slip','XL',this)">XL</button>
-                    </div>
-                    <button class="prod-choice-btn-standard" id="std-order-btn-slip" disabled>
-                        Commander &mdash; choisissez une taille
-                    </button>
-                </div>
-
-            </div>
+            <button class="prod-order-btn" id="btn-slip" onclick="toggleOrderSection('slip')">
+                Commander mon slip &rarr;
+            </button>
 
         </div>
 
     </div>
+
+    <!-- ============================================================
+         SECTION COMMANDE INLINE — Sport Bra & Slip
+    ============================================================ -->
+    <div class="order-inline-section" id="order-bra">
+        <div class="order-inline-inner">
+
+            <div class="order-inline-header">
+                <div class="order-inline-eyebrow">Collection Signature</div>
+                <div class="order-inline-title">Commander l&rsquo;ensemble &mdash; Sport Bra &amp; Slip</div>
+            </div>
+
+            <!-- Step 0 -->
+            <div class="step0-grid">
+                <div class="step0-card" id="bra-card-bespoke" onclick="selectBraPath('bespoke')">
+                    <div class="step0-card-icon" style="color:var(--gold);">&#10022;</div>
+                    <div class="step0-card-title">Sur mesure</div>
+                    <div class="step0-card-sub">Vos mesures exactes &middot; 5&ndash;7 jours ouvr&eacute;s</div>
+                </div>
+                <div class="step0-card" id="bra-card-std" onclick="selectBraPath('std')">
+                    <div class="step0-card-icon" style="color:#2D6A3F;">&#10003;</div>
+                    <div class="step0-card-title">Taille standard</div>
+                    <div class="step0-card-sub">En stock &middot; Exp&eacute;di&eacute; sous 2&ndash;3 jours</div>
+                </div>
+            </div>
+
+            <!-- Parcours Sur Mesure -->
+            <div class="order-form-panel" id="bra-panel-bespoke">
+                <!-- Mètre ruban -->
+                <a href="assets/downloads/metre-ruban-serenity.pdf" download target="_blank" class="tape-dl">
+                    <svg class="tape-dl-icon" width="26" height="26" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="1" y="7.5" width="22" height="9" rx="1.5" stroke="currentColor" stroke-width="1.5"/><line x1="5" y1="7.5" x2="5" y2="16.5" stroke="currentColor" stroke-width="1.5"/><line x1="9" y1="7.5" x2="9" y2="12" stroke="currentColor" stroke-width="1.2"/><line x1="13" y1="7.5" x2="13" y2="16.5" stroke="currentColor" stroke-width="1.5"/><line x1="17" y1="7.5" x2="17" y2="12" stroke="currentColor" stroke-width="1.2"/></svg>
+                    <div><span class="tape-dl-label">Pas de m&egrave;tre ruban&nbsp;?</span><span class="tape-dl-sub">T&eacute;l&eacute;charger &amp; imprimer le n&ocirc;tre &darr;</span></div>
+                </a>
+                <!-- Mesures Sport Bra -->
+                <div class="oi-section">
+                    <div class="oi-section-title">Vos mesures Sport Bra (cm)</div>
+                    <div class="oi-measure-field">
+                        <div class="oi-measure-label-row"><span class="oi-measure-label">Overbust</span><div class="tooltip-wrap"><div class="tooltip-icon">i</div><div class="tooltip-text">Tour de poitrine au-dessus des seins</div></div></div>
+                        <div class="oi-measure-input-row"><input type="number" class="oi-measure-input" id="bi-overbust" placeholder="ex. 82" min="40" max="200"><span class="oi-measure-unit">cm</span></div>
+                        <div class="oi-measure-error" id="err-bi-overbust">Valeur invalide (40&ndash;200 cm)</div>
+                    </div>
+                    <div class="oi-measure-field">
+                        <div class="oi-measure-label-row"><span class="oi-measure-label">Bust</span><div class="tooltip-wrap"><div class="tooltip-icon">i</div><div class="tooltip-text">Tour de poitrine au niveau des seins</div></div></div>
+                        <div class="oi-measure-input-row"><input type="number" class="oi-measure-input" id="bi-bust" placeholder="ex. 88" min="40" max="200"><span class="oi-measure-unit">cm</span></div>
+                        <div class="oi-measure-error" id="err-bi-bust">Valeur invalide (40&ndash;200 cm)</div>
+                    </div>
+                    <div class="oi-measure-field">
+                        <div class="oi-measure-label-row"><span class="oi-measure-label">Underbust</span><div class="tooltip-wrap"><div class="tooltip-icon">i</div><div class="tooltip-text">Tour de poitrine sous les seins</div></div></div>
+                        <div class="oi-measure-input-row"><input type="number" class="oi-measure-input" id="bi-underbust" placeholder="ex. 74" min="40" max="200"><span class="oi-measure-unit">cm</span></div>
+                        <div class="oi-measure-error" id="err-bi-underbust">Valeur invalide (40&ndash;200 cm)</div>
+                    </div>
+                </div>
+                <!-- Mesures Slip -->
+                <div class="oi-section">
+                    <div class="oi-section-title">Vos mesures Slip (cm)</div>
+                    <div class="oi-measure-field">
+                        <div class="oi-measure-label-row"><span class="oi-measure-label">Hanches</span><div class="tooltip-wrap"><div class="tooltip-icon">i</div><div class="tooltip-text">Contour le plus large</div></div></div>
+                        <div class="oi-measure-input-row"><input type="number" class="oi-measure-input" id="bi-hanches" placeholder="ex. 96" min="40" max="200"><span class="oi-measure-unit">cm</span></div>
+                        <div class="oi-measure-error" id="err-bi-hanches">Valeur invalide</div>
+                    </div>
+                    <div class="oi-measure-field">
+                        <div class="oi-measure-label-row"><span class="oi-measure-label">Taille</span><div class="tooltip-wrap"><div class="tooltip-icon">i</div><div class="tooltip-text">Contour le plus &eacute;troit</div></div></div>
+                        <div class="oi-measure-input-row"><input type="number" class="oi-measure-input" id="bi-taille" placeholder="ex. 72" min="40" max="200"><span class="oi-measure-unit">cm</span></div>
+                        <div class="oi-measure-error" id="err-bi-taille">Valeur invalide</div>
+                    </div>
+                    <div class="oi-measure-field">
+                        <div class="oi-measure-label-row"><span class="oi-measure-label">Cuisse</span><div class="tooltip-wrap"><div class="tooltip-icon">i</div><div class="tooltip-text">Contour &agrave; mi-cuisse</div></div></div>
+                        <div class="oi-measure-input-row"><input type="number" class="oi-measure-input" id="bi-cuisse" placeholder="ex. 58" min="40" max="200"><span class="oi-measure-unit">cm</span></div>
+                        <div class="oi-measure-error" id="err-bi-cuisse">Valeur invalide</div>
+                    </div>
+                    <p style="margin-top:0.8rem;"><a href="measurement.html" style="font-family:'Jost',sans-serif; font-size:0.72rem; font-style:italic; color:rgba(44,44,42,0.38); text-decoration:none;" target="_blank">Besoin d&rsquo;aide pour vous mesurer&nbsp;? &rarr;</a></p>
+                </div>
+                <!-- Modèles -->
+                <div class="oi-section">
+                    <div class="oi-section-title">Mod&egrave;le de slip</div>
+                    <div class="oi-model-grid">
+                        <label class="oi-model-check"><input type="checkbox" name="bi-model" value="Full Brief"><span>Full Brief</span></label>
+                        <label class="oi-model-check"><input type="checkbox" name="bi-model" value="Mid Brief"><span>Mid Brief</span></label>
+                        <label class="oi-model-check"><input type="checkbox" name="bi-model" value="Cheeky"><span>Cheeky</span></label>
+                        <label class="oi-model-check"><input type="checkbox" name="bi-model" value="Thong"><span>Thong</span></label>
+                    </div>
+                    <span class="oi-field-error" id="err-bi-models">Veuillez s&eacute;lectionner au moins un mod&egrave;le.</span>
+                </div>
+                <!-- Couleur -->
+                <div class="oi-section">
+                    <div class="oi-section-title">Couleur</div>
+                    <div class="oi-couleur-row">
+                        <button type="button" class="oi-couleur-btn" data-grp="bi" data-couleur="Ivoire" onclick="oiSelectCouleur('bi','Ivoire',this)"><span class="oi-couleur-swatch" style="background:#F8F3ED; border:1px solid rgba(44,44,42,0.2);"></span>Ivoire</button>
+                        <button type="button" class="oi-couleur-btn" data-grp="bi" data-couleur="Aubergine" onclick="oiSelectCouleur('bi','Aubergine',this)"><span class="oi-couleur-swatch" style="background:#5C2D6E;"></span>Aubergine</button>
+                        <button type="button" class="oi-couleur-btn" data-grp="bi" data-couleur="Marine" onclick="oiSelectCouleur('bi','Marine',this)"><span class="oi-couleur-swatch" style="background:#1B3A5C;"></span>Marine</button>
+                    </div>
+                    <span class="oi-field-error" id="err-bi-couleur">Veuillez s&eacute;lectionner une couleur.</span>
+                </div>
+                <!-- Coordonnées -->
+                <div class="oi-section">
+                    <div class="oi-section-title">Vos coordonn&eacute;es</div>
+                    <div class="oi-field-row">
+                        <div class="oi-field-group"><label class="oi-field-label" for="bi-prenom">Pr&eacute;nom</label><input type="text" id="bi-prenom" class="oi-field-input" placeholder="Marie"><span class="oi-field-error" id="err-bi-prenom">Champ requis.</span></div>
+                        <div class="oi-field-group"><label class="oi-field-label" for="bi-nom">Nom</label><input type="text" id="bi-nom" class="oi-field-input" placeholder="Dupont"><span class="oi-field-error" id="err-bi-nom">Champ requis.</span></div>
+                    </div>
+                    <div class="oi-field-row">
+                        <div class="oi-field-group"><label class="oi-field-label" for="bi-email">Email</label><input type="email" id="bi-email" class="oi-field-input" placeholder="marie@email.com"><span class="oi-field-error" id="err-bi-email">Email invalide.</span></div>
+                        <div class="oi-field-group"><label class="oi-field-label" for="bi-telephone">T&eacute;l&eacute;phone <span class="opt">(WhatsApp)</span></label><input type="tel" id="bi-telephone" class="oi-field-input" placeholder="+261 34 00 000 00"><span class="oi-field-error" id="err-bi-telephone">Champ requis.</span></div>
+                    </div>
+                </div>
+                <!-- Adresse -->
+                <div class="oi-section">
+                    <div class="oi-section-title">Adresse de livraison</div>
+                    <div class="oi-field-row full"><div class="oi-field-group"><label class="oi-field-label" for="bi-pays">Pays</label><select id="bi-pays" class="oi-field-select"><option value="Madagascar" selected>Madagascar</option><option value="France">France</option><option value="Belgique">Belgique</option><option value="Suisse">Suisse</option><option value="Autres pays Europe">Autres pays Europe</option></select></div></div>
+                    <div class="oi-field-row">
+                        <div class="oi-field-group"><label class="oi-field-label" for="bi-ville">Ville</label><input type="text" id="bi-ville" class="oi-field-input" placeholder="Antananarivo"><span class="oi-field-error" id="err-bi-ville">Champ requis.</span></div>
+                        <div class="oi-field-group"><label class="oi-field-label" for="bi-adresse">Adresse</label><input type="text" id="bi-adresse" class="oi-field-input" placeholder="Rue, num&eacute;ro..."><span class="oi-field-error" id="err-bi-adresse">Champ requis.</span></div>
+                    </div>
+                    <div class="oi-field-row full"><div class="oi-field-group"><label class="oi-field-label" for="bi-instructions">Instructions <span class="opt">(optionnel)</span></label><textarea id="bi-instructions" class="oi-field-textarea" placeholder="Rep&egrave;re, &eacute;tage..."></textarea></div></div>
+                </div>
+                <button class="oi-submit-btn" id="submit-bi" onclick="oiSubmit('bi','sur_mesure_ensemble','11.99','57552')">Confirmer ma commande &rarr;</button>
+                <div id="confirm-bi" class="oi-confirm-block" style="display:none; margin-top:1.5rem;">
+                    <div style="font-family:'Cormorant Garamond',serif; font-size:1.8rem; color:var(--charcoal); margin-bottom:0.6rem;">Merci !</div>
+                    <p style="font-family:'Jost',sans-serif; font-size:0.85rem; color:rgba(44,44,42,0.65); line-height:1.8;">Votre commande sur mesure a &eacute;t&eacute; transmise.<br>Confirmation par email sous peu.</p>
+                </div>
+            </div><!-- /bra-panel-bespoke -->
+
+            <!-- Parcours Taille Standard -->
+            <div class="order-form-panel" id="bra-panel-std">
+                <!-- Tailles -->
+                <div class="oi-section">
+                    <div class="oi-section-title">Votre taille Sport Bra</div>
+                    <div class="oi-size-pills">
+                        <button type="button" class="oi-size-pill" data-grp="bs-bra" data-size="S" onclick="oiSelectSize('bs-bra','S',this)">S</button>
+                        <button type="button" class="oi-size-pill" data-grp="bs-bra" data-size="M" onclick="oiSelectSize('bs-bra','M',this)">M</button>
+                        <button type="button" class="oi-size-pill" data-grp="bs-bra" data-size="L" onclick="oiSelectSize('bs-bra','L',this)">L</button>
+                        <button type="button" class="oi-size-pill" data-grp="bs-bra" data-size="XL" onclick="oiSelectSize('bs-bra','XL',this)">XL</button>
+                    </div>
+                    <span class="oi-field-error" id="err-bs-bra-size">Veuillez s&eacute;lectionner une taille Sport Bra.</span>
+                </div>
+                <div class="oi-section">
+                    <div class="oi-section-title">Votre taille Slip</div>
+                    <div class="oi-size-pills">
+                        <button type="button" class="oi-size-pill" data-grp="bs-slip" data-size="S" onclick="oiSelectSize('bs-slip','S',this)">S</button>
+                        <button type="button" class="oi-size-pill" data-grp="bs-slip" data-size="M" onclick="oiSelectSize('bs-slip','M',this)">M</button>
+                        <button type="button" class="oi-size-pill" data-grp="bs-slip" data-size="L" onclick="oiSelectSize('bs-slip','L',this)">L</button>
+                        <button type="button" class="oi-size-pill" data-grp="bs-slip" data-size="XL" onclick="oiSelectSize('bs-slip','XL',this)">XL</button>
+                    </div>
+                    <span class="oi-field-error" id="err-bs-slip-size">Veuillez s&eacute;lectionner une taille Slip.</span>
+                </div>
+                <!-- Modèles -->
+                <div class="oi-section">
+                    <div class="oi-section-title">Mod&egrave;le de slip</div>
+                    <div class="oi-model-grid">
+                        <label class="oi-model-check"><input type="checkbox" name="bs-model" value="Full Brief"><span>Full Brief</span></label>
+                        <label class="oi-model-check"><input type="checkbox" name="bs-model" value="Mid Brief"><span>Mid Brief</span></label>
+                        <label class="oi-model-check"><input type="checkbox" name="bs-model" value="Cheeky"><span>Cheeky</span></label>
+                        <label class="oi-model-check"><input type="checkbox" name="bs-model" value="Thong"><span>Thong</span></label>
+                    </div>
+                    <span class="oi-field-error" id="err-bs-models">Veuillez s&eacute;lectionner au moins un mod&egrave;le.</span>
+                </div>
+                <!-- Couleur -->
+                <div class="oi-section">
+                    <div class="oi-section-title">Couleur</div>
+                    <div class="oi-couleur-row">
+                        <button type="button" class="oi-couleur-btn" data-grp="bs" data-couleur="Ivoire" onclick="oiSelectCouleur('bs','Ivoire',this)"><span class="oi-couleur-swatch" style="background:#F8F3ED; border:1px solid rgba(44,44,42,0.2);"></span>Ivoire</button>
+                        <button type="button" class="oi-couleur-btn" data-grp="bs" data-couleur="Aubergine" onclick="oiSelectCouleur('bs','Aubergine',this)"><span class="oi-couleur-swatch" style="background:#5C2D6E;"></span>Aubergine</button>
+                        <button type="button" class="oi-couleur-btn" data-grp="bs" data-couleur="Marine" onclick="oiSelectCouleur('bs','Marine',this)"><span class="oi-couleur-swatch" style="background:#1B3A5C;"></span>Marine</button>
+                    </div>
+                    <span class="oi-field-error" id="err-bs-couleur">Veuillez s&eacute;lectionner une couleur.</span>
+                </div>
+                <!-- Coordonnées -->
+                <div class="oi-section">
+                    <div class="oi-section-title">Vos coordonn&eacute;es</div>
+                    <div class="oi-field-row">
+                        <div class="oi-field-group"><label class="oi-field-label" for="bs-prenom">Pr&eacute;nom</label><input type="text" id="bs-prenom" class="oi-field-input" placeholder="Marie"><span class="oi-field-error" id="err-bs-prenom">Champ requis.</span></div>
+                        <div class="oi-field-group"><label class="oi-field-label" for="bs-nom">Nom</label><input type="text" id="bs-nom" class="oi-field-input" placeholder="Dupont"><span class="oi-field-error" id="err-bs-nom">Champ requis.</span></div>
+                    </div>
+                    <div class="oi-field-row">
+                        <div class="oi-field-group"><label class="oi-field-label" for="bs-email">Email</label><input type="email" id="bs-email" class="oi-field-input" placeholder="marie@email.com"><span class="oi-field-error" id="err-bs-email">Email invalide.</span></div>
+                        <div class="oi-field-group"><label class="oi-field-label" for="bs-telephone">T&eacute;l&eacute;phone <span class="opt">(WhatsApp)</span></label><input type="tel" id="bs-telephone" class="oi-field-input" placeholder="+261 34 00 000 00"><span class="oi-field-error" id="err-bs-telephone">Champ requis.</span></div>
+                    </div>
+                </div>
+                <!-- Adresse -->
+                <div class="oi-section">
+                    <div class="oi-section-title">Adresse de livraison</div>
+                    <div class="oi-field-row full"><div class="oi-field-group"><label class="oi-field-label" for="bs-pays">Pays</label><select id="bs-pays" class="oi-field-select"><option value="Madagascar" selected>Madagascar</option><option value="France">France</option><option value="Belgique">Belgique</option><option value="Suisse">Suisse</option><option value="Autres pays Europe">Autres pays Europe</option></select></div></div>
+                    <div class="oi-field-row">
+                        <div class="oi-field-group"><label class="oi-field-label" for="bs-ville">Ville</label><input type="text" id="bs-ville" class="oi-field-input" placeholder="Antananarivo"><span class="oi-field-error" id="err-bs-ville">Champ requis.</span></div>
+                        <div class="oi-field-group"><label class="oi-field-label" for="bs-adresse">Adresse</label><input type="text" id="bs-adresse" class="oi-field-input" placeholder="Rue, num&eacute;ro..."><span class="oi-field-error" id="err-bs-adresse">Champ requis.</span></div>
+                    </div>
+                    <div class="oi-field-row full"><div class="oi-field-group"><label class="oi-field-label" for="bs-instructions">Instructions <span class="opt">(optionnel)</span></label><textarea id="bs-instructions" class="oi-field-textarea" placeholder="Rep&egrave;re, &eacute;tage..."></textarea></div></div>
+                </div>
+                <button class="oi-submit-btn" id="submit-bs" onclick="oiSubmitStd('bs','standard_ensemble','11.99','57552')">Confirmer ma commande &rarr;</button>
+                <div id="confirm-bs" class="oi-confirm-block" style="display:none; margin-top:1.5rem;">
+                    <div style="font-family:'Cormorant Garamond',serif; font-size:1.8rem; color:var(--charcoal); margin-bottom:0.6rem;">Merci !</div>
+                    <p style="font-family:'Jost',sans-serif; font-size:0.85rem; color:rgba(44,44,42,0.65); line-height:1.8;">Votre commande a &eacute;t&eacute; transmise.<br>Confirmation par email sous peu.</p>
+                </div>
+            </div><!-- /bra-panel-std -->
+
+        </div>
+    </div><!-- /order-bra -->
+
+
+    <!-- ============================================================
+         SECTION COMMANDE INLINE — Slip
+    ============================================================ -->
+    <div class="order-inline-section" id="order-slip">
+        <div class="order-inline-inner">
+
+            <div class="order-inline-header">
+                <div class="order-inline-eyebrow">Collection Signature</div>
+                <div class="order-inline-title">Commander mon Slip</div>
+            </div>
+
+            <!-- Step 0 -->
+            <div class="step0-grid">
+                <div class="step0-card" id="slip-card-bespoke" onclick="selectSlipPath('bespoke')">
+                    <div class="step0-card-icon" style="color:var(--gold);">&#10022;</div>
+                    <div class="step0-card-title">Sur mesure</div>
+                    <div class="step0-card-sub">Vos mesures exactes &middot; 5&ndash;7 jours ouvr&eacute;s</div>
+                </div>
+                <div class="step0-card" id="slip-card-std" onclick="selectSlipPath('std')">
+                    <div class="step0-card-icon" style="color:#2D6A3F;">&#10003;</div>
+                    <div class="step0-card-title">Taille standard</div>
+                    <div class="step0-card-sub">En stock &middot; Exp&eacute;di&eacute; sous 2&ndash;3 jours</div>
+                </div>
+            </div>
+
+            <!-- Parcours Sur Mesure Slip -->
+            <div class="order-form-panel" id="slip-panel-bespoke">
+                <a href="assets/downloads/metre-ruban-serenity.pdf" download target="_blank" class="tape-dl">
+                    <svg class="tape-dl-icon" width="26" height="26" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="1" y="7.5" width="22" height="9" rx="1.5" stroke="currentColor" stroke-width="1.5"/><line x1="5" y1="7.5" x2="5" y2="16.5" stroke="currentColor" stroke-width="1.5"/><line x1="9" y1="7.5" x2="9" y2="12" stroke="currentColor" stroke-width="1.2"/><line x1="13" y1="7.5" x2="13" y2="16.5" stroke="currentColor" stroke-width="1.5"/><line x1="17" y1="7.5" x2="17" y2="12" stroke="currentColor" stroke-width="1.2"/></svg>
+                    <div><span class="tape-dl-label">Pas de m&egrave;tre ruban&nbsp;?</span><span class="tape-dl-sub">T&eacute;l&eacute;charger &amp; imprimer le n&ocirc;tre &darr;</span></div>
+                </a>
+                <div class="oi-section">
+                    <div class="oi-section-title">Vos mesures (cm)</div>
+                    <div class="oi-measure-field">
+                        <div class="oi-measure-label-row"><span class="oi-measure-label">Hanches</span><div class="tooltip-wrap"><div class="tooltip-icon">i</div><div class="tooltip-text">Contour le plus large</div></div></div>
+                        <div class="oi-measure-input-row"><input type="number" class="oi-measure-input" id="si-hanches" placeholder="ex. 96" min="40" max="200"><span class="oi-measure-unit">cm</span></div>
+                        <div class="oi-measure-error" id="err-si-hanches">Valeur invalide</div>
+                    </div>
+                    <div class="oi-measure-field">
+                        <div class="oi-measure-label-row"><span class="oi-measure-label">Taille</span><div class="tooltip-wrap"><div class="tooltip-icon">i</div><div class="tooltip-text">Contour le plus &eacute;troit</div></div></div>
+                        <div class="oi-measure-input-row"><input type="number" class="oi-measure-input" id="si-taille" placeholder="ex. 72" min="40" max="200"><span class="oi-measure-unit">cm</span></div>
+                        <div class="oi-measure-error" id="err-si-taille">Valeur invalide</div>
+                    </div>
+                    <div class="oi-measure-field">
+                        <div class="oi-measure-label-row"><span class="oi-measure-label">Cuisse</span><div class="tooltip-wrap"><div class="tooltip-icon">i</div><div class="tooltip-text">Contour &agrave; mi-cuisse</div></div></div>
+                        <div class="oi-measure-input-row"><input type="number" class="oi-measure-input" id="si-cuisse" placeholder="ex. 58" min="40" max="200"><span class="oi-measure-unit">cm</span></div>
+                        <div class="oi-measure-error" id="err-si-cuisse">Valeur invalide</div>
+                    </div>
+                    <p style="margin-top:0.8rem;"><a href="measurement.html" style="font-family:'Jost',sans-serif; font-size:0.72rem; font-style:italic; color:rgba(44,44,42,0.38); text-decoration:none;" target="_blank">Besoin d&rsquo;aide pour vous mesurer&nbsp;? &rarr;</a></p>
+                </div>
+                <div class="oi-section">
+                    <div class="oi-section-title">Mod&egrave;le</div>
+                    <div class="oi-model-grid">
+                        <label class="oi-model-check"><input type="checkbox" name="si-model" value="Full Brief"><span>Full Brief</span></label>
+                        <label class="oi-model-check"><input type="checkbox" name="si-model" value="Mid Brief"><span>Mid Brief</span></label>
+                        <label class="oi-model-check"><input type="checkbox" name="si-model" value="Cheeky"><span>Cheeky</span></label>
+                        <label class="oi-model-check"><input type="checkbox" name="si-model" value="Thong"><span>Thong</span></label>
+                    </div>
+                    <span class="oi-field-error" id="err-si-models">Veuillez s&eacute;lectionner au moins un mod&egrave;le.</span>
+                </div>
+                <div class="oi-section">
+                    <div class="oi-section-title">Couleur</div>
+                    <div class="oi-couleur-row">
+                        <button type="button" class="oi-couleur-btn" data-grp="si" data-couleur="Ivoire" onclick="oiSelectCouleur('si','Ivoire',this)"><span class="oi-couleur-swatch" style="background:#F8F3ED; border:1px solid rgba(44,44,42,0.2);"></span>Ivoire</button>
+                        <button type="button" class="oi-couleur-btn" data-grp="si" data-couleur="Aubergine" onclick="oiSelectCouleur('si','Aubergine',this)"><span class="oi-couleur-swatch" style="background:#5C2D6E;"></span>Aubergine</button>
+                        <button type="button" class="oi-couleur-btn" data-grp="si" data-couleur="Marine" onclick="oiSelectCouleur('si','Marine',this)"><span class="oi-couleur-swatch" style="background:#1B3A5C;"></span>Marine</button>
+                    </div>
+                    <span class="oi-field-error" id="err-si-couleur">Veuillez s&eacute;lectionner une couleur.</span>
+                </div>
+                <div class="oi-section">
+                    <div class="oi-section-title">Vos coordonn&eacute;es</div>
+                    <div class="oi-field-row">
+                        <div class="oi-field-group"><label class="oi-field-label" for="si-prenom">Pr&eacute;nom</label><input type="text" id="si-prenom" class="oi-field-input" placeholder="Marie"><span class="oi-field-error" id="err-si-prenom">Champ requis.</span></div>
+                        <div class="oi-field-group"><label class="oi-field-label" for="si-nom">Nom</label><input type="text" id="si-nom" class="oi-field-input" placeholder="Dupont"><span class="oi-field-error" id="err-si-nom">Champ requis.</span></div>
+                    </div>
+                    <div class="oi-field-row">
+                        <div class="oi-field-group"><label class="oi-field-label" for="si-email">Email</label><input type="email" id="si-email" class="oi-field-input" placeholder="marie@email.com"><span class="oi-field-error" id="err-si-email">Email invalide.</span></div>
+                        <div class="oi-field-group"><label class="oi-field-label" for="si-telephone">T&eacute;l&eacute;phone <span class="opt">(WhatsApp)</span></label><input type="tel" id="si-telephone" class="oi-field-input" placeholder="+261 34 00 000 00"><span class="oi-field-error" id="err-si-telephone">Champ requis.</span></div>
+                    </div>
+                </div>
+                <div class="oi-section">
+                    <div class="oi-section-title">Adresse de livraison</div>
+                    <div class="oi-field-row full"><div class="oi-field-group"><label class="oi-field-label" for="si-pays">Pays</label><select id="si-pays" class="oi-field-select"><option value="Madagascar" selected>Madagascar</option><option value="France">France</option><option value="Belgique">Belgique</option><option value="Suisse">Suisse</option><option value="Autres pays Europe">Autres pays Europe</option></select></div></div>
+                    <div class="oi-field-row">
+                        <div class="oi-field-group"><label class="oi-field-label" for="si-ville">Ville</label><input type="text" id="si-ville" class="oi-field-input" placeholder="Antananarivo"><span class="oi-field-error" id="err-si-ville">Champ requis.</span></div>
+                        <div class="oi-field-group"><label class="oi-field-label" for="si-adresse">Adresse</label><input type="text" id="si-adresse" class="oi-field-input" placeholder="Rue, num&eacute;ro..."><span class="oi-field-error" id="err-si-adresse">Champ requis.</span></div>
+                    </div>
+                    <div class="oi-field-row full"><div class="oi-field-group"><label class="oi-field-label" for="si-instructions">Instructions <span class="opt">(optionnel)</span></label><textarea id="si-instructions" class="oi-field-textarea" placeholder="Rep&egrave;re, &eacute;tage..."></textarea></div></div>
+                </div>
+                <button class="oi-submit-btn" id="submit-si" onclick="oiSubmit('si','sur_mesure_slip','29.95','143760')">Confirmer ma commande &rarr;</button>
+                <div id="confirm-si" class="oi-confirm-block" style="display:none; margin-top:1.5rem;">
+                    <div style="font-family:'Cormorant Garamond',serif; font-size:1.8rem; color:var(--charcoal); margin-bottom:0.6rem;">Merci !</div>
+                    <p style="font-family:'Jost',sans-serif; font-size:0.85rem; color:rgba(44,44,42,0.65); line-height:1.8;">Votre commande a &eacute;t&eacute; transmise.<br>Confirmation par email sous peu.</p>
+                </div>
+            </div><!-- /slip-panel-bespoke -->
+
+            <!-- Parcours Taille Standard Slip -->
+            <div class="order-form-panel" id="slip-panel-std">
+                <div class="oi-section">
+                    <div class="oi-section-title">Votre taille</div>
+                    <div class="oi-size-pills">
+                        <button type="button" class="oi-size-pill" data-grp="ss" data-size="S" onclick="oiSelectSize('ss','S',this)">S</button>
+                        <button type="button" class="oi-size-pill" data-grp="ss" data-size="M" onclick="oiSelectSize('ss','M',this)">M</button>
+                        <button type="button" class="oi-size-pill" data-grp="ss" data-size="L" onclick="oiSelectSize('ss','L',this)">L</button>
+                        <button type="button" class="oi-size-pill" data-grp="ss" data-size="XL" onclick="oiSelectSize('ss','XL',this)">XL</button>
+                    </div>
+                    <span class="oi-field-error" id="err-ss-size">Veuillez s&eacute;lectionner une taille.</span>
+                </div>
+                <div class="oi-section">
+                    <div class="oi-section-title">Mod&egrave;le(s)</div>
+                    <div class="oi-model-grid">
+                        <label class="oi-model-check"><input type="checkbox" name="ss-model" value="Full Brief"><span>Full Brief</span></label>
+                        <label class="oi-model-check"><input type="checkbox" name="ss-model" value="Mid Brief"><span>Mid Brief</span></label>
+                        <label class="oi-model-check"><input type="checkbox" name="ss-model" value="Cheeky"><span>Cheeky</span></label>
+                        <label class="oi-model-check"><input type="checkbox" name="ss-model" value="Thong"><span>Thong</span></label>
+                    </div>
+                    <span class="oi-field-error" id="err-ss-models">Veuillez s&eacute;lectionner au moins un mod&egrave;le.</span>
+                </div>
+                <div class="oi-section">
+                    <div class="oi-section-title">Couleur</div>
+                    <div class="oi-couleur-row">
+                        <button type="button" class="oi-couleur-btn" data-grp="ss" data-couleur="Ivoire" onclick="oiSelectCouleur('ss','Ivoire',this)"><span class="oi-couleur-swatch" style="background:#F8F3ED; border:1px solid rgba(44,44,42,0.2);"></span>Ivoire</button>
+                        <button type="button" class="oi-couleur-btn" data-grp="ss" data-couleur="Aubergine" onclick="oiSelectCouleur('ss','Aubergine',this)"><span class="oi-couleur-swatch" style="background:#5C2D6E;"></span>Aubergine</button>
+                        <button type="button" class="oi-couleur-btn" data-grp="ss" data-couleur="Marine" onclick="oiSelectCouleur('ss','Marine',this)"><span class="oi-couleur-swatch" style="background:#1B3A5C;"></span>Marine</button>
+                    </div>
+                    <span class="oi-field-error" id="err-ss-couleur">Veuillez s&eacute;lectionner une couleur.</span>
+                </div>
+                <div class="oi-section">
+                    <div class="oi-section-title">Vos coordonn&eacute;es</div>
+                    <div class="oi-field-row">
+                        <div class="oi-field-group"><label class="oi-field-label" for="ss-prenom">Pr&eacute;nom</label><input type="text" id="ss-prenom" class="oi-field-input" placeholder="Marie"><span class="oi-field-error" id="err-ss-prenom">Champ requis.</span></div>
+                        <div class="oi-field-group"><label class="oi-field-label" for="ss-nom">Nom</label><input type="text" id="ss-nom" class="oi-field-input" placeholder="Dupont"><span class="oi-field-error" id="err-ss-nom">Champ requis.</span></div>
+                    </div>
+                    <div class="oi-field-row">
+                        <div class="oi-field-group"><label class="oi-field-label" for="ss-email">Email</label><input type="email" id="ss-email" class="oi-field-input" placeholder="marie@email.com"><span class="oi-field-error" id="err-ss-email">Email invalide.</span></div>
+                        <div class="oi-field-group"><label class="oi-field-label" for="ss-telephone">T&eacute;l&eacute;phone <span class="opt">(WhatsApp)</span></label><input type="tel" id="ss-telephone" class="oi-field-input" placeholder="+261 34 00 000 00"><span class="oi-field-error" id="err-ss-telephone">Champ requis.</span></div>
+                    </div>
+                </div>
+                <div class="oi-section">
+                    <div class="oi-section-title">Adresse de livraison</div>
+                    <div class="oi-field-row full"><div class="oi-field-group"><label class="oi-field-label" for="ss-pays">Pays</label><select id="ss-pays" class="oi-field-select"><option value="Madagascar" selected>Madagascar</option><option value="France">France</option><option value="Belgique">Belgique</option><option value="Suisse">Suisse</option><option value="Autres pays Europe">Autres pays Europe</option></select></div></div>
+                    <div class="oi-field-row">
+                        <div class="oi-field-group"><label class="oi-field-label" for="ss-ville">Ville</label><input type="text" id="ss-ville" class="oi-field-input" placeholder="Antananarivo"><span class="oi-field-error" id="err-ss-ville">Champ requis.</span></div>
+                        <div class="oi-field-group"><label class="oi-field-label" for="ss-adresse">Adresse</label><input type="text" id="ss-adresse" class="oi-field-input" placeholder="Rue, num&eacute;ro..."><span class="oi-field-error" id="err-ss-adresse">Champ requis.</span></div>
+                    </div>
+                    <div class="oi-field-row full"><div class="oi-field-group"><label class="oi-field-label" for="ss-instructions">Instructions <span class="opt">(optionnel)</span></label><textarea id="ss-instructions" class="oi-field-textarea" placeholder="Rep&egrave;re, &eacute;tage..."></textarea></div></div>
+                </div>
+                <button class="oi-submit-btn" id="submit-ss" onclick="oiSubmitStd('ss','standard_slip','29.95','143760')">Confirmer ma commande &rarr;</button>
+                <div id="confirm-ss" class="oi-confirm-block" style="display:none; margin-top:1.5rem;">
+                    <div style="font-family:'Cormorant Garamond',serif; font-size:1.8rem; color:var(--charcoal); margin-bottom:0.6rem;">Merci !</div>
+                    <p style="font-family:'Jost',sans-serif; font-size:0.85rem; color:rgba(44,44,42,0.65); line-height:1.8;">Votre commande a &eacute;t&eacute; transmise.<br>Confirmation par email sous peu.</p>
+                </div>
+            </div><!-- /slip-panel-std -->
+
+        </div>
+    </div><!-- /order-slip -->
 
 
     <!-- Bouton Tarifs -->
@@ -1327,22 +1811,249 @@
         var selectedBraSize  = null;
         var selectedSlipSize = null;
 
-        function selectProductSize(product, size, btn) {
-            if (product === 'bra') selectedBraSize  = size;
-            else                   selectedSlipSize = size;
+        /* ---- INLINE ORDER SECTIONS ---- */
+        var GAS_URL = 'https://script.google.com/macros/s/AKfycbyfqfv4b-FsfRZC-aRZ8vOk_TjmaD30V9_8kqq8N0qH-Q_P1J6f-a3CJMg-X6HLzjkj/exec';
+        var oiCouleurs = {};
+        var oiSizes    = {};
 
-            document.querySelectorAll('.size-pill-sm[data-product="' + product + '"]').forEach(function(p) {
-                p.classList.remove('is-active');
-            });
-            btn.classList.add('is-active');
-
-            var orderBtn = document.getElementById('std-order-btn-' + product);
-            orderBtn.disabled = false;
-            orderBtn.textContent = 'Commander \u2014 Taille ' + size;
-            orderBtn.onclick = function() {
-                window.location.href = 'shop.html?product=' + product + '&size=' + size;
-            };
+        function toggleOrderSection(product) {
+            var section = document.getElementById('order-' + product);
+            var isOpen  = section.classList.contains('is-open');
+            document.querySelectorAll('.order-inline-section').forEach(function(s) { s.classList.remove('is-open'); });
+            if (!isOpen) {
+                section.classList.add('is-open');
+                setTimeout(function() { section.scrollIntoView({ behavior: 'smooth', block: 'start' }); }, 80);
+            }
         }
+
+        function selectBraPath(path) {
+            document.getElementById('bra-card-bespoke').className = 'step0-card' + (path === 'bespoke' ? ' is-active-bespoke' : '');
+            document.getElementById('bra-card-std').className     = 'step0-card' + (path === 'std'     ? ' is-active-std'     : '');
+            document.getElementById('bra-panel-bespoke').className = 'order-form-panel' + (path === 'bespoke' ? ' is-visible' : '');
+            document.getElementById('bra-panel-std').className     = 'order-form-panel' + (path === 'std'     ? ' is-visible' : '');
+        }
+
+        function selectSlipPath(path) {
+            document.getElementById('slip-card-bespoke').className = 'step0-card' + (path === 'bespoke' ? ' is-active-bespoke' : '');
+            document.getElementById('slip-card-std').className     = 'step0-card' + (path === 'std'     ? ' is-active-std'     : '');
+            document.getElementById('slip-panel-bespoke').className = 'order-form-panel' + (path === 'bespoke' ? ' is-visible' : '');
+            document.getElementById('slip-panel-std').className     = 'order-form-panel' + (path === 'std'     ? ' is-visible' : '');
+        }
+
+        function oiSelectCouleur(grp, couleur, btn) {
+            oiCouleurs[grp] = couleur;
+            document.querySelectorAll('.oi-couleur-btn[data-grp="' + grp + '"]').forEach(function(b) { b.classList.remove('is-active'); });
+            btn.classList.add('is-active');
+            var err = document.getElementById('err-' + grp + '-couleur');
+            if (err) err.classList.remove('is-visible');
+        }
+
+        function oiSelectSize(grp, size, btn) {
+            oiSizes[grp] = size;
+            document.querySelectorAll('.oi-size-pill[data-grp="' + grp + '"]').forEach(function(b) { b.classList.remove('is-active'); });
+            btn.classList.add('is-active');
+            var err = document.getElementById('err-' + grp + '-size');
+            if (err) err.classList.remove('is-visible');
+        }
+
+        function oiVal(id) {
+            var el = document.getElementById(id);
+            return el ? el.value.trim() : '';
+        }
+
+        function oiErr(id, show) {
+            var el = document.getElementById(id);
+            if (!el) return;
+            if (show) el.classList.add('is-visible');
+            else      el.classList.remove('is-visible');
+        }
+
+        function oiValidateMeasure(id, min, max) {
+            var v = parseFloat(oiVal(id));
+            var ok = !isNaN(v) && v >= min && v <= max;
+            oiErr('err-' + id, !ok);
+            return ok;
+        }
+
+        function oiValidateCoords(grp) {
+            var ok = true;
+            var prenom = oiVal(grp + '-prenom');
+            oiErr('err-' + grp + '-prenom', !prenom); if (!prenom) ok = false;
+            var nom = oiVal(grp + '-nom');
+            oiErr('err-' + grp + '-nom', !nom); if (!nom) ok = false;
+            var email = oiVal(grp + '-email');
+            var emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+            oiErr('err-' + grp + '-email', !emailOk); if (!emailOk) ok = false;
+            var tel = oiVal(grp + '-telephone');
+            oiErr('err-' + grp + '-telephone', !tel); if (!tel) ok = false;
+            var ville = oiVal(grp + '-ville');
+            oiErr('err-' + grp + '-ville', !ville); if (!ville) ok = false;
+            var adresse = oiVal(grp + '-adresse');
+            oiErr('err-' + grp + '-adresse', !adresse); if (!adresse) ok = false;
+            return ok;
+        }
+
+        function showPaiement(confEl, pays) {
+            if (confEl.querySelector('.pmt-block')) return;
+            var isMada = (pays === 'Madagascar');
+            var h = '<div class="pmt-block"><div class="pmt-title">Comment r&eacute;gler&nbsp;?</div>';
+            if (isMada) {
+                h += '<p class="pmt-desc">Envoyez votre paiement par mobile money au destinataire ci-dessous&nbsp;:</p>';
+                h += '<div class="pmt-operator"><span class="pmt-op-tag" style="background:#E30613">Airtel Money</span><span class="pmt-op-num">+261 32 12 345 67 &mdash; Rakoto Marie</span></div>';
+                h += '<div class="pmt-operator"><span class="pmt-op-tag" style="background:#0066B3">MVola</span><span class="pmt-op-num">+261 32 12 345 67 &mdash; Rakoto Marie</span></div>';
+                h += '<div class="pmt-operator"><span class="pmt-op-tag" style="background:#FF6600">Orange Money</span><span class="pmt-op-num">+261 32 12 345 67 &mdash; Rakoto Marie</span></div>';
+                h += '<p class="pmt-note">Envoyez ensuite la capture de votre paiement via WhatsApp.</p>';
+            } else {
+                h += '<p class="pmt-desc">Depuis l\'Europe, utilisez l\'un de ces services pour envoyer votre r&egrave;glement&nbsp;:</p>';
+                h += '<div class="pmt-eu-btns">';
+                h += '<a href="https://www.sendwave.com/en" target="_blank" rel="noopener" class="pmt-eu-btn">SendWave</a>';
+                h += '<a href="https://www.taptapsend.com/fr" target="_blank" rel="noopener" class="pmt-eu-btn">TapTap Send</a>';
+                h += '</div>';
+            }
+            h += '</div><a href="https://serenity-management.netlify.app/" target="_blank" rel="noopener" class="pmt-track-btn">Suivre ma commande &rarr;</a>';
+            confEl.insertAdjacentHTML('beforeend', h);
+        }
+
+        function oiSendToGAS(payload, confirmId, submitId, pays) {
+            var btn = document.getElementById(submitId);
+            if (btn) { btn.disabled = true; btn.textContent = 'Envoi en cours\u2026'; }
+            fetch(GAS_URL, { method: 'POST', body: JSON.stringify(payload) })
+                .then(function() {
+                    var panel = btn ? btn.closest('.order-form-panel') : null;
+                    if (panel) {
+                        panel.querySelectorAll('.oi-section, .oi-coords-section, .oi-submit-btn').forEach(function(el) { el.style.display = 'none'; });
+                    }
+                    var confirm = document.getElementById(confirmId);
+                    if (confirm) { confirm.style.display = 'block'; showPaiement(confirm, pays); }
+                })
+                .catch(function() {
+                    if (btn) { btn.disabled = false; btn.textContent = 'Confirmer ma commande \u2192'; }
+                    alert('Une erreur est survenue. Veuillez r\u00e9essayer.');
+                });
+        }
+
+        function oiSubmit(grp, type, eur, ar) {
+            var ok = true;
+            var isBra = (grp === 'bi');
+
+            if (isBra) {
+                if (!oiValidateMeasure(grp + '-overbust', 40, 200)) ok = false;
+                if (!oiValidateMeasure(grp + '-bust',     40, 200)) ok = false;
+                if (!oiValidateMeasure(grp + '-underbust',40, 200)) ok = false;
+            }
+            if (!oiValidateMeasure(grp + '-hanches', 40, 200)) ok = false;
+            if (!oiValidateMeasure(grp + '-taille',  40, 200)) ok = false;
+            if (!oiValidateMeasure(grp + '-cuisse',  40, 200)) ok = false;
+
+            var models = Array.from(document.querySelectorAll('input[name="' + grp + '-model"]:checked')).map(function(c) { return c.value; });
+            oiErr('err-' + grp + '-models', models.length === 0);
+            if (models.length === 0) ok = false;
+
+            if (!oiCouleurs[grp]) { oiErr('err-' + grp + '-couleur', true); ok = false; }
+            else                  { oiErr('err-' + grp + '-couleur', false); }
+
+            if (!oiValidateCoords(grp)) ok = false;
+
+            if (!ok) return;
+
+            var payload = {
+                type: type,
+                tour_hanches:  oiVal(grp + '-hanches'),
+                tour_taille:   oiVal(grp + '-taille'),
+                tour_cuisse:   oiVal(grp + '-cuisse'),
+                modeles:       models.join(', '),
+                couleur:       oiCouleurs[grp],
+                prenom:        oiVal(grp + '-prenom'),
+                nom:           oiVal(grp + '-nom'),
+                email:         oiVal(grp + '-email'),
+                telephone:     oiVal(grp + '-telephone'),
+                pays:          oiVal(grp + '-pays'),
+                ville:         oiVal(grp + '-ville'),
+                adresse:       oiVal(grp + '-adresse'),
+                instructions:  oiVal(grp + '-instructions'),
+                montant_eur:   eur,
+                montant_ar:    ar
+            };
+            if (isBra) {
+                payload.tour_overbust      = oiVal(grp + '-overbust');
+                payload.tour_poitrine      = oiVal(grp + '-bust');
+                payload.tour_sous_poitrine = oiVal(grp + '-underbust');
+            }
+            oiSendToGAS(payload, 'confirm-' + grp, 'submit-' + grp, payload.pays);
+        }
+
+        function oiSubmitStd(grp, type, eur, ar) {
+            var ok = true;
+            var isBra = (grp === 'bs');
+
+            if (isBra) {
+                if (!oiSizes['bs-bra'])  { oiErr('err-bs-bra-size', true);  ok = false; }
+                else                     { oiErr('err-bs-bra-size', false); }
+                if (!oiSizes['bs-slip']) { oiErr('err-bs-slip-size', true); ok = false; }
+                else                     { oiErr('err-bs-slip-size', false); }
+            } else {
+                if (!oiSizes[grp]) { oiErr('err-' + grp + '-size', true); ok = false; }
+                else               { oiErr('err-' + grp + '-size', false); }
+            }
+
+            var models = Array.from(document.querySelectorAll('input[name="' + grp + '-model"]:checked')).map(function(c) { return c.value; });
+            oiErr('err-' + grp + '-models', models.length === 0);
+            if (models.length === 0) ok = false;
+
+            if (!oiCouleurs[grp]) { oiErr('err-' + grp + '-couleur', true); ok = false; }
+            else                  { oiErr('err-' + grp + '-couleur', false); }
+
+            if (!oiValidateCoords(grp)) ok = false;
+
+            if (!ok) return;
+
+            var payload = {
+                type:        type,
+                taille_slip: isBra ? (oiSizes['bs-slip'] || '') : (oiSizes[grp] || ''),
+                modeles:     models.join(', '),
+                couleur:     oiCouleurs[grp],
+                prenom:      oiVal(grp + '-prenom'),
+                nom:         oiVal(grp + '-nom'),
+                email:       oiVal(grp + '-email'),
+                telephone:   oiVal(grp + '-telephone'),
+                pays:        oiVal(grp + '-pays'),
+                ville:       oiVal(grp + '-ville'),
+                adresse:     oiVal(grp + '-adresse'),
+                instructions:oiVal(grp + '-instructions'),
+                montant_eur: eur,
+                montant_ar:  ar
+            };
+            if (isBra) {
+                payload.taille_sport_bra = oiSizes['bs-bra'] || '';
+            }
+            oiSendToGAS(payload, 'confirm-' + grp, 'submit-' + grp, payload.pays);
+        }
+
+        /* ---- MEASURE GUIDE IMAGES ---- */
+        (function() {
+            var IMGS = {
+                overbust: 'assets/images/mesures/overbust.jpg',
+                bust:     'assets/images/mesures/bust.jpg',
+                underbust:'assets/images/mesures/underbust.jpg',
+                hanches:  'assets/images/mesures/hanches.jpg',
+                taille:   'assets/images/mesures/taille.jpg',
+                cuisse:   'assets/images/mesures/cuisse.jpg'
+            };
+            document.querySelectorAll('.oi-measure-input').forEach(function(input) {
+                var parts = input.id.split('-');
+                var key   = parts[parts.length - 1];
+                if (!IMGS[key]) return;
+                var field = input.closest('.oi-measure-field');
+                if (!field || field.querySelector('.oi-measure-img')) return;
+                var wrap = document.createElement('div');
+                wrap.className = 'oi-measure-content';
+                while (field.firstChild) wrap.appendChild(field.firstChild);
+                var img = document.createElement('img');
+                img.src = IMGS[key]; img.alt = key; img.className = 'oi-measure-img';
+                field.appendChild(img);
+                field.appendChild(wrap);
+            });
+        })();
     </script>
 
 </body>

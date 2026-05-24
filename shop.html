@@ -548,6 +548,46 @@
             font-style: italic;
         }
 
+        /* ---- COULEUR ---- */
+        .couleur-row {
+            display: flex;
+            gap: 0.6rem;
+            flex-wrap: wrap;
+            margin-top: 0.55rem;
+        }
+        .couleur-btn {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            border: 1px solid rgba(201,169,154,0.4);
+            background: transparent;
+            cursor: pointer;
+            transition: border-color 0.2s ease;
+            font-family: 'Jost', sans-serif;
+            font-size: 0.78rem;
+            color: var(--charcoal);
+        }
+        .couleur-btn.is-active {
+            border-color: var(--charcoal);
+            box-shadow: inset 0 0 0 1px var(--charcoal);
+        }
+        .couleur-swatch {
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        /* ---- CONFIRMATION ---- */
+        .confirm-block {
+            text-align: center;
+            padding: 3.5rem 2rem;
+            border: 1px solid rgba(184,147,90,0.25);
+            background: rgba(184,147,90,0.04);
+            margin-top: 2rem;
+        }
+
         /* ---- FOOTER ---- */
         .footer { background-color: var(--charcoal); }
 
@@ -696,6 +736,26 @@
                         <p class="model-note">Pour un pack de 5, vous pouvez mixer les mod&egrave;les.</p>
                         <div class="field-error" id="err-models">Veuillez s&eacute;lectionner au moins un mod&egrave;le.</div>
                     </div>
+
+                    <!-- Couleur -->
+                    <div id="couleur-section" style="display:none; margin-top: 1.6rem;">
+                        <div class="size-label">Votre couleur</div>
+                        <div class="couleur-row">
+                            <button type="button" class="couleur-btn" data-couleur="Ivoire" onclick="selectCouleur('Ivoire',this)">
+                                <span class="couleur-swatch" style="background:#F8F3ED; border:1px solid rgba(44,44,42,0.2);"></span>
+                                Ivoire
+                            </button>
+                            <button type="button" class="couleur-btn" data-couleur="Aubergine" onclick="selectCouleur('Aubergine',this)">
+                                <span class="couleur-swatch" style="background:#5C2D6E;"></span>
+                                Aubergine
+                            </button>
+                            <button type="button" class="couleur-btn" data-couleur="Marine" onclick="selectCouleur('Marine',this)">
+                                <span class="couleur-swatch" style="background:#1B3A5C;"></span>
+                                Marine
+                            </button>
+                        </div>
+                        <span class="field-error" id="err-couleur" style="display:none; font-family:'Jost',sans-serif; font-size:0.7rem; color:#C0392B; font-style:italic;">Veuillez s&eacute;lectionner une couleur.</span>
+                    </div>
                 </div>
 
                 <!-- ============================
@@ -814,10 +874,20 @@
                     <button type="button" class="shop-submit-btn" id="shop-submit-btn" onclick="submitShop()">
                         Confirmer ma commande &rarr;
                     </button>
-                    <p class="shop-submit-note">Vous serez redirig&eacute;e vers notre formulaire de commande s&eacute;curis&eacute;.</p>
+                    <p class="shop-submit-note">Votre commande est transmise directement &agrave; notre atelier.</p>
                 </div>
 
             </form>
+
+            <!-- Confirmation -->
+            <div id="shop-confirm" style="display:none;" class="confirm-block">
+                <div style="font-family:'Cormorant Garamond',serif; font-size:2rem; color:var(--charcoal); margin-bottom:0.8rem;">Merci !</div>
+                <p style="font-family:'Jost',sans-serif; font-size:0.85rem; color:rgba(44,44,42,0.65); line-height:1.8; max-width:400px; margin:0 auto 1.5rem;">
+                    Votre commande a &eacute;t&eacute; transmise avec succ&egrave;s.<br>
+                    Vous recevrez une confirmation &agrave; votre adresse email sous peu.
+                </p>
+                <a href="index.html" style="font-family:'Jost',sans-serif; font-size:0.75rem; letter-spacing:0.15em; text-transform:uppercase; color:var(--charcoal); border-bottom:1px solid var(--charcoal); text-decoration:none; padding-bottom:0.2rem;">Retour &agrave; l&rsquo;accueil</a>
+            </div>
 
         </div>
     </div>
@@ -854,7 +924,8 @@
            SHOP PAGE — Logique commande taille standard
         ================================================ */
 
-        var GOOGLE_FORM_URL = 'https://docs.google.com/forms/d/e/1FAIpQLSeKMWE64serI4x2q6_8S7qHvRfi_i2MOINUyyfDgZuxhUwGRQ/viewform?usp=header';
+        /* Remplacer par l'URL de votre script Google Apps Script déployé */
+        var GAS_URL = 'https://script.google.com/macros/s/AKfycbyfqfv4b-FsfRZC-aRZ8vOk_TjmaD30V9_8kqq8N0qH-Q_P1J6f-a3CJMg-X6HLzjkj/exec';
 
         var params         = new URLSearchParams(window.location.search);
         var currentProduct = params.get('product') || 'slip';
@@ -862,11 +933,12 @@
         var currentBraSize = null;                            // taille bra (combo uniquement)
 
         var productData = {
-            bra:  { name: 'Sport Bra \u0026 Slip', priceEur: '11,99\u00a0\u20ac', priceAr: '57\u00a0552\u00a0Ar' },
-            slip: { name: 'Slip',                  priceEur: '29,95\u00a0\u20ac', priceAr: '143\u00a0760\u00a0Ar' }
+            bra:  { name: 'Sport Bra & Slip', montantEur: '11.99', montantAr: '57552', priceEur: '11,99\u00a0\u20ac', priceAr: '57\u00a0552\u00a0Ar' },
+            slip: { name: 'Slip (pack de 5)',  montantEur: '29.95', montantAr: '143760',                  priceEur: '29,95\u00a0\u20ac', priceAr: '143\u00a0760\u00a0Ar' }
         };
 
         var data = productData[currentProduct] || productData.slip;
+        var currentCouleur = null;
 
         /* ---- Initialisation depuis les param&egrave;tres URL ---- */
         (function init() {
@@ -875,19 +947,18 @@
             document.getElementById('recap-price-ar').textContent     = data.priceAr;
 
             if (currentProduct === 'bra') {
-                // Combo : afficher le bloc taille bra + modèles slip
                 document.getElementById('bra-size-block').style.display  = 'block';
                 document.getElementById('slip-size-label').textContent   = 'Taille Slip';
                 document.getElementById('models-section').style.display  = 'block';
-                // Pr&eacute;-s&eacute;lectionner la taille bra depuis l'URL
+                document.getElementById('couleur-section').style.display = 'block';
                 if (currentSize) {
                     var braBtn = document.querySelector('.size-pill-form[data-role="bra"][data-size="' + currentSize + '"]');
                     if (braBtn) selectBraSize(currentSize, braBtn);
-                    currentSize = null; // slip non pr&eacute;-s&eacute;lectionn&eacute;
+                    currentSize = null;
                 }
             } else {
-                // Slip seul : afficher les mod&egrave;les et pr&eacute;-s&eacute;lectionner la taille
-                document.getElementById('models-section').style.display = 'block';
+                document.getElementById('models-section').style.display  = 'block';
+                document.getElementById('couleur-section').style.display = 'block';
                 if (currentSize) {
                     var slipBtn = document.querySelector('.size-pill-form[data-role="slip"][data-size="' + currentSize + '"]');
                     if (slipBtn) selectSizeForm(currentSize, slipBtn);
@@ -963,23 +1034,26 @@
             cb.addEventListener('change', updateRecapTable);
         });
 
+        /* ---- Couleur ---- */
+        function selectCouleur(couleur, btn) {
+            currentCouleur = couleur;
+            document.querySelectorAll('.couleur-btn').forEach(function(b) { b.classList.remove('is-active'); });
+            btn.classList.add('is-active');
+            document.getElementById('err-couleur').style.display = 'none';
+        }
+
         /* ---- Validation et soumission ---- */
         function submitShop() {
             var valid = true;
 
-            /* Taille Sport Bra (combo uniquement) */
             if (currentProduct === 'bra' && !currentBraSize) {
                 document.getElementById('err-bra-size').classList.add('is-visible');
                 valid = false;
             }
-
-            /* Taille Slip */
             if (!currentSize) {
                 document.getElementById('err-size').classList.add('is-visible');
                 valid = false;
             }
-
-            /* Mod&egrave;les (slip seul et combo bra) */
             var errModels = document.getElementById('err-models');
             if (getSelectedModels().length === 0) {
                 errModels.classList.add('is-visible');
@@ -987,8 +1061,10 @@
             } else {
                 errModels.classList.remove('is-visible');
             }
-
-            /* Champs obligatoires */
+            if (!currentCouleur) {
+                document.getElementById('err-couleur').style.display = 'block';
+                valid = false;
+            }
             ['prenom', 'nom', 'email', 'telephone', 'ville', 'adresse'].forEach(function(id) {
                 var el  = document.getElementById(id);
                 var err = document.getElementById('err-' + id);
@@ -1001,8 +1077,6 @@
                     if (err) err.classList.remove('is-visible');
                 }
             });
-
-            /* Format email */
             var emailEl = document.getElementById('email');
             if (emailEl.value && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailEl.value)) {
                 emailEl.classList.add('is-error');
@@ -1010,12 +1084,54 @@
                 valid = false;
             }
 
-            if (valid) {
-                window.open(GOOGLE_FORM_URL, '_blank');
-            } else {
-                var firstErr = document.querySelector('.field-input.is-error, .size-pill-form');
+            if (!valid) {
+                var firstErr = document.querySelector('.field-input.is-error');
                 if (firstErr) firstErr.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                return;
             }
+
+            var btn = document.getElementById('shop-submit-btn');
+            btn.disabled = true;
+            btn.textContent = 'Envoi en cours…';
+
+            var payload = {
+                type:            currentProduct === 'bra' ? 'standard_ensemble' : 'standard_slip',
+                prenom:          document.getElementById('prenom').value.trim(),
+                nom:             document.getElementById('nom').value.trim(),
+                email:           document.getElementById('email').value.trim(),
+                telephone:       document.getElementById('telephone').value.trim(),
+                taille_sport_bra: currentBraSize || '',
+                taille_slip:     currentSize || '',
+                modele_slip:     getSelectedModels().join(', '),
+                couleur:         currentCouleur,
+                pays:            document.getElementById('pays').value,
+                ville:           document.getElementById('ville').value.trim(),
+                adresse:         document.getElementById('adresse').value.trim(),
+                instructions:    document.getElementById('instructions').value.trim(),
+                montant_eur:     data.montantEur,
+                montant_ar:      data.montantAr
+            };
+
+            fetch(GAS_URL, { method: 'POST', body: JSON.stringify(payload) })
+            .then(function(r) { return r.json(); })
+            .then(function(res) {
+                if (res.success) {
+                    document.getElementById('shop-form').style.display = 'none';
+                    document.querySelector('.product-recap').style.display = 'none';
+                    var confirm = document.getElementById('shop-confirm');
+                    confirm.style.display = 'block';
+                    confirm.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                } else {
+                    btn.disabled = false;
+                    btn.textContent = 'Confirmer ma commande →';
+                    alert('Une erreur s’est produite. Veuillez réessayer.');
+                }
+            })
+            .catch(function() {
+                btn.disabled = false;
+                btn.textContent = 'Confirmer ma commande →';
+                alert('Erreur réseau. Veuillez réessayer.');
+            });
         }
 
         /* ---- Effacer les erreurs &agrave; la saisie ---- */
