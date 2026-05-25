@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Commander &mdash; Taille standard | Serenity by Saule</title>
+    <title>Votre commande | Serenity by Saule</title>
     <meta name="description" content="Commandez votre lingerie Serenity by Saule en taille standard. Disponible imm&eacute;diatement, exp&eacute;di&eacute; sous 2&ndash;3 jours.">
 
     <!-- Meta Pixel Code -->
@@ -588,6 +588,283 @@
             margin-top: 2rem;
         }
 
+        /* ---- QUANTITÉ & PAR PIÈCE ---- */
+        .qty-row { display: flex; align-items: center; gap: 0.8rem; margin-top: 0.7rem; }
+        .qty-btn { width: 34px; height: 34px; border: 1px solid rgba(44,44,42,0.4); background: transparent; font-size: 1.1rem; cursor: pointer; border-radius: 2px; display: flex; align-items: center; justify-content: center; color: var(--charcoal); transition: background 0.2s; }
+        .qty-btn:hover { background: var(--charcoal); color: #fff; }
+        .qty-count { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; font-weight: 600; min-width: 28px; text-align: center; }
+        .qty-unit-label { font-family: 'Jost', sans-serif; font-size: 0.72rem; color: rgba(44,44,42,0.5); letter-spacing: 0.04em; }
+        .units-list { display: flex; flex-direction: column; gap: 1rem; margin-top: 0.8rem; }
+        .unit-row { background: var(--cream-alt); border-radius: 6px; padding: 1rem 1.1rem; }
+        .unit-num { font-family: 'Cormorant Garamond', serif; font-size: 0.9rem; font-weight: 600; color: var(--charcoal); margin-bottom: 0.6rem; border-bottom: 1px solid rgba(201,169,154,0.3); padding-bottom: 0.35rem; }
+        .unit-field-label { font-family: 'Jost', sans-serif; font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(44,44,42,0.45); display: block; margin-bottom: 0.4rem; margin-top: 0.65rem; }
+        .unit-pills { display: flex; gap: 0.4rem; flex-wrap: wrap; }
+        .unit-pill { font-family: 'Jost', sans-serif; font-size: 0.71rem; letter-spacing: 0.02em; border: 1px solid rgba(44,44,42,0.3); background: transparent; color: var(--charcoal); padding: 0.3rem 0.7rem; border-radius: 2px; cursor: pointer; transition: all 0.15s; }
+        .unit-pill:hover { border-color: var(--charcoal); }
+        .unit-pill.is-active { border-color: var(--charcoal); background: var(--charcoal); color: #fff; }
+        .unit-color-pill { display: flex; align-items: center; gap: 0.35rem; font-family: 'Jost', sans-serif; font-size: 0.71rem; border: 1px solid rgba(44,44,42,0.3); background: transparent; color: var(--charcoal); padding: 0.28rem 0.6rem 0.28rem 0.35rem; border-radius: 2px; cursor: pointer; transition: all 0.15s; }
+        .unit-color-pill:hover { border-color: var(--charcoal); }
+        .unit-color-pill.is-active { border-color: var(--charcoal); box-shadow: inset 0 0 0 1px var(--charcoal); }
+        .unit-color-dot { width: 13px; height: 13px; border-radius: 50%; flex-shrink: 0; }
+
+
+        /* ---- SÉLECTEUR PRODUIT ---- */
+        .prod-picker { margin-bottom: 2.5rem; }
+        .prod-picker-label {
+            font-family: 'Jost', sans-serif;
+            font-size: 0.65rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: rgba(44,44,42,0.4);
+            margin-bottom: 0.8rem;
+        }
+        .prod-picker-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.7rem;
+        }
+        .prod-picker-btn {
+            display: flex;
+            flex-direction: column;
+            gap: 0.2rem;
+            text-align: left;
+            padding: 0.9rem 1rem;
+            border: 1px solid rgba(44,44,42,0.15);
+            background: #fff;
+            cursor: pointer;
+            border-radius: 3px;
+            transition: all 0.2s;
+        }
+        .prod-picker-btn:hover { border-color: var(--gold); }
+        .prod-picker-btn.is-active {
+            border-color: var(--charcoal);
+            background: var(--cream-alt);
+            box-shadow: inset 0 0 0 1px var(--charcoal);
+        }
+        .prod-picker-type {
+            font-family: 'Jost', sans-serif;
+            font-size: 0.6rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+        }
+        .prod-picker-type--std  { color: var(--green); }
+        .prod-picker-type--surm { color: #8B5E52; }
+        .prod-picker-name {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.05rem;
+            color: var(--charcoal);
+            line-height: 1.2;
+        }
+        .prod-picker-price {
+            font-family: 'Jost', sans-serif;
+            font-size: 0.72rem;
+            color: rgba(44,44,42,0.5);
+            margin-top: 0.1rem;
+        }
+
+        /* ---- MESURES SUR MESURE ---- */
+        .surm-section-label {
+            font-family: 'Jost', sans-serif;
+            font-size: 0.65rem;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: rgba(44,44,42,0.4);
+            margin-bottom: 0.7rem;
+            margin-top: 1.2rem;
+        }
+        .surm-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 0.7rem;
+        }
+        .surm-field { display: flex; flex-direction: column; gap: 0.25rem; }
+        .surm-label {
+            font-family: 'Jost', sans-serif;
+            font-size: 0.72rem;
+            font-weight: 500;
+            color: var(--charcoal);
+        }
+        .surm-hint {
+            font-size: 0.62rem;
+            font-weight: 300;
+            color: rgba(44,44,42,0.38);
+            display: block;
+        }
+        .surm-tape-link {
+            display: inline-block;
+            margin-top: 0.9rem;
+            font-family: 'Jost', sans-serif;
+            font-size: 0.7rem;
+            color: rgba(44,44,42,0.4);
+            text-decoration: underline;
+            text-underline-offset: 3px;
+            font-style: italic;
+        }
+        .surm-tape-link:hover { color: var(--gold); }
+
+        @media (max-width: 768px) {
+            .prod-picker-grid { grid-template-columns: 1fr 1fr; }
+            .surm-grid { grid-template-columns: 1fr 1fr; }
+        }
+        @media (max-width: 480px) {
+            .surm-grid { grid-template-columns: 1fr; }
+        }
+
+
+        /* ---- MINI IMAGES SUR MESURE ---- */
+        .surm-images {
+            display: none;
+            margin-bottom: 1.4rem;
+        }
+        .surm-images.is-visible { display: block; }
+        .surm-images-label {
+            font-family: 'Jost', sans-serif;
+            font-size: 0.65rem;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: rgba(44,44,42,0.4);
+            margin-bottom: 0.7rem;
+        }
+        .surm-images-row {
+            display: flex;
+            gap: 0.55rem;
+            overflow-x: auto;
+            padding-bottom: 0.3rem;
+        }
+        .surm-images-row::-webkit-scrollbar { height: 3px; }
+        .surm-images-row::-webkit-scrollbar-thumb { background: rgba(201,169,154,0.5); border-radius: 2px; }
+        .surm-thumb {
+            flex-shrink: 0;
+            width: 80px;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 2px;
+            border: 1px solid rgba(201,169,154,0.3);
+        }
+
+        /* ---- METRE RUBAN ENCADRÉ ---- */
+        .surm-tape-box {
+            display: flex;
+            align-items: center;
+            gap: 0.85rem;
+            margin-top: 1.1rem;
+            padding: 0.85rem 1.1rem;
+            border: 1px solid rgba(184,147,90,0.45);
+            background: rgba(184,147,90,0.06);
+            border-radius: 4px;
+            text-decoration: none;
+            color: var(--charcoal);
+            transition: border-color 0.2s, background 0.2s;
+        }
+        .surm-tape-box:hover {
+            border-color: var(--gold);
+            background: rgba(184,147,90,0.1);
+        }
+        .surm-tape-icon {
+            font-size: 1.4rem;
+            flex-shrink: 0;
+            opacity: 0.7;
+        }
+        .surm-tape-main {
+            display: flex;
+            flex-direction: column;
+            gap: 0.15rem;
+        }
+        .surm-tape-title {
+            font-family: 'Jost', sans-serif;
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: var(--charcoal);
+        }
+        .surm-tape-sub {
+            font-family: 'Jost', sans-serif;
+            font-size: 0.68rem;
+            color: rgba(44,44,42,0.5);
+        }
+
+
+        /* ---- POPUP GUIDE MESURE ---- */
+        .mguide-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(44,44,42,0.55);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+            padding: 1.5rem;
+        }
+        .mguide-overlay.is-open {
+            display: flex;
+            animation: fadeIn 0.2s ease;
+        }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        .mguide-modal {
+            background: var(--cream);
+            border: 1px solid rgba(201,169,154,0.4);
+            max-width: 420px;
+            width: 100%;
+            padding: 2.2rem 2rem;
+            border-radius: 4px;
+            text-align: center;
+            animation: slideUp 0.25s ease;
+        }
+        @keyframes slideUp { from { transform: translateY(20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+        .mguide-icon {
+            font-size: 2.2rem;
+            margin-bottom: 0.8rem;
+            opacity: 0.75;
+        }
+        .mguide-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.45rem;
+            font-weight: 400;
+            color: var(--charcoal);
+            line-height: 1.3;
+            margin-bottom: 0.6rem;
+        }
+        .mguide-sub {
+            font-family: 'Jost', sans-serif;
+            font-size: 0.8rem;
+            color: rgba(44,44,42,0.55);
+            line-height: 1.7;
+            margin-bottom: 1.8rem;
+        }
+        .mguide-btns {
+            display: flex;
+            flex-direction: column;
+            gap: 0.65rem;
+        }
+        .mguide-btn-yes {
+            display: block;
+            padding: 0.9rem 1.5rem;
+            background: var(--charcoal);
+            color: var(--cream);
+            font-family: 'Jost', sans-serif;
+            font-size: 0.78rem;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            border: none;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background 0.2s;
+        }
+        .mguide-btn-yes:hover { background: #8B5E52; }
+        .mguide-btn-no {
+            display: block;
+            padding: 0.75rem 1.5rem;
+            background: transparent;
+            color: rgba(44,44,42,0.55);
+            font-family: 'Jost', sans-serif;
+            font-size: 0.75rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            border: 1px solid rgba(44,44,42,0.18);
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .mguide-btn-no:hover { border-color: var(--charcoal); color: var(--charcoal); }
+
         /* ---- FOOTER ---- */
         .footer { background-color: var(--charcoal); }
 
@@ -637,7 +914,7 @@
         <ul class="nav-links">
             <li><a href="index.html#produits">Nos cr&eacute;ations</a></li>
             <li><a href="order.html" class="nav-cta-secondary">Sur mesure</a></li>
-            <li><a href="shop.html" class="active">Taille standard</a></li>
+            <li><a href="shop.html" class="active">Votre commande</a></li>
             <li><a href="measurement.html">Mes mesures</a></li>
             <li><a href="pricing.html">Nos tarifs</a></li>
         </ul>
@@ -646,7 +923,7 @@
 
     <!-- Banni&egrave;re livraison -->
     <div class="delivery-banner">
-        &#10022;&nbsp; Livraison offerte &agrave; Madagascar &amp; en Europe &nbsp;&#10022;
+        &#10022;&nbsp; Livraison gratuite Madagascar &nbsp;&bull;&nbsp; Offerte d&egrave;s 29&euro; en Europe &nbsp;&#10022;
     </div>
 
     <div class="shop-wrapper">
@@ -656,14 +933,47 @@
             <nav class="breadcrumb" aria-label="Fil d'Ariane">
                 <a href="index.html">Accueil</a>
                 <span class="sep">&rsaquo;</span>
-                <a href="index.html#produits">Taille standard</a>
+                <a href="index.html#produits">Nos créations</a>
                 <span class="sep">&rsaquo;</span>
                 Commande
             </nav>
 
             <div class="shop-eyebrow">En stock &middot; Exp&eacute;dition 2&ndash;3 jours</div>
             <h1 class="shop-title">Votre commande</h1>
-            <p class="shop-sub">Serenity by Saule &mdash; Taille standard</p>
+            <p class="shop-sub">Serenity by Saule</p>
+
+
+            <!-- ── Sélecteur de produit ─────────────────────────── -->
+            <div class="prod-picker">
+                <div class="prod-picker-label">Quel produit commandez-vous&nbsp;?</div>
+                <div class="prod-picker-grid">
+
+                    <button type="button" class="prod-picker-btn is-active" onclick="switchShopProduct('slip', this)">
+                        <span class="prod-picker-type prod-picker-type--std">Taille standard</span>
+                        <span class="prod-picker-name">Pack 5 Slips</span>
+                        <span class="prod-picker-price">29,95 &euro;</span>
+                    </button>
+
+                    <button type="button" class="prod-picker-btn" onclick="switchShopProduct('bra', this)">
+                        <span class="prod-picker-type prod-picker-type--std">Taille standard</span>
+                        <span class="prod-picker-name">Sport Bra &amp; Slip</span>
+                        <span class="prod-picker-price">11,99 &euro;</span>
+                    </button>
+
+                    <button type="button" class="prod-picker-btn" onclick="switchShopProduct('surm_bra', this)">
+                        <span class="prod-picker-type prod-picker-type--surm">Sur mesure</span>
+                        <span class="prod-picker-name">Sport Bra &amp; Slip</span>
+                        <span class="prod-picker-price">11,99 &euro;</span>
+                    </button>
+
+                    <button type="button" class="prod-picker-btn" onclick="switchShopProduct('surm_slip', this)">
+                        <span class="prod-picker-type prod-picker-type--surm">Sur mesure</span>
+                        <span class="prod-picker-name">Slip seul</span>
+                        <span class="prod-picker-price">Pack 5 pcs &middot; 5,99 &euro; / pi&egrave;ce</span>
+                    </button>
+
+                </div>
+            </div>
 
             <!-- Carte r&eacute;capitulatif produit -->
             <div class="product-recap">
@@ -712,49 +1022,98 @@
                         <div class="field-error" id="err-size">Veuillez s&eacute;lectionner une taille.</div>
                     </div>
 
-                    <!-- Mod&egrave;les (slip et combo bra) -->
-                    <div id="models-section" style="display: none; margin-top: 1.6rem;">
-                        <div class="size-label">Quel(s) mod&egrave;le(s) souhaitez-vous&nbsp;?</div>
-                        <div class="model-grid">
-                            <label class="model-check">
-                                <input type="checkbox" name="model" value="Full Brief">
-                                <span>Full Brief</span>
-                            </label>
-                            <label class="model-check">
-                                <input type="checkbox" name="model" value="Mid Brief">
-                                <span>Mid Brief</span>
-                            </label>
-                            <label class="model-check">
-                                <input type="checkbox" name="model" value="Cheeky">
-                                <span>Cheeky</span>
-                            </label>
-                            <label class="model-check">
-                                <input type="checkbox" name="model" value="Thong">
-                                <span>Thong</span>
-                            </label>
+
+
+                    <!-- Mini images sur mesure -->
+                    <div class="surm-images" id="surm-images-bra">
+                        <div class="surm-images-label">Aperçu</div>
+                        <div class="surm-images-row">
+                            <img src="assets/images/bra-creme.jpg"  class="surm-thumb" alt="Sport Bra &amp; Slip — Ivoire">
+                            <img src="assets/images/bra-prune.jpg"  class="surm-thumb" alt="Sport Bra &amp; Slip — Prune">
+                            <img src="assets/images/bra-marine.jpg" class="surm-thumb" alt="Sport Bra &amp; Slip — Marine">
                         </div>
-                        <p class="model-note">Pour un pack de 5, vous pouvez mixer les mod&egrave;les.</p>
-                        <div class="field-error" id="err-models">Veuillez s&eacute;lectionner au moins un mod&egrave;le.</div>
                     </div>
 
-                    <!-- Couleur -->
-                    <div id="couleur-section" style="display:none; margin-top: 1.6rem;">
-                        <div class="size-label">Votre couleur</div>
-                        <div class="couleur-row">
-                            <button type="button" class="couleur-btn" data-couleur="Ivoire" onclick="selectCouleur('Ivoire',this)">
-                                <span class="couleur-swatch" style="background:#F8F3ED; border:1px solid rgba(44,44,42,0.2);"></span>
-                                Ivoire
-                            </button>
-                            <button type="button" class="couleur-btn" data-couleur="Aubergine" onclick="selectCouleur('Aubergine',this)">
-                                <span class="couleur-swatch" style="background:#5C2D6E;"></span>
-                                Aubergine
-                            </button>
-                            <button type="button" class="couleur-btn" data-couleur="Marine" onclick="selectCouleur('Marine',this)">
-                                <span class="couleur-swatch" style="background:#1B3A5C;"></span>
-                                Marine
-                            </button>
+                    <div class="surm-images" id="surm-images-slip">
+                        <div class="surm-images-label">Aperçu — modèles disponibles</div>
+                        <div class="surm-images-row">
+                            <img src="assets/images/slip-fullbrief-creme.jpg"  class="surm-thumb" alt="Full Brief">
+                            <img src="assets/images/slip-midbrief-creme.jpg"   class="surm-thumb" alt="Mid Brief">
+                            <img src="assets/images/slip-cheeky-creme.jpg"     class="surm-thumb" alt="Cheeky">
+                            <img src="assets/images/slip-thong-creme.jpg"      class="surm-thumb" alt="Thong">
                         </div>
-                        <span class="field-error" id="err-couleur" style="display:none; font-family:'Jost',sans-serif; font-size:0.7rem; color:#C0392B; font-style:italic;">Veuillez s&eacute;lectionner une couleur.</span>
+                    </div>
+
+                    <!-- ── Mesures Sur Mesure (affiché si surm_bra / surm_slip) ── -->
+                    <div id="surm-block" style="display:none;">
+
+                        <!-- Mesures Sport Bra — affiché uniquement pour surm_bra -->
+                        <div id="surm-bra-block" style="display:none;">
+                            <div class="surm-section-label">Mesures Sport Bra (cm)</div>
+                            <div class="surm-grid">
+                                <div class="surm-field">
+                                    <label class="surm-label">Overbust<span class="surm-hint">au-dessus des seins</span></label>
+                                    <input type="number" id="surm-overbust" class="field-input" placeholder="ex. 82" min="40" max="200">
+                                    <span class="field-error" id="err-surm-overbust">Valeur invalide (40–200).</span>
+                                </div>
+                                <div class="surm-field">
+                                    <label class="surm-label">Bust<span class="surm-hint">niveau des seins</span></label>
+                                    <input type="number" id="surm-bust" class="field-input" placeholder="ex. 88" min="40" max="200">
+                                    <span class="field-error" id="err-surm-bust">Valeur invalide (40–200).</span>
+                                </div>
+                                <div class="surm-field">
+                                    <label class="surm-label">Underbust<span class="surm-hint">sous les seins</span></label>
+                                    <input type="number" id="surm-underbust" class="field-input" placeholder="ex. 74" min="40" max="200">
+                                    <span class="field-error" id="err-surm-underbust">Valeur invalide (40–200).</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Mesures Slip (toujours visible pour sur mesure) -->
+                        <div class="surm-section-label" id="surm-slip-label">Mesures Slip (cm)</div>
+                        <div class="surm-grid">
+                            <div class="surm-field">
+                                <label class="surm-label">Hanches<span class="surm-hint">contour le plus large</span></label>
+                                <input type="number" id="surm-hanches" class="field-input" placeholder="ex. 96" min="40" max="200">
+                                <span class="field-error" id="err-surm-hanches">Valeur invalide (40–200).</span>
+                            </div>
+                            <div class="surm-field">
+                                <label class="surm-label">Taille<span class="surm-hint">contour le plus &eacute;troit</span></label>
+                                <input type="number" id="surm-taille" class="field-input" placeholder="ex. 72" min="40" max="200">
+                                <span class="field-error" id="err-surm-taille">Valeur invalide (40–200).</span>
+                            </div>
+                            <div class="surm-field">
+                                <label class="surm-label">Cuisse<span class="surm-hint">&agrave; mi-cuisse</span></label>
+                                <input type="number" id="surm-cuisse" class="field-input" placeholder="ex. 58" min="40" max="200">
+                                <span class="field-error" id="err-surm-cuisse">Valeur invalide (40–200).</span>
+                            </div>
+                        </div>
+                        <a href="assets/downloads/metre-ruban-serenity.pdf" download target="_blank" class="surm-tape-box">
+                            <span class="surm-tape-icon">&#x1F4CF;</span>
+                            <span class="surm-tape-main">
+                                <span class="surm-tape-title">Pas de m&egrave;tre ruban&nbsp;?</span>
+                                <span class="surm-tape-sub">T&eacute;l&eacute;charger &amp; imprimer le n&ocirc;tre gratuitement &darr;</span>
+                            </span>
+                        </a>
+
+                    </div>
+
+                    <!-- Quantité -->
+                    <div id="qty-section" style="margin-top: 1.6rem;">
+                        <div class="size-label">Quantit&eacute;</div>
+                        <div class="qty-row">
+                            <button type="button" class="qty-btn" onclick="changeQty(-1)">&#8722;</button>
+                            <span class="qty-count" id="qty-count">1</span>
+                            <button type="button" class="qty-btn" onclick="changeQty(1)">+</button>
+                            <span class="qty-unit-label" id="qty-unit-label"></span>
+                        </div>
+                    </div>
+
+                    <!-- Personnalisation par pièce -->
+                    <div id="units-section" style="margin-top: 1.2rem;">
+                        <div class="size-label">Personnalisez chaque pi&egrave;ce</div>
+                        <div id="units-container" class="units-list"></div>
+                        <span class="field-error" id="err-units">Veuillez s&eacute;lectionner mod&egrave;le et couleur pour chaque pi&egrave;ce.</span>
                     </div>
                 </div>
 
@@ -802,13 +1161,20 @@
                         <div class="field-group">
                             <label class="field-label" for="pays">Pays</label>
                             <select id="pays" class="field-select">
-                                <option value="Madagascar" selected>Madagascar</option>
+<optgroup label="Madagascar">
+                                <option value="Madagascar" selected>Madagascar — Livraison gratuite</option>
+                            </optgroup>
+                            <optgroup label="Europe">
                                 <option value="France">France</option>
-                                <option value="Allemagne">Allemagne</option>
                                 <option value="Belgique">Belgique</option>
                                 <option value="Suisse">Suisse</option>
                                 <option value="Luxembourg">Luxembourg</option>
+                                <option value="Allemagne">Allemagne</option>
                                 <option value="Autres pays Europe">Autres pays Europe</option>
+                            </optgroup>
+                            <optgroup label="Autres pays">
+                                <option value="Autres">Autres pays (international)</option>
+                            </optgroup>
                             </select>
                         </div>
                     </div>
@@ -844,15 +1210,17 @@
                             <tr>
                                 <th>Produit</th>
                                 <th>Taille</th>
-                                <th>Mod&egrave;le(s)</th>
-                                <th style="text-align: right;">Prix</th>
+                                <th>Qt&eacute;</th>
+                                <th>D&eacute;tail</th>
+                                <th style="text-align: right;">Sous-total</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
                                 <td id="rtable-product">&mdash;</td>
                                 <td id="rtable-size">&mdash;</td>
-                                <td id="rtable-models">&mdash;</td>
+                                <td id="rtable-qty">&mdash;</td>
+                                <td id="rtable-models" style="font-size:0.72rem; color:rgba(44,44,42,0.6);">&mdash;</td>
                                 <td id="rtable-price" style="text-align: right;">&mdash;</td>
                             </tr>
                         </tbody>
@@ -860,7 +1228,7 @@
 
                     <div class="recap-delivery">
                         <span>Livraison</span>
-                        <span class="recap-delivery-value">Offerte</span>
+                        <span class="recap-delivery-value" id="recap-delivery-value">&mdash;</span>
                     </div>
 
                     <div class="recap-total-row">
@@ -904,7 +1272,7 @@
                 <h4>Navigation</h4>
                 <a href="index.html#produits">Nos cr&eacute;ations</a>
                 <a href="order.html">Sur mesure</a>
-                <a href="shop.html">Taille standard</a>
+                <a href="shop.html">Votre commande</a>
                 <a href="measurement.html">Mes mesures</a>
                 <a href="pricing.html">Nos tarifs</a>
             </div>
@@ -920,196 +1288,331 @@
     <script src="assets/js/main.js"></script>
 
     <script>
-        /* ================================================
-           SHOP PAGE — Logique commande taille standard
-        ================================================ */
-
-        /* Remplacer par l'URL de votre script Google Apps Script déployé */
         var GAS_URL = 'https://script.google.com/macros/s/AKfycbyfqfv4b-FsfRZC-aRZ8vOk_TjmaD30V9_8kqq8N0qH-Q_P1J6f-a3CJMg-X6HLzjkj/exec';
 
         var params         = new URLSearchParams(window.location.search);
         var currentProduct = params.get('product') || 'slip';
-        var currentSize    = params.get('size')    || null;  // taille slip (ou slip du combo)
-        var currentBraSize = null;                            // taille bra (combo uniquement)
+        var currentSize    = params.get('size')    || null;
+        var currentBraSize = null;
+        var currentQty     = 1;
+        var unitSelections = [];
 
-        var productData = {
-            bra:  { name: 'Sport Bra & Slip', montantEur: '11.99', montantAr: '57552', priceEur: '11,99\u00a0\u20ac', priceAr: '57\u00a0552\u00a0Ar' },
-            slip: { name: 'Slip (pack de 5)',  montantEur: '29.95', montantAr: '143760',                  priceEur: '29,95\u00a0\u20ac', priceAr: '143\u00a0760\u00a0Ar' }
+        var UNIT_PRICES = {
+            bra:      { eur: 11.99, ar:  57552 },
+            slip:     { eur: 29.95, ar: 143760 },
+            surm_bra: { eur: 11.99, ar:  57552 },
+            surm_slip:{ eur: 29.95, ar: 143760 }
         };
+        var SHIPPING_EUR        = 5.99;
+        var SHIPPING_AR         = 28752;
+        var FREE_SHIP_THRESHOLD = 29;
 
-        var data = productData[currentProduct] || productData.slip;
-        var currentCouleur = null;
+        var unitPrice    = UNIT_PRICES[currentProduct] || UNIT_PRICES.slip;
+        var productNames = { bra: 'Sport Bra & Slip', slip: 'Pack 5 Slips', surm_bra: 'Sport Bra & Slip — Sur mesure', surm_slip: 'Slip — Sur mesure' };
+        function getUnitLabel(p) { return p === 'bra' || p === 'surm_bra' ? 'ensemble' : 'pack (5 slips)'; }
+        var unitLabel    = getUnitLabel(currentProduct);
 
-        /* ---- Initialisation depuis les param&egrave;tres URL ---- */
+        function isSurMesure() { return currentProduct === 'surm_bra' || currentProduct === 'surm_slip'; }
+
+        var COLORS = [
+            { name: 'Ivoire',    bg: '#F8F3ED', border: '1px solid rgba(44,44,42,0.2)' },
+            { name: 'Aubergine', bg: '#5C2D6E', border: '' },
+            { name: 'Marine',    bg: '#1B3A5C', border: '' }
+        ];
+        var MODELS = ['Full Brief', 'Mid Brief', 'Cheeky', 'Thong'];
+
+        /* ---- Initialisation ---- */
         (function init() {
-            document.getElementById('recap-product-name').textContent = data.name;
-            document.getElementById('recap-price').textContent        = data.priceEur;
-            document.getElementById('recap-price-ar').textContent     = data.priceAr;
+            document.getElementById('recap-product-name').textContent = productNames[currentProduct] || 'Slip';
+            document.getElementById('qty-unit-label').textContent = unitPrice.eur.toFixed(2).replace('.', ',') + ' € / ' + unitLabel;
 
             if (currentProduct === 'bra') {
-                document.getElementById('bra-size-block').style.display  = 'block';
-                document.getElementById('slip-size-label').textContent   = 'Taille Slip';
-                document.getElementById('models-section').style.display  = 'block';
-                document.getElementById('couleur-section').style.display = 'block';
+                document.getElementById('bra-size-block').style.display = 'block';
+                document.getElementById('slip-size-label').textContent  = 'Taille Slip';
                 if (currentSize) {
                     var braBtn = document.querySelector('.size-pill-form[data-role="bra"][data-size="' + currentSize + '"]');
                     if (braBtn) selectBraSize(currentSize, braBtn);
                     currentSize = null;
                 }
             } else {
-                document.getElementById('models-section').style.display  = 'block';
-                document.getElementById('couleur-section').style.display = 'block';
                 if (currentSize) {
                     var slipBtn = document.querySelector('.size-pill-form[data-role="slip"][data-size="' + currentSize + '"]');
                     if (slipBtn) selectSizeForm(currentSize, slipBtn);
                 }
             }
-
+            unitSelections = [{ model: null, couleur: null }];
+            renderUnits();
             updateRecapTable();
         })();
 
-        /* ---- S&eacute;lection taille Slip ---- */
+
+        /* ---- Changement de produit ---- */
+        function doSwitchShopProduct(type, btn) {
+            if (!btn) btn = document.querySelector('.prod-picker-btn.is-active');
+            currentProduct = type;
+            currentSize    = null;
+            currentBraSize = null;
+            unitPrice      = UNIT_PRICES[type] || UNIT_PRICES.slip;
+            unitLabel      = getUnitLabel(type);
+
+            // Boutons picker
+            document.querySelectorAll('.prod-picker-btn').forEach(function(b) { b.classList.remove('is-active'); });
+            btn.classList.add('is-active');
+
+            var isS = isSurMesure();
+
+            // Section 01 : tailles vs mesures
+            document.getElementById('bra-size-block').style.display   = (!isS && type === 'bra')  ? '' : 'none';
+            document.getElementById('slip-size-block').style.display   = isS ? 'none' : '';
+            document.getElementById('surm-block').style.display        = isS ? '' : 'none';
+            document.getElementById('surm-bra-block').style.display    = (type === 'surm_bra') ? '' : 'none';
+            var imgBra  = document.getElementById('surm-images-bra');
+            var imgSlip = document.getElementById('surm-images-slip');
+            if (imgBra)  imgBra.classList.toggle('is-visible',  type === 'surm_bra');
+            if (imgSlip) imgSlip.classList.toggle('is-visible', type === 'surm_slip');
+
+            if (!isS) {
+                document.getElementById('slip-size-label').textContent = (type === 'bra') ? 'Taille Slip' : 'Sélectionnez votre taille';
+            }
+
+            // Décocher toutes les tailles
+            document.querySelectorAll('.size-pill-form').forEach(function(p) { p.classList.remove('is-active'); });
+
+            // Mise à jour du prix affiché
+            document.getElementById('recap-product-name').textContent   = productNames[type] || type;
+            var qtyLblS = unitPrice.eur.toFixed(2).replace('.', ',') + ' € / ' + unitLabel;
+            if (type === 'surm_slip') qtyLblS += '  ·  5,99 € / pièce';
+            document.getElementById('qty-unit-label').textContent        = qtyLblS;
+            document.getElementById('recap-price').textContent           = unitPrice.eur.toFixed(2).replace('.', ',') + ' €';
+            document.getElementById('recap-price-ar').textContent        = Math.round(unitPrice.ar).toLocaleString('fr-FR') + ' Ar';
+
+            // Réinitialiser les sélections
+            currentQty = 1;
+            unitSelections = [{ model: null, couleur: null }];
+            document.getElementById('qty-count').textContent = '1';
+            renderUnits();
+            updateRecapTable();
+        }
+
+
+        function switchShopProduct(type, btn) {
+            if (type === 'surm_bra' || type === 'surm_slip') {
+                // Sauvegarder le btn pour l'utiliser après confirmation
+                pendingSurmProduct = type;
+                window._pendingBtn = btn;
+                mguideOpen(type);
+            } else {
+                doSwitchShopProduct(type, btn);
+            }
+        }
+
+        /* ---- Quantité ---- */
+        function changeQty(delta) {
+            currentQty = Math.max(1, Math.min(10, currentQty + delta));
+            document.getElementById('qty-count').textContent = currentQty;
+            while (unitSelections.length < currentQty) unitSelections.push({ model: null, couleur: null });
+            while (unitSelections.length > currentQty) unitSelections.pop();
+            renderUnits();
+            updateRecapTable();
+        }
+
+        /* ---- Rendu par pièce ---- */
+        function renderUnits() {
+            var container = document.getElementById('units-container');
+            var html = '';
+            for (var i = 0; i < currentQty; i++) {
+                var sel = unitSelections[i];
+                html += '<div class="unit-row"><div class="unit-num">Pièce ' + (i + 1) + '</div>';
+                html += '<span class="unit-field-label">Modèle</span><div class="unit-pills">';
+                for (var m = 0; m < MODELS.length; m++) {
+                    var actM = sel.model === MODELS[m] ? ' is-active' : '';
+                    html += '<button type="button" class="unit-pill' + actM + '" onclick="selectUnitModel(' + i + ',\'' + MODELS[m] + '\',this)">' + MODELS[m] + '</button>';
+                }
+                html += '</div><span class="unit-field-label">Couleur</span><div class="unit-pills">';
+                for (var c = 0; c < COLORS.length; c++) {
+                    var col = COLORS[c];
+                    var actC = sel.couleur === col.name ? ' is-active' : '';
+                    var dot  = 'background:' + col.bg + (col.border ? ';border:' + col.border : '') + ';';
+                    html += '<button type="button" class="unit-color-pill' + actC + '" onclick="selectUnitCouleur(' + i + ',\'' + col.name + '\',this)"><span class="unit-color-dot" style="' + dot + '"></span>' + col.name + '</button>';
+                }
+                html += '</div></div>';
+            }
+            container.innerHTML = html;
+        }
+
+        function selectUnitModel(idx, model, btn) {
+            unitSelections[idx].model = model;
+            btn.closest('.unit-row').querySelectorAll('.unit-pill').forEach(function(b) { b.classList.remove('is-active'); });
+            btn.classList.add('is-active');
+            document.getElementById('err-units').classList.remove('is-visible');
+            updateRecapTable();
+        }
+
+        function selectUnitCouleur(idx, couleur, btn) {
+            unitSelections[idx].couleur = couleur;
+            btn.closest('.unit-row').querySelectorAll('.unit-color-pill').forEach(function(b) { b.classList.remove('is-active'); });
+            btn.classList.add('is-active');
+            document.getElementById('err-units').classList.remove('is-visible');
+            updateRecapTable();
+        }
+
+        /* ---- Tailles ---- */
         function selectSizeForm(size, btn) {
             currentSize = size;
-            document.querySelectorAll('.size-pill-form[data-role="slip"]').forEach(function(p) {
-                p.classList.remove('is-active');
-            });
+            document.querySelectorAll('.size-pill-form[data-role="slip"]').forEach(function(p) { p.classList.remove('is-active'); });
             btn.classList.add('is-active');
             document.getElementById('err-size').classList.remove('is-visible');
-            updateRecapDetails();
             updateRecapTable();
         }
 
-        /* ---- S&eacute;lection taille Sport Bra (combo) ---- */
         function selectBraSize(size, btn) {
             currentBraSize = size;
-            document.querySelectorAll('.size-pill-form[data-role="bra"]').forEach(function(p) {
-                p.classList.remove('is-active');
-            });
+            document.querySelectorAll('.size-pill-form[data-role="bra"]').forEach(function(p) { p.classList.remove('is-active'); });
             btn.classList.add('is-active');
             document.getElementById('err-bra-size').classList.remove('is-visible');
-            updateRecapDetails();
             updateRecapTable();
         }
 
-        /* ---- Mise &agrave; jour de la carte r&eacute;cap produit ---- */
-        function updateRecapDetails() {
-            var el = document.getElementById('recap-product-details');
-            if (currentProduct === 'bra') {
-                el.textContent = 'Bra\u00a0: ' + (currentBraSize || '\u2014') + '\u2003Slip\u00a0: ' + (currentSize || '\u2014');
-            } else {
-                el.textContent = 'Taille\u00a0: ' + (currentSize || '\u2014');
-            }
+        /* ---- Calculs ---- */
+        function calcTotal()    { return currentQty * unitPrice.eur; }
+        function calcTotalAr()  { return currentQty * unitPrice.ar; }
+        function calcShipping() {
+            var pays = document.getElementById('pays').value;
+            if (pays === 'Madagascar') return 0;
+            return calcTotal() >= FREE_SHIP_THRESHOLD ? 0 : SHIPPING_EUR;
         }
+        function fmt(n)   { return n.toFixed(2).replace('.', ',') + ' €'; }
+        function fmtAr(n) { return Math.round(n).toLocaleString('fr-FR').replace(/ /g, ' ') + ' Ar'; }
 
-        /* ---- Mise &agrave; jour du tableau r&eacute;cap ---- */
+        /* ---- Récap ---- */
         function updateRecapTable() {
-            var models    = getSelectedModels();
-            var modelsStr = models.length > 0 ? models.join(', ') : '\u2014';
+            var total    = calcTotal();
+            var shipping = calcShipping();
+            var grand    = total + shipping;
+            var totalAr  = calcTotalAr();
+            var grandAr  = totalAr + (shipping > 0 ? SHIPPING_AR : 0);
+            var isReady  = isSurMesure() ? true : (currentProduct === 'bra' ? !!(currentBraSize && currentSize) : !!currentSize);
 
-            var sizeDisplay, isReady;
-            if (currentProduct === 'bra') {
-                sizeDisplay = 'Bra\u00a0' + (currentBraSize || '\u2014') + ' / Slip\u00a0' + (currentSize || '\u2014');
-                isReady     = !!(currentBraSize && currentSize);
-            } else {
-                sizeDisplay = currentSize || '\u2014';
-                isReady     = !!currentSize;
-            }
+            var sizeDisplay = currentProduct === 'bra'
+                ? 'Bra ' + (currentBraSize || '—') + ' / Slip ' + (currentSize || '—')
+                : (currentSize || '—');
 
-            document.getElementById('rtable-product').textContent  = data.name;
-            document.getElementById('rtable-size').textContent     = sizeDisplay;
-            document.getElementById('rtable-models').textContent   = modelsStr;
-            document.getElementById('rtable-price').textContent    = isReady ? data.priceEur : '\u2014';
-            document.getElementById('rtable-total').textContent    = isReady ? data.priceEur : '\u2014';
-            document.getElementById('rtable-total-ar').textContent = isReady ? data.priceAr  : '';
+            var modelsStr = unitSelections.map(function(s, i) {
+                return 'P' + (i + 1) + ': ' + (s.model || '—') + (s.couleur ? ' (' + s.couleur + ')' : '');
+            }).join(' — ');
+
+            document.getElementById('rtable-product').textContent = productNames[currentProduct] || 'Slip';
+            document.getElementById('rtable-size').textContent    = sizeDisplay;
+            document.getElementById('rtable-qty').textContent     = currentQty;
+            document.getElementById('rtable-models').textContent  = isReady ? modelsStr : '—';
+            document.getElementById('rtable-price').textContent   = isReady ? fmt(total)  : '—';
+
+            var delivEl = document.getElementById('recap-delivery-value');
+            if (isReady) {
+                if (shipping === 0) {
+                    delivEl.textContent = 'Offerte';
+                    delivEl.style.color = 'var(--green)';
+                } else {
+                    delivEl.textContent = fmt(shipping) + ' — offerte dès 29€';
+                    delivEl.style.color = 'var(--charcoal)';
+                }
+            } else { delivEl.textContent = '—'; delivEl.style.color = ''; }
+
+            document.getElementById('rtable-total').textContent    = isReady ? fmt(grand)   : '—';
+            document.getElementById('rtable-total-ar').textContent = isReady ? fmtAr(grandAr) : '';
+            document.getElementById('recap-price').textContent     = isReady ? fmt(total)   : '—';
+            document.getElementById('recap-price-ar').textContent  = isReady ? fmtAr(totalAr) : '';
+            document.getElementById('recap-product-details').textContent = 'Taille : ' + sizeDisplay + ' · Qté : ' + currentQty;
         }
 
-        /* ---- R&eacute;cup&eacute;rer les mod&egrave;les coch&eacute;s ---- */
-        function getSelectedModels() {
-            return Array.from(document.querySelectorAll('input[name="model"]:checked'))
-                .map(function(cb) { return cb.value; });
+        document.getElementById('pays').addEventListener('change', updateRecapTable);
+
+        /* ---- Paiement ---- */
+        function showPaiement(confEl, pays) {
+            if (confEl.querySelector('.pmt-block')) return;
+                        var h = '<div class="pmt-block">';
+            h += '<div class="pmt-title">Comment régler ?</div>';
+            h += '<div class="pmt-method"><div class="pmt-method-name" style="color:#0066B3;">MVola</div><div class="pmt-method-num">+261 34 09 831 74</div><div class="pmt-method-dest">Harilala Mamy Tiana Razanalivaoarijaona</div></div>';
+            h += '<p class="pmt-note">Envoyez le montant exact puis confirmez en nous envoyant une capture d’écran.</p></div>';
+            h += '<a class="pmt-track-btn" href="https://serenity-management.netlify.app/" target="_blank">Suivre ma commande →</a>';
+            confEl.insertAdjacentHTML('beforeend', h);
         }
 
-        document.querySelectorAll('input[name="model"]').forEach(function(cb) {
-            cb.addEventListener('change', updateRecapTable);
-        });
-
-        /* ---- Couleur ---- */
-        function selectCouleur(couleur, btn) {
-            currentCouleur = couleur;
-            document.querySelectorAll('.couleur-btn').forEach(function(b) { b.classList.remove('is-active'); });
-            btn.classList.add('is-active');
-            document.getElementById('err-couleur').style.display = 'none';
-        }
-
-        /* ---- Validation et soumission ---- */
+        /* ---- Soumission ---- */
         function submitShop() {
             var valid = true;
-
-            if (currentProduct === 'bra' && !currentBraSize) {
-                document.getElementById('err-bra-size').classList.add('is-visible');
-                valid = false;
-            }
-            if (!currentSize) {
-                document.getElementById('err-size').classList.add('is-visible');
-                valid = false;
-            }
-            var errModels = document.getElementById('err-models');
-            if (getSelectedModels().length === 0) {
-                errModels.classList.add('is-visible');
-                valid = false;
+            if (!isSurMesure()) {
+                if (currentProduct === 'bra' && !currentBraSize) { document.getElementById('err-bra-size').classList.add('is-visible'); valid = false; }
+                if (!currentSize) { document.getElementById('err-size').classList.add('is-visible'); valid = false; }
             } else {
-                errModels.classList.remove('is-visible');
+                var measIds = ['surm-hanches', 'surm-taille', 'surm-cuisse'];
+                if (currentProduct === 'surm_bra') measIds = measIds.concat(['surm-overbust', 'surm-bust', 'surm-underbust']);
+                measIds.forEach(function(id) {
+                    var el = document.getElementById(id);
+                    var val = parseFloat(el.value);
+                    var errEl = document.getElementById('err-' + id);
+                    if (!el.value || isNaN(val) || val < 40 || val > 200) {
+                        el.classList.add('is-error'); if (errEl) errEl.classList.add('is-visible'); valid = false;
+                    } else {
+                        el.classList.remove('is-error'); if (errEl) errEl.classList.remove('is-visible');
+                    }
+                });
             }
-            if (!currentCouleur) {
-                document.getElementById('err-couleur').style.display = 'block';
-                valid = false;
+            if (!unitSelections.every(function(s) { return s.model && s.couleur; })) {
+                document.getElementById('err-units').classList.add('is-visible'); valid = false;
             }
             ['prenom', 'nom', 'email', 'telephone', 'ville', 'adresse'].forEach(function(id) {
-                var el  = document.getElementById(id);
-                var err = document.getElementById('err-' + id);
-                if (!el.value.trim()) {
-                    el.classList.add('is-error');
-                    if (err) err.classList.add('is-visible');
-                    valid = false;
-                } else {
-                    el.classList.remove('is-error');
-                    if (err) err.classList.remove('is-visible');
-                }
+                var el = document.getElementById(id), err = document.getElementById('err-' + id);
+                if (!el.value.trim()) { el.classList.add('is-error'); if (err) err.classList.add('is-visible'); valid = false; }
+                else { el.classList.remove('is-error'); if (err) err.classList.remove('is-visible'); }
             });
             var emailEl = document.getElementById('email');
             if (emailEl.value && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailEl.value)) {
-                emailEl.classList.add('is-error');
-                document.getElementById('err-email').classList.add('is-visible');
-                valid = false;
+                emailEl.classList.add('is-error'); document.getElementById('err-email').classList.add('is-visible'); valid = false;
             }
-
             if (!valid) {
-                var firstErr = document.querySelector('.field-input.is-error');
+                var firstErr = document.querySelector('.field-input.is-error, .field-error.is-visible');
                 if (firstErr) firstErr.scrollIntoView({ behavior: 'smooth', block: 'center' });
                 return;
             }
 
             var btn = document.getElementById('shop-submit-btn');
-            btn.disabled = true;
-            btn.textContent = 'Envoi en cours…';
+            btn.disabled = true; btn.textContent = 'Envoi en cours…';
+
+            var pays     = document.getElementById('pays').value;
+            var shipping = calcShipping();
+            var total    = calcTotal();
+            var unitDetails = unitSelections.map(function(s, i) {
+                return 'P' + (i + 1) + ': ' + (s.model || '-') + ' / ' + (s.couleur || '-');
+            }).join(' | ');
 
             var payload = {
-                type:            currentProduct === 'bra' ? 'standard_ensemble' : 'standard_slip',
-                prenom:          document.getElementById('prenom').value.trim(),
-                nom:             document.getElementById('nom').value.trim(),
-                email:           document.getElementById('email').value.trim(),
-                telephone:       document.getElementById('telephone').value.trim(),
+                type:             currentProduct === 'bra' ? 'standard_ensemble'
+                                : currentProduct === 'slip' ? 'standard_slip'
+                                : currentProduct === 'surm_bra' ? 'sur_mesure_ensemble'
+                                : 'sur_mesure_slip',
+                prenom:           document.getElementById('prenom').value.trim(),
+                nom:              document.getElementById('nom').value.trim(),
+                email:            document.getElementById('email').value.trim(),
+                telephone:        document.getElementById('telephone').value.trim(),
                 taille_sport_bra: currentBraSize || '',
-                taille_slip:     currentSize || '',
-                modele_slip:     getSelectedModels().join(', '),
-                couleur:         currentCouleur,
-                pays:            document.getElementById('pays').value,
-                ville:           document.getElementById('ville').value.trim(),
-                adresse:         document.getElementById('adresse').value.trim(),
-                instructions:    document.getElementById('instructions').value.trim(),
-                montant_eur:     data.montantEur,
-                montant_ar:      data.montantAr
+                taille_slip:      currentSize || '',
+                quantite:         currentQty,
+                modeles:          unitDetails,
+                couleur:          unitSelections.map(function(s) { return s.couleur || ''; }).join(', '),
+                pays:             pays,
+                ville:            document.getElementById('ville').value.trim(),
+                adresse:          document.getElementById('adresse').value.trim(),
+                instructions:     document.getElementById('instructions').value.trim(),
+                montant_eur:      total.toFixed(2),
+                montant_ar:       Math.round(calcTotalAr()).toString(),
+                livraison_eur:    shipping.toFixed(2),
+                tour_overbust:    (currentProduct === 'surm_bra' ? (document.getElementById('surm-overbust').value || '') : ''),
+                tour_poitrine:    (currentProduct === 'surm_bra' ? (document.getElementById('surm-bust').value || '') : ''),
+                tour_sous_poitrine: (currentProduct === 'surm_bra' ? (document.getElementById('surm-underbust').value || '') : ''),
+                tour_hanches:     (isSurMesure() ? (document.getElementById('surm-hanches').value || '') : ''),
+                tour_taille:      (isSurMesure() ? (document.getElementById('surm-taille').value || '') : ''),
+                tour_cuisse:      (isSurMesure() ? (document.getElementById('surm-cuisse').value || '') : '')
             };
 
             fetch(GAS_URL, { method: 'POST', body: JSON.stringify(payload) })
@@ -1118,23 +1621,44 @@
                 if (res.success) {
                     document.getElementById('shop-form').style.display = 'none';
                     document.querySelector('.product-recap').style.display = 'none';
-                    var confirm = document.getElementById('shop-confirm');
-                    confirm.style.display = 'block';
-                    confirm.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    document.querySelector('.prod-picker').style.display = 'none';
+                    var conf = document.getElementById('shop-confirm');
+                    conf.style.display = 'block';
+                    conf.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    showPaiement(conf, pays);
                 } else {
-                    btn.disabled = false;
-                    btn.textContent = 'Confirmer ma commande →';
-                    alert('Une erreur s’est produite. Veuillez réessayer.');
+                    btn.disabled = false; btn.textContent = 'Confirmer ma commande →';
+                    alert("Une erreur s'est produite. Veuillez r\u00e9essayer.");
                 }
             })
             .catch(function() {
-                btn.disabled = false;
-                btn.textContent = 'Confirmer ma commande →';
+                btn.disabled = false; btn.textContent = 'Confirmer ma commande →';
                 alert('Erreur réseau. Veuillez réessayer.');
             });
         }
 
-        /* ---- Effacer les erreurs &agrave; la saisie ---- */
+
+        /* ---- Popup guide mesure ---- */
+        var pendingSurmProduct = null;
+
+        function mguideOpen(type) {
+            pendingSurmProduct = type;
+            document.getElementById('mguide-overlay').classList.add('is-open');
+        }
+
+        function mguideConfirm() {
+            document.getElementById('mguide-overlay').classList.remove('is-open');
+            if (pendingSurmProduct) {
+                doSwitchShopProduct(pendingSurmProduct, window._pendingBtn);
+                pendingSurmProduct = null;
+                window._pendingBtn = null;
+            }
+        }
+
+        function mguideCloseOnBg(e) {
+            if (e.target === document.getElementById('mguide-overlay')) mguideConfirm();
+        }
+
         document.querySelectorAll('.field-input, .field-select').forEach(function(el) {
             el.addEventListener('input', function() {
                 this.classList.remove('is-error');
@@ -1143,6 +1667,25 @@
             });
         });
     </script>
+
+
+    <!-- Popup guide mesure (sur mesure) -->
+    <div class="mguide-overlay" id="mguide-overlay" onclick="mguideCloseOnBg(event)">
+        <div class="mguide-modal">
+            <div class="mguide-icon">&#x1F4CF;</div>
+            <div class="mguide-title">Avez-vous votre mètre ruban&nbsp;?</div>
+            <p class="mguide-sub">
+                La commande sur mesure nécessite vos mesures exactes.<br>
+                Consultez notre guide si vous avez besoin d'aide.
+            </p>
+            <div class="mguide-btns">
+                <a href="measurement.html" class="mguide-btn-yes">Voir le guide des mesures &rarr;</a>
+                <button type="button" class="mguide-btn-no" onclick="mguideConfirm()">
+                    J'ai mes mesures, continuer &rarr;
+                </button>
+            </div>
+        </div>
+    </div>
 
 </body>
 </html>

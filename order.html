@@ -3,6 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="refresh" content="0; url=shop.html">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Commander | Serenity by Saule</title>
     <meta name="description" content="Commandez votre lingerie sur mesure Serenity by Saule. Saisissez vos mesures ou acc&eacute;dez &agrave; notre guide de prise de mesure.">
@@ -799,7 +800,7 @@
         <ul class="nav-links">
             <li><a href="index.html#produits">Nos cr&eacute;ations</a></li>
             <li><a href="order.html" class="nav-cta-secondary active">Sur mesure</a></li>
-            <li><a href="shop.html">Taille standard</a></li>
+            <li><a href="shop.html">Votre commande</a></li>
             <li><a href="measurement.html">Mes mesures</a></li>
             <li><a href="pricing.html">Nos tarifs</a></li>
         </ul>
@@ -808,7 +809,7 @@
 
     <!-- Banniere -->
     <div class="delivery-banner">
-        &#10022;&nbsp; Livraison offerte &agrave; Madagascar &amp; en Europe &nbsp;&#10022;
+        &#10022;&nbsp; Livraison gratuite Madagascar &nbsp;&bull;&nbsp; Offerte d&egrave;s 29&euro; en Europe &nbsp;&#10022;
     </div>
 
     <div class="order-wrapper">
@@ -919,33 +920,20 @@
                         Besoin d&rsquo;aide pour vous mesurer&nbsp;? Consultez notre guide &rarr;
                     </a>
 
-                    <!-- Couleur -->
+                    <!-- Quantité & per-unit bra -->
                     <div class="extra-section">
-                        <div class="extra-section-title">Couleur</div>
-                        <div class="couleur-row" id="bra-couleur-row">
-                            <button type="button" class="couleur-btn" data-product="bra" data-couleur="Ivoire" onclick="selectCouleur('bra','Ivoire',this)">
-                                <span class="couleur-swatch" style="background:#F8F3ED; border:1px solid rgba(44,44,42,0.2);"></span>Ivoire
-                            </button>
-                            <button type="button" class="couleur-btn" data-product="bra" data-couleur="Aubergine" onclick="selectCouleur('bra','Aubergine',this)">
-                                <span class="couleur-swatch" style="background:#5C2D6E;"></span>Aubergine
-                            </button>
-                            <button type="button" class="couleur-btn" data-product="bra" data-couleur="Marine" onclick="selectCouleur('bra','Marine',this)">
-                                <span class="couleur-swatch" style="background:#1B3A5C;"></span>Marine
-                            </button>
+                        <div class="extra-section-title">Quantit&eacute;</div>
+                        <div class="qty-row">
+                            <button type="button" class="qty-btn" onclick="changeQtyFor('bra',-1)">&#8722;</button>
+                            <span class="qty-count" id="bra-qty-count">1</span>
+                            <button type="button" class="qty-btn" onclick="changeQtyFor('bra',1)">+</button>
+                            <span class="qty-unit-label">11,99&nbsp;&euro; / ensemble</span>
                         </div>
-                        <span class="field-error-sm" id="err-bra-couleur">Veuillez s&eacute;lectionner une couleur.</span>
                     </div>
-
-                    <!-- Modèles slip (pour l'ensemble) -->
                     <div class="extra-section">
-                        <div class="extra-section-title">Mod&egrave;le de slip</div>
-                        <div class="model-grid-order">
-                            <label class="model-check-order"><input type="checkbox" name="bra-model" value="Full Brief"><span>Full Brief</span></label>
-                            <label class="model-check-order"><input type="checkbox" name="bra-model" value="Mid Brief"><span>Mid Brief</span></label>
-                            <label class="model-check-order"><input type="checkbox" name="bra-model" value="Cheeky"><span>Cheeky</span></label>
-                            <label class="model-check-order"><input type="checkbox" name="bra-model" value="Thong"><span>Thong</span></label>
-                        </div>
-                        <span class="field-error-sm" id="err-bra-models">Veuillez s&eacute;lectionner au moins un mod&egrave;le.</span>
+                        <div class="extra-section-title">Mod&egrave;le &amp; couleur par pi&egrave;ce</div>
+                        <div id="bra-units-container" class="units-list"></div>
+                        <span class="field-error-sm" id="err-bra-units">Veuillez s&eacute;lectionner mod&egrave;le et couleur pour chaque pi&egrave;ce.</span>
                     </div>
 
                     <!-- Coordonnées -->
@@ -984,9 +972,20 @@
                             <div class="field-group-order">
                                 <label class="field-label-order" for="bra-pays">Pays</label>
                                 <select id="bra-pays" class="field-select-order">
-                                    <option value="Madagascar" selected>Madagascar</option>
-                                    <option value="France">France</option>
-                                    <option value="Belgique">Belgique</option>
+                                    <optgroup label="Madagascar">
+                                        <option value="Madagascar" selected>Madagascar — Livraison gratuite</option>
+                                    </optgroup>
+                                    <optgroup label="Europe">
+                                        <option value="France">France</option>
+                                        <option value="Belgique">Belgique</option>
+                                        <option value="Suisse">Suisse</option>
+                                        <option value="Luxembourg">Luxembourg</option>
+                                        <option value="Allemagne">Allemagne</option>
+                                        <option value="Autres pays Europe">Autres pays Europe</option>
+                                    </optgroup>
+                                    <optgroup label="Autres pays">
+                                        <option value="Autres">Autres pays (international)</option>
+                                    </optgroup>
                                     <option value="Suisse">Suisse</option>
                                     <option value="Luxembourg">Luxembourg</option>
                                     <option value="Autres pays Europe">Autres pays Europe</option>
@@ -1087,33 +1086,20 @@
                         Besoin d&rsquo;aide pour vous mesurer&nbsp;? Consultez notre guide &rarr;
                     </a>
 
-                    <!-- Modèles slip -->
+                    <!-- Quantité & per-unit slip -->
                     <div class="extra-section">
-                        <div class="extra-section-title">Mod&egrave;le de slip</div>
-                        <div class="model-grid-order">
-                            <label class="model-check-order"><input type="checkbox" name="slip-model" value="Full Brief"><span>Full Brief</span></label>
-                            <label class="model-check-order"><input type="checkbox" name="slip-model" value="Mid Brief"><span>Mid Brief</span></label>
-                            <label class="model-check-order"><input type="checkbox" name="slip-model" value="Cheeky"><span>Cheeky</span></label>
-                            <label class="model-check-order"><input type="checkbox" name="slip-model" value="Thong"><span>Thong</span></label>
+                        <div class="extra-section-title">Quantit&eacute;</div>
+                        <div class="qty-row">
+                            <button type="button" class="qty-btn" onclick="changeQtyFor('slip',-1)">&#8722;</button>
+                            <span class="qty-count" id="slip-qty-count">1</span>
+                            <button type="button" class="qty-btn" onclick="changeQtyFor('slip',1)">+</button>
+                            <span class="qty-unit-label">5,99&nbsp;&euro; / pi&egrave;ce</span>
                         </div>
-                        <span class="field-error-sm" id="err-slip-models">Veuillez s&eacute;lectionner au moins un mod&egrave;le.</span>
                     </div>
-
-                    <!-- Couleur slip -->
                     <div class="extra-section">
-                        <div class="extra-section-title">Couleur</div>
-                        <div class="couleur-row" id="slip-couleur-row">
-                            <button type="button" class="couleur-btn" data-product="slip" data-couleur="Ivoire" onclick="selectCouleur('slip','Ivoire',this)">
-                                <span class="couleur-swatch" style="background:#F8F3ED; border:1px solid rgba(44,44,42,0.2);"></span>Ivoire
-                            </button>
-                            <button type="button" class="couleur-btn" data-product="slip" data-couleur="Aubergine" onclick="selectCouleur('slip','Aubergine',this)">
-                                <span class="couleur-swatch" style="background:#5C2D6E;"></span>Aubergine
-                            </button>
-                            <button type="button" class="couleur-btn" data-product="slip" data-couleur="Marine" onclick="selectCouleur('slip','Marine',this)">
-                                <span class="couleur-swatch" style="background:#1B3A5C;"></span>Marine
-                            </button>
-                        </div>
-                        <span class="field-error-sm" id="err-slip-couleur">Veuillez s&eacute;lectionner une couleur.</span>
+                        <div class="extra-section-title">Mod&egrave;le &amp; couleur par pi&egrave;ce</div>
+                        <div id="slip-units-container" class="units-list"></div>
+                        <span class="field-error-sm" id="err-slip-units">Veuillez s&eacute;lectionner mod&egrave;le et couleur pour chaque pi&egrave;ce.</span>
                     </div>
 
                     <!-- Coordonnées slip -->
@@ -1152,9 +1138,20 @@
                             <div class="field-group-order">
                                 <label class="field-label-order" for="slip-pays">Pays</label>
                                 <select id="slip-pays" class="field-select-order">
-                                    <option value="Madagascar" selected>Madagascar</option>
-                                    <option value="France">France</option>
-                                    <option value="Belgique">Belgique</option>
+                                    <optgroup label="Madagascar">
+                                        <option value="Madagascar" selected>Madagascar — Livraison gratuite</option>
+                                    </optgroup>
+                                    <optgroup label="Europe">
+                                        <option value="France">France</option>
+                                        <option value="Belgique">Belgique</option>
+                                        <option value="Suisse">Suisse</option>
+                                        <option value="Luxembourg">Luxembourg</option>
+                                        <option value="Allemagne">Allemagne</option>
+                                        <option value="Autres pays Europe">Autres pays Europe</option>
+                                    </optgroup>
+                                    <optgroup label="Autres pays">
+                                        <option value="Autres">Autres pays (international)</option>
+                                    </optgroup>
                                     <option value="Suisse">Suisse</option>
                                     <option value="Luxembourg">Luxembourg</option>
                                     <option value="Autres pays Europe">Autres pays Europe</option>
@@ -1235,7 +1232,7 @@
                 <h4>Navigation</h4>
                 <a href="index.html#produits">Nos cr&eacute;ations</a>
                 <a href="order.html">Sur mesure</a>
-                <a href="shop.html">Taille standard</a>
+                <a href="shop.html">Votre commande</a>
                 <a href="measurement.html">Mes mesures</a>
                 <a href="pricing.html">Nos tarifs</a>
             </div>
@@ -1260,25 +1257,20 @@
 
         function showPaiement(confEl, pays) {
             if (confEl.querySelector('.pmt-block')) return;
-            var isMada = (pays === 'Madagascar');
-            var h = '<div class="pmt-block"><div class="pmt-title">Comment r&eacute;gler&nbsp;?</div>';
-            if (isMada) {
-                h += '<p class="pmt-desc">Envoyez votre paiement par mobile money au destinataire ci-dessous&nbsp;:</p>';
-                h += '<div class="pmt-operator"><span class="pmt-op-tag" style="background:#0066B3">MVola</span><span class="pmt-op-num">+261 34 09 831 74 &mdash; Harilala Mamy Tiana Razanalivaoarijaona</span></div>';
-            } else {
-                h += '<p class="pmt-desc">Depuis l\'Europe, utilisez l\'un de ces services pour envoyer votre r&egrave;glement&nbsp;:</p>';
-                h += '<div class="pmt-eu-btns">';
-                h += '<a href="https://www.sendwave.com/en" target="_blank" rel="noopener" class="pmt-eu-btn">SendWave</a>';
-                h += '<a href="https://www.taptapsend.com/fr" target="_blank" rel="noopener" class="pmt-eu-btn">TapTap Send</a>';
-                h += '<div class="pmt-operator"><span class="pmt-op-tag" style="background:#0066B3">MVola</span><span class="pmt-op-num">+261 34 09 831 74 &mdash; Harilala Mamy Tiana Razanalivaoarijaona</span></div>';
-                h += '</div>';
-            }
+            var h = '<div class="pmt-block">';
+            h += '<div class="pmt-title">Comment r\u00e9gler\u00a0?</div>';
+            h += '<p class="pmt-desc">Envoyez votre paiement par MVola au destinataire ci-dessous\u00a0:</p>';
+            h += '<div class="pmt-operator"><span class="pmt-op-tag" style="background:#0066B3">MVola</span><span class="pmt-op-num">+261 34 09 831 74 &mdash; Harilala Mamy Tiana Razanalivaoarijaona</span></div>';
+            h += '<p class="pmt-note">Envoyez ensuite la capture de votre paiement via WhatsApp.</p>';
             h += '</div><a href="https://serenity-management.netlify.app/" target="_blank" rel="noopener" class="pmt-track-btn">Suivre ma commande &rarr;</a>';
             confEl.insertAdjacentHTML('beforeend', h);
         }
 
-        var braCouleurl = null;
-        var slipCouleur = null;
+        var braCouleurl = null;  // kept for compat
+        var slipCouleur = null;  // kept for compat
+
+        /* Init unit rows */
+        document.addEventListener('DOMContentLoaded', function() { initQtyFor('bra'); initQtyFor('slip'); });
 
         /* -- Sélection du parcours A ou B -- */
         function selectPath(path) {
@@ -1342,26 +1334,15 @@
                 }
             });
 
-            /* Modèles */
-            var modelName  = product === 'bra' ? 'bra-model' : 'slip-model';
-            var errModels  = document.getElementById('err-' + product + '-models');
-            var modelBoxes = Array.from(document.querySelectorAll('input[name="' + modelName + '"]:checked'));
-            if (modelBoxes.length === 0) {
-                errModels.classList.add('is-visible');
+            /* Per-unit validation */
+            var sels = unitSelectionsMap[product] || [];
+            var unitsOk = sels.length > 0 && sels.every(function(s) { return s.model && s.couleur; });
+            if (!unitsOk) {
+                var errU = document.getElementById('err-' + product + '-units');
+                if (errU) errU.classList.add('is-visible');
                 valid = false;
-            } else {
-                errModels.classList.remove('is-visible');
             }
-
-            /* Couleur */
-            var couleurVal = product === 'bra' ? braCouleurl : slipCouleur;
-            var errCouleur = document.getElementById('err-' + product + '-couleur');
-            if (!couleurVal) {
-                errCouleur.classList.add('is-visible');
-                valid = false;
-            } else {
-                errCouleur.classList.remove('is-visible');
-            }
+            var modelBoxes = []; // kept for compat
 
             /* Coordonnées */
             [product + '-prenom', product + '-nom', product + '-email', product + '-telephone', product + '-ville', product + '-adresse'].forEach(function(id) {
@@ -1413,20 +1394,29 @@
                 mesures.cuisse    = document.getElementById('slip-cuisse').value;
             }
 
+            var qty     = parseInt((document.getElementById(product + '-qty-count') || {textContent:'1'}).textContent) || 1;
+            var selects = unitSelectionsMap[product] || [];
+            var unitDetails = selects.map(function(s, i) {
+                return 'P' + (i + 1) + ': ' + (s.model || '-') + ' / ' + (s.couleur || '-');
+            }).join(' | ');
+            var pays    = document.getElementById(product + '-pays').value;
+            var total   = calcOrderTotal(product, qty);
             var payload = Object.assign({
                 type:        product === 'bra' ? 'sur_mesure_ensemble' : 'sur_mesure_slip',
                 prenom:      document.getElementById(product + '-prenom').value.trim(),
                 nom:         document.getElementById(product + '-nom').value.trim(),
                 email:       document.getElementById(product + '-email').value.trim(),
                 telephone:   document.getElementById(product + '-telephone').value.trim(),
-                modele_slip: modelBoxes.map(function(c) { return c.value; }).join(', '),
-                couleur:     couleurVal,
-                pays:        document.getElementById(product + '-pays').value,
+                quantite:    qty,
+                modeles:     unitDetails,
+                couleur:     selects.map(function(s) { return s.couleur || ''; }).join(', '),
+                pays:        pays,
                 ville:       document.getElementById(product + '-ville').value.trim(),
                 adresse:     document.getElementById(product + '-adresse').value.trim(),
                 instructions: document.getElementById(product + '-instructions').value.trim(),
-                montant_eur: product === 'bra' ? '11.99' : '29.95',
-                montant_ar:  product === 'bra' ? '57552' : '143760'
+                montant_eur: total.toFixed(2),
+                montant_ar:  Math.round(total * 4800).toString(),
+                livraison_eur: calcOrderShipping(product, qty, pays).toFixed(2)
             }, mesures);
 
             fetch(GAS_URL, { method: 'POST', body: JSON.stringify(payload) })
@@ -1501,6 +1491,83 @@
                 field.appendChild(wrap);
             });
         })();
+
+        /* ---- Quantité & per-unit ---- */
+        var unitSelectionsMap = {};
+        var COLORS_LIST = [
+            { name: 'Ivoire',    bg: '#F8F3ED', border: '1px solid rgba(44,44,42,0.2)' },
+            { name: 'Aubergine', bg: '#5C2D6E', border: '' },
+            { name: 'Marine',    bg: '#1B3A5C', border: '' }
+        ];
+        var MODELS_LIST = ['Full Brief', 'Mid Brief', 'Cheeky', 'Thong'];
+
+        function changeQtyFor(product, delta) {
+            var el = document.getElementById(product + '-qty-count');
+            if (!el) return;
+            var qty = Math.max(1, Math.min(10, (parseInt(el.textContent) || 1) + delta));
+            el.textContent = qty;
+            if (!unitSelectionsMap[product]) unitSelectionsMap[product] = [];
+            while (unitSelectionsMap[product].length < qty) unitSelectionsMap[product].push({ model: null, couleur: null });
+            while (unitSelectionsMap[product].length > qty) unitSelectionsMap[product].pop();
+            renderUnitsFor(product);
+        }
+
+        function renderUnitsFor(product) {
+            var container = document.getElementById(product + '-units-container');
+            if (!container) return;
+            var sels = unitSelectionsMap[product] || [];
+            var html = '';
+            for (var i = 0; i < sels.length; i++) {
+                var sel = sels[i];
+                html += '<div class="unit-row"><div class="unit-num">Pièce ' + (i + 1) + '</div>';
+                html += '<span class="unit-field-label">Modèle</span><div class="unit-pills">';
+                MODELS_LIST.forEach(function(m) {
+                    var a = sel.model === m ? ' is-active' : '';
+                    html += '<button type="button" class="unit-pill' + a + '" onclick="selectUnitModelFor(\'' + product + '\',' + i + ',\'' + m + '\',this)">' + m + '</button>';
+                });
+                html += '</div><span class="unit-field-label">Couleur</span><div class="unit-pills">';
+                COLORS_LIST.forEach(function(col) {
+                    var a   = sel.couleur === col.name ? ' is-active' : '';
+                    var dot = 'background:' + col.bg + (col.border ? ';border:' + col.border : '') + ';';
+                    html += '<button type="button" class="unit-color-pill' + a + '" onclick="selectUnitCouleurFor(\'' + product + '\',' + i + ',\'' + col.name + '\',this)">';
+                    html += '<span class="unit-color-dot" style="' + dot + '"></span>' + col.name + '</button>';
+                });
+                html += '</div></div>';
+            }
+            container.innerHTML = html;
+        }
+
+        function selectUnitModelFor(product, idx, model, btn) {
+            if (!unitSelectionsMap[product]) return;
+            unitSelectionsMap[product][idx].model = model;
+            btn.closest('.unit-row').querySelectorAll('.unit-pill').forEach(function(b) { b.classList.remove('is-active'); });
+            btn.classList.add('is-active');
+            var err = document.getElementById('err-' + product + '-units');
+            if (err) err.classList.remove('is-visible');
+        }
+
+        function selectUnitCouleurFor(product, idx, couleur, btn) {
+            if (!unitSelectionsMap[product]) return;
+            unitSelectionsMap[product][idx].couleur = couleur;
+            btn.closest('.unit-row').querySelectorAll('.unit-color-pill').forEach(function(b) { b.classList.remove('is-active'); });
+            btn.classList.add('is-active');
+            var err = document.getElementById('err-' + product + '-units');
+            if (err) err.classList.remove('is-visible');
+        }
+
+        function initQtyFor(product) {
+            unitSelectionsMap[product] = [{ model: null, couleur: null }];
+            renderUnitsFor(product);
+        }
+
+        function calcOrderTotal(product, qty) {
+            var prices = { bra: 11.99, e: 11.99, slip: 5.99, s: 5.99 };
+            return qty * (prices[product] || 5.99);
+        }
+        function calcOrderShipping(product, qty, pays) {
+            if (pays === 'Madagascar') return 0;
+            return calcOrderTotal(product, qty) >= 29 ? 0 : 5.99;
+        }
     </script>
 
 </body>
