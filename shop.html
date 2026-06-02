@@ -512,6 +512,19 @@
         }
 
         /* ---- BOUTON CONFIRMER ---- */
+        /* Champ code promo */
+        .promo-section { margin: 1.2rem 0 0.5rem; border-top: 0.5px solid rgba(44,44,42,0.12); padding-top: 1rem; }
+        .promo-label { font-size: 0.7rem; letter-spacing: 0.09em; text-transform: uppercase; color: rgba(44,44,42,0.55); display: block; margin-bottom: 0.5rem; }
+        .promo-row { display: flex; gap: 8px; }
+        .promo-input { flex: 1; padding: 0.55rem 0.8rem; border: 0.5px solid rgba(44,44,42,0.25); background: #fff; font-family: 'Jost', sans-serif; font-size: 0.83rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--charcoal); outline: none; }
+        .promo-input:focus { border-color: var(--charcoal); }
+        .promo-apply-btn { padding: 0.55rem 1rem; background: transparent; border: 0.5px solid rgba(44,44,42,0.35); font-family: 'Jost', sans-serif; font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; cursor: pointer; color: var(--charcoal); white-space: nowrap; transition: all 0.2s; }
+        .promo-apply-btn:hover { background: var(--charcoal); color: #fff; }
+        .promo-feedback { font-size: 0.78rem; margin-top: 0.45rem; min-height: 1.1em; }
+        .promo-feedback.ok  { color: #2d6a4f; }
+        .promo-feedback.err { color: #c0392b; }
+        .promo-discount-row { display: flex; justify-content: space-between; font-size: 0.82rem; color: #2d6a4f; margin-top: 0.5rem; padding: 0.3rem 0; display: none; }
+
         .shop-submit-btn {
             display: block;
             width: 100%;
@@ -917,6 +930,7 @@
             <li><a href="shop.html" class="active">Votre commande</a></li>
             <li><a href="measurement.html">Mes mesures</a></li>
             <li><a href="pricing.html">Nos tarifs</a></li>
+            <li><a href="collab-login.html">Espace Collab</a></li>
         </ul>
         <div class="mobile-menu-toggle">&#9776;</div>
     </nav>
@@ -1239,6 +1253,20 @@
                         </div>
                     </div>
 
+                    <!-- Code promo -->
+                    <div class="promo-section">
+                        <label class="promo-label">Vous avez un code collaborateur ?</label>
+                        <div class="promo-row">
+                            <input type="text" id="code-promo" class="promo-input" placeholder="ex&nbsp;: MARIE15" maxlength="20">
+                            <button type="button" class="promo-apply-btn" onclick="verifierCode()">Appliquer</button>
+                        </div>
+                        <p class="promo-feedback" id="promo-feedback"></p>
+                        <div class="promo-discount-row" id="promo-discount-row">
+                            <span>Réduction appliquée</span>
+                            <span id="promo-discount-amount"></span>
+                        </div>
+                    </div>
+
                     <button type="button" class="shop-submit-btn" id="shop-submit-btn" onclick="submitShop()">
                         Confirmer ma commande &rarr;
                     </button>
@@ -1280,6 +1308,7 @@
                 <h4>Contact</h4>
                 <a href="mailto:info@serenity-lingerie.com">info@serenity-lingerie.com</a>
                 <a href="privacy.html">Politique de confidentialit&eacute;</a>
+                <a href="admin-login.html" style="font-size:0.68rem;opacity:0.5;">Admin</a>
             </div>
         </div>
         <div class="footer-bottom">&copy; 2026 Serenity by Saule. Tous droits r&eacute;serv&eacute;s.</div>
@@ -1303,6 +1332,9 @@
             surm_bra: { eur: 11.99, ar:  57552 },
             surm_slip:{ eur: 29.95, ar: 143760 }
         };
+        var codePromoValide    = null;
+        var reductionPct       = 0;
+
         var SHIPPING_EUR        = 5.99;
         var SHIPPING_AR         = 28752;
         var FREE_SHIP_THRESHOLD = 29;
@@ -1474,8 +1506,8 @@
         }
 
         /* ---- Calculs ---- */
-        function calcTotal()    { return currentQty * unitPrice.eur; }
-        function calcTotalAr()  { return currentQty * unitPrice.ar; }
+        function calcTotal()    { var base = currentQty * unitPrice.eur; return reductionPct > 0 ? parseFloat((base * (1 - reductionPct / 100)).toFixed(2)) : base; }
+        function calcTotalAr()  { var base = currentQty * unitPrice.ar; return reductionPct > 0 ? Math.round(base * (1 - reductionPct / 100)) : base; }
         function calcShipping() {
             var pays = document.getElementById('pays').value;
             if (pays === 'Madagascar') return 0;
@@ -1523,9 +1555,48 @@
             document.getElementById('recap-price').textContent     = isReady ? fmt(total)   : '—';
             document.getElementById('recap-price-ar').textContent  = isReady ? fmtAr(totalAr) : '';
             document.getElementById('recap-product-details').textContent = 'Taille : ' + sizeDisplay + ' · Qté : ' + currentQty;
+
+            // Ligne de réduction code promo
+            var discRow = document.getElementById('promo-discount-row');
+            if (isReady && reductionPct > 0) {
+                var baseTotal = currentQty * unitPrice.eur;
+                var discountAmt = parseFloat((baseTotal * reductionPct / 100).toFixed(2));
+                document.getElementById('promo-discount-amount').textContent = '−' + fmt(discountAmt);
+                discRow.style.display = 'flex';
+            } else {
+                discRow.style.display = 'none';
+            }
         }
 
         document.getElementById('pays').addEventListener('change', updateRecapTable);
+
+        /* ---- Code promo ---- */
+        async function verifierCode() {
+            var code = document.getElementById('code-promo').value.trim().toUpperCase();
+            var fb   = document.getElementById('promo-feedback');
+            fb.className = 'promo-feedback';
+            if (!code) { fb.textContent = 'Entrez un code.'; fb.className += ' err'; return; }
+
+            try {
+                var res  = await fetch('/api/collab/verifier-code/' + encodeURIComponent(code));
+                var data = await res.json();
+                if (data.valide) {
+                    codePromoValide = code;
+                    reductionPct    = data.reduction_pct;
+                    fb.textContent  = '\u2713 Code valide \u2014 r\xe9duction de ' + reductionPct + '% appliqu\xe9e !';
+                    fb.className   += ' ok';
+                } else {
+                    codePromoValide = null;
+                    reductionPct    = 0;
+                    fb.textContent  = '\u2717 Code invalide ou inactif.';
+                    fb.className   += ' err';
+                }
+            } catch(e) {
+                fb.textContent = '\u2717 Impossible de v\xe9rifier le code.';
+                fb.className  += ' err';
+            }
+            updateRecapTable();
+        }
 
         /* ---- Paiement ---- */
         function showPaiement(confEl, pays) {
@@ -1612,7 +1683,8 @@
                 tour_sous_poitrine: (currentProduct === 'surm_bra' ? (document.getElementById('surm-underbust').value || '') : ''),
                 tour_hanches:     (isSurMesure() ? (document.getElementById('surm-hanches').value || '') : ''),
                 tour_taille:      (isSurMesure() ? (document.getElementById('surm-taille').value || '') : ''),
-                tour_cuisse:      (isSurMesure() ? (document.getElementById('surm-cuisse').value || '') : '')
+                tour_cuisse:      (isSurMesure() ? (document.getElementById('surm-cuisse').value || '') : ''),
+                code_promo:       codePromoValide || ''
             };
 
             fetch(GAS_URL, { method: 'POST', body: JSON.stringify(payload) })
